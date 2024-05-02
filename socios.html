@@ -2,17 +2,23 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Registro de Socio</title>
+    <title>clubdelvalle.com</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <h1>Registro de Socio</h1>
+    <header>
+        <h1>Club Deportivo del Valle</h1>
+    </header>
+   <h2>Registro de socios</h2>
     <form id="formularioSocio">
+        <input type="text" id="curp" placeholder="CURP" required>
         <input type="text" id="nombre" placeholder="Nombre" required>
         <input type="text" id="apellidos" placeholder="Apellidos" required>
         <input type="email" id="correoElectronico" placeholder="Correo Electrónico" required>
+        <input type="password" id="contrasena" placeholder="Contraseña" required> 
         <input type="text" id="telefono" placeholder="Teléfono" required>
-        <input type="text" id="curp" placeholder="CURP" required>
         <button type="submit">Registrar Socio</button>
+        
     </form>
 
     <script type="module" src="./app.js"></script>
