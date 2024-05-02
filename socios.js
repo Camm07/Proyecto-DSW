@@ -1,45 +1,32 @@
-import { db } from './conexion.js';
-import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc } from 'firebase/firestore';
+// Importa Firebase modules directamente, asumiendo que se usará en un ambiente que soporte módulos ES
+import { db } from './app.js'; // Asegúrate de que la ruta al archivo app.js es correcta
+import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
-// Añadir un nuevo socio
-export async function agregarSocio(datosSocio) {
-    try {
-        const docRef = await addDoc(collection(db, "Socios"), datosSocio);
-        console.log("Socio agregado con ID:", docRef.id);
-    } catch (error) {
-        console.error("Error al añadir socio:", error);
-    }
-}
+document.getElementById('formularioSocio').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const nombre = document.getElementById('nombreSocio').value;
+    const apellidos = document.getElementById('apellidoSocio').value;
+    const curp = document.getElementById('curpSocio').value;
+    const correo = document.getElementById('correoSocio').value;
+    const contraseña = document.getElementById('contraseñaSocio').value;
+    const telefono = document.getElementById('telefonoSocio').value;
 
-// Obtener todos los socios
-export async function obtenerSocios() {
     try {
-        const querySnapshot = await getDocs(collection(db, "Socios"));
-        querySnapshot.forEach((doc) => {
-            console.log(doc.id, " => ", doc.data());
+        await addDoc(collection(db, "Socios"), {
+            nombre: nombre,
+            apellidos: apellidos,
+            curp: curp,
+            correo: correo,
+            contraseña: contraseña,
+            telefono: telefono,
+            tipo: "socio"
         });
+        console.log('Socio registrado con éxito');
+        alert('Socio registrado con éxito');
+        // Opcional: Limpia el formulario después de un registro exitoso
+        document.getElementById('formularioSocio').reset();
     } catch (error) {
-        console.error("Error al obtener socios:", error);
+        console.error('Error al registrar el socio:', error);
+        alert('Error al registrar el socio: ' + error.message);
     }
-}
-
-// Actualizar datos del socio
-export async function actualizarSocio(docId, nuevosDatos) {
-    try {
-        const socioRef = doc(db, "Socios", docId);
-        await updateDoc(socioRef, nuevosDatos);
-        console.log("Datos del socio actualizados");
-    } catch (error) {
-        console.error("Error al actualizar datos del socio:", error);
-    }
-}
-
-// Eliminar un socio
-export async function eliminarSocio(docId) {
-    try {
-        await deleteDoc(doc(db, "Socios", docId));
-        console.log("Socio eliminado");
-    } catch (error) {
-        console.error("Error al eliminar socio:", error);
-    }
-}
+});
