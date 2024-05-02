@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Socios</title>
+</head>
+<body>
+    <h1>Registro de Socios</h1>
+    <form id="formularioSocio">
+        <input type="text" id="nombreSocio" placeholder="Nombre" required>
+        <input type="text" id="apellidoSocio" placeholder="Apellidos" required>
+        <input type="text" id="curpSocio" placeholder="CURP" required>
+        <input type="email" id="correoSocio" placeholder="Correo electrónico" required>
+        <input type="password" id="contraseñaSocio" placeholder="Contraseña" required>
+        <input type="tel" id="telefonoSocio" placeholder="Teléfono" required>
+        <button type="submit">Registrar Socio</button>
+    </form> 
+    <!-- Asegúrate de que la ruta al archivo JS es correcta y que está siendo cargada como un módulo -->
+    <script type="module" src="./socios.js"></script>
+</body>
+</html>
