@@ -4,11 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Panel de Administración</title>
+    <script>
+        // Función para cerrar sesión con confirmación
+        function cerrarSesion() {
+            if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
+                // Redirige al usuario a la página de inicio
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>Bienvenido Administrador</h1>
     <button onclick="window.location.href='registroSocios.html'">Registrar Socios</button>
-    <!-- Puedes añadir más botones o enlaces a funciones administrativas aquí -->
-     
+    <button onclick="window.location.href='verSocios.html'">Ver Socios</button>
+    <button onclick="cerrarSesion()">Cerrar Sesión</button> <!-- Botón para cerrar sesión -->
 </body>
 </html>

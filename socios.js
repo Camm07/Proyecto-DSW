@@ -1,4 +1,5 @@
 // Importa Firebase modules directamente, asumiendo que se usará en un ambiente que soporte módulos ES
+//socios.js
 import { db } from './app.js'; // Asegúrate de que la ruta al archivo app.js es correcta
 import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
