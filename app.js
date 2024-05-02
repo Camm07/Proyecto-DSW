@@ -17,6 +17,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// Export the database to be used in other modules
+export { db };
+
 // Function to handle login for both 'Usuario' and 'Socios' collections
 async function handleLogin(email, password) {
     let userFound = false;  // Flag to check if user is found
