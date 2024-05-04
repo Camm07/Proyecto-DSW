@@ -4,11 +4,28 @@
     <meta charset="UTF-8">
     <title>Registro socios</title>
     <link rel="stylesheet" href="estilo.css">
+    <script>
+        // Función para cerrar sesión con confirmación
+        function cerrarSesion() {
+            if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
+                // Redirige al usuario a la página de inicio
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
-    <h1>Club del Valle</h1>
+    <h1>Club Deportivo Del Valle</h1>
 </header>
+<nav>
+    <ul class="menu">
+      <li><a href="inicioAdmin.html">Inicio</a></li>
+      <li><a href="registroSocios.html">Registrar Socios</a></li>
+      <li><a href="verSocios.html">Listado de Socios</a></li>
+      <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
+      </ul>
+  </nav>
     <h2>Registro de socios</h2>
     <form id="formularioSocio">
         <input type="text" id="nombreSocio" placeholder="Nombre" required>

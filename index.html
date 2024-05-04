@@ -3,13 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="estiloIndex.css">
+    <style>
+      body {
+    position: relative; /* Importante para el posicionamiento del pseudo-elemento */
+    background-image: url('fondoIndex.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  
+}
+    </style>
 </head>
 <body>
-    <h1>Iniciar Sesión</h1>
-    <form id="formularioLogin">
+    <form id="formularioLogin" class="form">
+        <p class="form-title" style="color: #003559; font-size: 30px;">Inicio de Sesión</p>
+        <div class="input-container">
         <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
+        <span>
+        </span>
+    </div>
+    <div class="input-container">
         <input type="password" id="loginPassword" placeholder="Contraseña" required>
-        <button type="submit">Iniciar Sesión</button>
+    </div>
+    <p class="signup-link">¿Has olvidado tu usuario y/o contraseña?
+      </p>
+
+        <button type="submit" class="submit">Iniciar Sesión</button>
+       
     </form>
 
     <!-- Importación de los scripts de Firebase y del script de inicio de sesión -->
@@ -17,6 +52,7 @@
     <script type="module" src="./app.js"></script>
 </body>
 </html>
+
 
 
 

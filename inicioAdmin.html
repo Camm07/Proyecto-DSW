@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Panel de Administración</title>
+    <link rel="stylesheet" href="estiloInicioAdmin.css">
     <script>
         // Función para cerrar sesión con confirmación
         function cerrarSesion() {
@@ -13,11 +14,23 @@
             }
         }
     </script>
+    
 </head>
 <body>
-    <h1>Bienvenido Administrador</h1>
-    <button onclick="window.location.href='registroSocios.html'">Registrar Socios</button>
-    <button onclick="window.location.href='verSocios.html'">Ver Socios</button>
-    <button onclick="cerrarSesion()">Cerrar Sesión</button> <!-- Botón para cerrar sesión -->
+    <header>
+        <h1>Club Deportivo del Valle</h1>
+    </header>
+    
+    <nav>
+        <ul class="menu">
+          <li><a href="inicioAdmin.html">Inicio</a></li>
+          <li><a href="registroSocios.html">Registrar Socios</a></li>
+          <li><a href="verSocios.html">Listado de Socios</a></li>
+          <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
+          </ul>
+      </nav>
+    <h2>Bienvenido Administrador</h2>
+
+   
 </body>
 </html>
