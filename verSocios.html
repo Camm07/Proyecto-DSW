@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Ver Socios</title>
     <link rel="stylesheet" href="estiloVerSocios.css">
+    <link rel="stylesheet" href="css/modaleditar.css">
     <script>
         // Función para cerrar sesión con confirmación
         function cerrarSesion() {
@@ -46,10 +47,36 @@
                 <th>Nombre</th>
                 <th>Correo</th>
                 <th>Teléfono</th>
+                <th></th>
             </tr>
         </thead>
     </table>
 </div>
+
+<!-- Ventana modal xd-->
+<div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Editar Datos del Socio</h2>
+      <form id="editForm">
+        <label for="editNombre">Nombre:</label>
+        <input type="text" id="editNombre" name="editNombre"><br>
+  
+        <label for="editApellidos">Apellidos:</label>
+        <input type="text" id="editApellidos" name="editApellidos"><br>
+  
+        <label for="editCorreo">Correo:</label>
+        <input type="text" id="editCorreo" name="editCorreo"><br>
+  
+        <label for="editTelefono">Teléfono:</label>
+        <input type="text" id="editTelefono" name="editTelefono"><br>
+  
+        <input type="submit" value="Guardar Cambios" id="guardarCambios">
+      </form>
+    </div>
+  </div>
+  
+  
     <script type="module" src="./verSocios.js"></script>
 </body>
 </html>
