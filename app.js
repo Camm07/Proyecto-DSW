@@ -23,6 +23,7 @@ export { db };
 
 // Function to handle login for both 'Usuario' and 'Socios' collections
 async function handleLogin(email, password) {
+    console.log("handleLogin started"); // Esto te mostrará si la función inicia
     let userFound = false;  // Flag to check if user is found
 
     // Query in 'Usuario' collection
@@ -38,7 +39,7 @@ async function handleLogin(email, password) {
         }
     });
 
-    // If user not found in 'Usuario', check in 'Socios'
+    // Si no se encontró en 'Usuario', revisa en 'Socios'
     if (!userFound) {
         const sociosRef = collection(db, "Socios");
         const sociosQuery = query(sociosRef, where("correo", "==", email));
@@ -54,20 +55,30 @@ async function handleLogin(email, password) {
     }
 
     if (!userFound) {
+        console.log("No user found or incorrect password");
         alert("Contraseña incorrecta o usuario no encontrado");
     }
 }
+
 
 // Event listener for form submission
 document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('formularioLogin');
     if (loginForm) {
+        console.log("Form loaded and event listener attached.");
         loginForm.addEventListener('submit', async function(event) {
             event.preventDefault();
+            console.log("Form submitted");
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
             await handleLogin(email, password);
         });
+    } else {
+        console.log("Form not found");
     }
 });
+
+
+
+
 
