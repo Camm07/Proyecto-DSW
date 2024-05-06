@@ -1,0 +1,26 @@
+.menu {
+    list-style: none;
+    padding: 0;
+    background: #003559; /* Fondo azul oscuro para el menú */
+    margin: auto;
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center;
+    border-bottom: 4px solid #B9D6F2; /* Línea inferior para un toque elegante */
+}
+
+.menu li {
+    text-align: center;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #B9D6F2; /* Letras blanco para contrastar */
+    padding: 15px 20px; /* Espaciado interno */
+    display: block;
+    transition: color 0.3s; /* Transición suave */
+}
+
+.menu li a:hover {
+    color: #ffc107; /* Cambio de color al pasar el mouse */
+}
