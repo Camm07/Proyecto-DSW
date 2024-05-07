@@ -40,6 +40,7 @@ function displaySocios(snapshot) {
         const editButton = document.createElement('button'); // Botón de editar
         const editCell = document.createElement('td');
         editButton.textContent = 'Editar';
+        editButton.classList.add('edit-button'); 
         editButton.addEventListener('click', () => {
            miid=doc.id;
            console.log("llegue aqui "+doc.id + " = " + miid);
