@@ -11,6 +11,10 @@ async function loadSocios() {
     displaySocios(snapshot);
 }
 
+document.querySelector('.close').addEventListener('click', function() {
+    document.getElementById('modal').style.display = 'none';
+});
+
 // Función para mostrar los socios en la tabla
 var miid="";
 var e="";
