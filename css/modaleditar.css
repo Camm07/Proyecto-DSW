@@ -35,20 +35,20 @@
   
   /* Estilos para el botón de editar */
 .edit-button {
-  background-color: #006DAA; /* Color de fondo */
-  border: none; /* Sin borde */
-  color: white; /* Color del texto */
-  padding: 10px 20px; /* Espaciado interno */
-  text-align: center; /* Alineación del texto */
-  text-decoration: none; /* Sin decoración de texto */
-  display: inline-block; /* Mostrar como bloque en línea */
-  font-size: 16px; /* Tamaño del texto */
-  margin: 4px 2px; /* Margen */
-  cursor: pointer; /* Cursor al pasar */
-  border-radius: 5px; /* Borde redondeado */
+  background-color: #006DAA; 
+  border: none; 
+  color: white;
+  padding: 10px 20px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block;
+  font-size: 16px; 
+  margin: 4px 2px; 
+  cursor: pointer; 
+  border-radius: 5px; 
 }
 
-/* Estilos cuando el cursor pasa por encima */
+
 .edit-button:hover {
-  background-color: #0353A4; /* Cambiar color de fondo */
+  background-color: #0353A4; 
 }
