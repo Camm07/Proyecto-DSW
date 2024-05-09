@@ -86,11 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
             loadSocios();
             await loadSocios();
             console.log("NICE");
+            alert('Modificación exitosa');
             document.getElementById('modal').style.display = 'none';
         } catch (error) {
             e=error;
             console.error("Error actualizando documento: "+ error);
             console.log(e);
+            alert('Ha ocurrido un error al actualizar' + error);
         }
     });
 });
