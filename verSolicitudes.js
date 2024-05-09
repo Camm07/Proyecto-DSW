@@ -24,6 +24,7 @@ async function cargarSolicitudes() {
                 <td>${data.Descripcion}</td>
                 <td>${data.Fecha_Hora_Atendida.toDate().toLocaleDateString()}</td>
                 <td>${data.Id_Socio}</td>
+                <td>${data.Estatus}</td>
             `;
             row.appendChild(btnAtender);
             document.getElementById('solicitudesList').appendChild(row);

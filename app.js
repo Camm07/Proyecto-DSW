@@ -42,7 +42,7 @@ async function handleLogin(email, password) {
 
     // Si no se encontró en 'Usuario', revisa en 'Socios'
     if (!userFound) {
-        
+
         const sociosRef = collection(db, "Socios");
         const sociosQuery = query(sociosRef, where("correo", "==", email));
         const sociosSnapshot = await getDocs(sociosQuery);
