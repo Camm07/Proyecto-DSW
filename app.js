@@ -50,6 +50,7 @@ async function handleLogin(email, password) {
         sociosSnapshot.forEach(doc => {
             if (doc.data().contraseña === password) {
                 console.log("Inicio de sesión exitoso como Socio");
+                sessionStorage.setItem('socioId', doc.id);
                 window.location.href = 'inicioSocio.html';  // Assume socios go to the same page
                 userFound = true;  // Mark as found
             }
