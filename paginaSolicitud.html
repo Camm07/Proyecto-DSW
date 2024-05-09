@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitud del Socio</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 100%; max-width: 600px; margin: 50px auto; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); background-color: #fff; border-radius: 8px; }
+        input, textarea, button { width: 100%; padding: 10px; margin-top: 10px; margin-bottom: 20px; border-radius: 5px; }
+        input, textarea { border: 1px solid #ccc; }
+        button { background-color: #007BFF; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .message { color: green; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Solicitud del Socio</h1>
+        <div class="message"></div>
+        <form id="formularioSolicitud">
+            <input type="hidden" id="idSocio" name="idSocio" value="ID_DEL_SOCIO">
+            <textarea id="descripcionSolicitud" name="descripcionSolicitud" placeholder="Describa su solicitud aquí" required></textarea>
+            <button type="submit">Enviar Solicitud</button>
+        </form>
+        <table id="solicitudesTable">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Estatus</th>
+                    <th>ID Solicitud</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas de solicitudes se agregarán aquí dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+    <script type="module" src="solicitud.js"></script>
+</body>
+</html>
+
+
+
+
+
+

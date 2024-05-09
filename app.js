@@ -24,7 +24,8 @@ export { db };
 // Function to handle login for both 'Usuario' and 'Socios' collections
 async function handleLogin(email, password) {
     console.log("handleLogin started"); // Esto te mostrará si la función inicia
-    let userFound = false;  // Flag to check if user is found
+    let userFound = false; 
+     // Flag to check if user is found
 
     // Query in 'Usuario' collection
     const usersRef = collection(db, "Usuario");
@@ -41,10 +42,11 @@ async function handleLogin(email, password) {
 
     // Si no se encontró en 'Usuario', revisa en 'Socios'
     if (!userFound) {
+        
         const sociosRef = collection(db, "Socios");
         const sociosQuery = query(sociosRef, where("correo", "==", email));
         const sociosSnapshot = await getDocs(sociosQuery);
-
+       
         sociosSnapshot.forEach(doc => {
             if (doc.data().contraseña === password) {
                 console.log("Inicio de sesión exitoso como Socio");
