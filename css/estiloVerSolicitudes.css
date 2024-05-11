@@ -1,0 +1,106 @@
+html {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #061A40;
+  }
+
+header h1 {
+    color: #B9D6F2;
+    padding: 20px;
+    text-align: center;
+    font-size: 50px;
+}
+
+h1 {
+  color: #B9D6F2;
+  padding: 20px;
+  text-align: center;
+  font-size: 50px;
+}
+
+#solicitudesList {
+  width: 100%;
+  max-width: 80%; 
+  border-collapse: collapse;
+  margin: 20px auto; 
+}
+
+#solicitudesList th,
+#solicitudesList td {
+  text-align: left; 
+  padding: 12px;
+  border-bottom: 2px solid #0353A4; 
+}
+
+#solicitudesList thead {
+  background-color: #0353A4; 
+  color: #B9D6F2; 
+}
+
+#solicitudesList th {
+  font-size: 16px;
+}
+
+#solicitudesList td {
+  background-color: #B9D6F2; 
+  color: #003559; 
+}
+
+#solicitudesList tbody tr:hover {
+  background-color: #006DAA; 
+  color: #B9D6F2; 
+}
+
+.btnAtender {
+  background-color: #006DAA; 
+  border: none; 
+  color: white;
+  padding: 10px 20px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block;
+  font-size: 16px; 
+  margin: 4px 2px; 
+  cursor: pointer; 
+  border-radius: 5px; 
+}
+
+.btnAtender:hover {
+  background-color: #0353A4; 
+}
+/* Estilos del contenido de la ventana modal */
+#modal {
+  display: none;
+  background-color: #0353A4;
+  padding: 30px;
+  margin: auto;
+  color: #B9D6F2;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+#modal .button-container {
+  text-align: center; /* Centra los botones */
+}
+
+#modal button {
+  background-color: #006DAA;
+  color: #B9D6F2; /* Color del texto */
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px; /* Ajusta el espaciado entre botones */
+  margin-top: 10px;
+}
+
+#modal button:hover {
+  background-color: #003559;
+}
+

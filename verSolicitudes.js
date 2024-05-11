@@ -16,6 +16,7 @@ async function cargarSolicitudes() {
             const row = document.createElement('tr');
             const btnAtender = document.createElement('button');
             btnAtender.textContent = 'Atender';
+            btnAtender.classList.add('btnAtender');
             btnAtender.addEventListener('click', () => mostrarModal(solicitudDoc.id, data.Descripcion));
 
             row.innerHTML = `

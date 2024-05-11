@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Ver Solicitudes</title>
+    <link rel="stylesheet" href="estilonav.css">
+    <link rel="stylesheet" href="css/estiloVerSolicitudes.css">
+    <script>
+        // Función para cerrar sesión con confirmación
+        function cerrarSesion() {
+            if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
+                // Redirige al usuario a la página de inicio
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
 </head>
 <body>
+    <header>
+        <h1>Club Deportivo del Valle</h1>
+    </header>
+    <nav>
+        <ul class="menu">
+          <li><a href="inicioAdmin.html">Inicio</a></li>
+          <li><a href="registroSocios.html">Registrar Socios</a></li>
+          <li><a href="verSocios.html">Listado de Socios</a></li>
+          <li><a href="verSolicitudes.html">Ver Solicitudes</a></li>
+          <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
+          </ul>
+      </nav>
     <h1>Listado de Solicitudes</h1>
+
     <table id="solicitudesList">
         <thead>
             <tr>
@@ -24,10 +48,13 @@
 
     <!-- Modal para atender solicitudes -->
     <div id="modal" style="display:none;">
-        <div id="modalContent"></div>
-        <button id="btnAceptar">Aceptar</button>
-        <button id="btnRechazar">Rechazar</button>
-    </div>
+  <div id="modalContent"></div>
+  <div class="button-container"> <!-- Contenedor de los botones -->
+    <button id="btnAceptar">Aceptar</button>
+    <button id="btnRechazar">Rechazar</button>
+  </div>
+</div>
+
 
     <script type="module" src="verSolicitudes.js"></script>
 </body>
