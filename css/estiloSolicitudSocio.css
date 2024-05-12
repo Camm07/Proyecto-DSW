@@ -50,7 +50,9 @@ button:hover {
 }
 
 .message { 
-    color: green; 
+    /*color: green;*/
+    color: #4CAF50; 
+    font-weight: bold;
     margin-bottom: 20px; 
 }
 

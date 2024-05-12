@@ -60,6 +60,10 @@ formulario.addEventListener('submit', async function(event) {
         });
         messageDiv.textContent = "Tu solicitud fue enviada exitosamente.";
         loadSolicitudes(); // Recargar la lista de solicitudes para ver la nueva solicitud agregada
+
+        setTimeout(function() {
+            messageDiv.textContent = "";
+        }, 5000);
     } catch (error) {
         console.error("Error al enviar la solicitud: ", error);
         messageDiv.textContent = "Error al enviar la solicitud.";
