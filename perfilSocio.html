@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil del Socio</title>
+    <link rel="stylesheet" href="estilosPerfilsocio.css">
+    <link rel="stylesheet" href="estilonav.css">
+</head>
+<body>
+    <header>
+        <div class="title-bar">
+            <h1>Club Deportivo del Valle</h1>
+        </div>
+        <div class="menu-container">
+            <ul class="menu">
+                <li><a href="inicioSocio.html">Inicio</a></li>
+          <li><a href="paginaSolicitud.html">Solicitud</a></li>
+          <li><a href="perfilSocio.html">Perfil</a></li>
+          <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </header>
+    <h2 class="h2-titulo-socio">Perfil del Socio</h2>
+    <div class="container">
+        
+        <div id="infoSocio">
+            <div class="perfil-container">
+                <div class="perfil-avatar">
+                    <img src="imagenes/socio.png" alt="Perfil" />
+                </div>
+                <div class="perfil-info">
+                    <div class="info-campo">
+                        <label for="codigo">Código:</label>
+                        <input type="text" id="codigo" disabled value="00054DE">
+                    </div>
+                    <div class="info-campo">
+                        <label for="usuario">Nombre:</label>
+                        <input type="text" id="usuario" disabled value="marco antonio">
+                    </div>
+                    <div class="info-campo">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" disabled value="marco@CentroPnl.com">
+                    </div>
+                    <div class="info-campo">
+                        <label for="tel">Telefono:</label>
+                        <input type="tel" id="tel" disabled value="311-112-0517">
+                    </div>
+                    <div class="botones">
+                        <button>Actualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="perfilSocio.js"></script>
+</body>
+</html>

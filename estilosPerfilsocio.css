@@ -1,0 +1,121 @@
+/* Título principal del club */
+html {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #061A40;
+  }
+.title-bar {
+   
+    color: #B9D6F2; /* Color de texto claro */
+    padding: 0px 0; /* Espaciado vertical */
+    text-align: center; /* Centrado de texto */
+    margin: 0; /* Eliminar márgenes */
+    font-size: 24px; /* Tamaño de la fuente para que sea visible */
+}
+
+/* Contenedor del menú con estilo específico */
+.menu-container {
+    /* Color de fondo más oscuro para el menú */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra para darle profundidad */
+    padding: 5px 0; /* Espaciado vertical para el menú */
+}
+
+/* Estilos para el menú */
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu li {
+    text-align: center;
+    padding: 0 20px; /* Espaciado entre elementos del menú */
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #B9D6F2; /* Letras en color claro para contrastar con el fondo */
+    display: block;
+    transition: color 0.3s; /* Transición suave al cambiar de color */
+}
+
+.menu li a:hover {
+    color: #ffc107; /* Color al pasar el mouse */
+}
+
+/* Estilos para el título "Perfil del Socio" */
+.h2-titulo-socio {
+    /* Fondo azul oscuro, igual que el título principal */
+    color: #B9D6F2; /* Color de texto claro */
+    text-align: center; /* Centrado del texto */
+    font-size: 38px; /* Aumento del tamaño de la fuente */
+    padding: 10px 0; /* Espaciado vertical para más visibilidad */
+    margin-top: 20px; /* Margen superior para separar del menú */
+    width: 100%; /* Asegura que el fondo cubra el ancho completo */
+}
+
+/* Aplicar el estilo al div que contiene el título "Perfil del Socio" */
+.container {
+    background-color: #f8f9fa; /* Fondo claro para el contenido */
+    width: 80%; /* Ajuste del ancho del contenedor */
+    margin: 0 auto; /* Centrado y espaciado */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+}
+
+/* Estilos para el contenedor del perfil del socio */
+.perfil-container {
+    background-color: #ffffff; /* Fondo blanco para el contenido del perfil */
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    width: auto; /* Ajusta automáticamente el ancho */
+}
+
+.perfil-avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Hacer la imagen circular */
+    margin-right: 20px;
+}
+
+.perfil-info {
+    flex-grow: 1; /* Permitir que el contenedor de información ocupe el espacio restante */
+}
+
+.info-campo {
+    margin-bottom: 10px; /* Espaciado entre campos */
+}
+
+.info-campo label {
+    display: block;
+    font-weight: bold; /* Negrita para las etiquetas */
+    margin-bottom: 5px;
+}
+
+.info-campo input {
+    width: 100%; /* Ancho completo para los inputs */
+    padding: 10px;
+    border: 1px solid #ccc; /* Borde sutil */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.botones button {
+    padding: 10px 20px;
+    color: white; /* Texto blanco */
+    background-color: #007BFF; /* Fondo azul para botones */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Cursor como puntero para indicar interactividad */
+}
+
+.botones button:hover {
+    background-color: #0056b3; /* Cambio de color al pasar el mouse */
+}
