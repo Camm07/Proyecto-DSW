@@ -13,21 +13,6 @@
                 window.location.href = 'index.html';
             }
         }
-        
-        // Función para mostrar el modal y pasar la solicitud correspondiente
-        function mostrarModal(solicitudId, descripcion) {
-            const modalContent = document.getElementById('modalContent');
-            modalContent.textContent = `Atendiendo solicitud: ${solicitudId} - ${descripcion}`;
-            document.getElementById('modal').style.display = 'block';
-            
-            // Aquí puedes agregar cualquier lógica adicional que necesites para el modal
-            // Por ejemplo, puedes vincular los botones del modal con funciones para aceptar o rechazar la solicitud.
-        }
-
-        // Función para cerrar el modal
-        function cerrarModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
     </script>
 </head>
 <body>
