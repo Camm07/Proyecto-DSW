@@ -68,39 +68,60 @@ h1 {
 .btnAtender:hover {
   background-color: #0353A4; 
 }
-/* Estilos del contenido de la ventana modal */
-#modal {
+/* Estilos para el modal */
+.modal {
   display: none;
-  background-color: #0353A4;
-  padding: 30px;
-  margin: auto;
-  color: #B9D6F2;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%; 
+  max-width: 800px; 
+  height: 50%; 
+  max-height: 80%; 
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   align-items: center;
-  justify-content: center;
-  border-radius: 5px;
 }
 
-#modal .button-container {
-  text-align: center; /* Centra los botones */
-}
 
-#modal button {
-  background-color: #006DAA;
-  color: #B9D6F2; /* Color del texto */
-  font-size: 16px;
-  cursor: pointer;
+
+.modal-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
   border: none;
+  cursor: pointer;
   border-radius: 5px;
-  padding: 12px 20px; /* Ajusta el espaciado entre botones */
-  margin-top: 10px;
+  margin: 10px;
+  
 }
 
-#modal button:hover {
-  background-color: #003559;
+.modal-btn:hover {
+  background-color: #45a049;
 }
+
+.modal-close {
+  background-color: #f44336;
+}
+
+.modal-close:hover {
+  background-color: #da190b;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+  
 

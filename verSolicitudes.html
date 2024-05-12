@@ -13,6 +13,21 @@
                 window.location.href = 'index.html';
             }
         }
+        
+        // Función para mostrar el modal y pasar la solicitud correspondiente
+        function mostrarModal(solicitudId, descripcion) {
+            const modalContent = document.getElementById('modalContent');
+            modalContent.textContent = `Atendiendo solicitud: ${solicitudId} - ${descripcion}`;
+            document.getElementById('modal').style.display = 'block';
+            
+            // Aquí puedes agregar cualquier lógica adicional que necesites para el modal
+            // Por ejemplo, puedes vincular los botones del modal con funciones para aceptar o rechazar la solicitud.
+        }
+
+        // Función para cerrar el modal
+        function cerrarModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
     </script>
 </head>
 <body>
@@ -47,16 +62,16 @@
     </table>
 
     <!-- Modal para atender solicitudes -->
-    <div id="modal" style="display:none;">
-  <div id="modalContent"></div>
-  <div class="button-container"> <!-- Contenedor de los botones -->
-    <button id="btnAceptar">Aceptar</button>
-    <button id="btnRechazar">Rechazar</button>
-  </div>
-</div>
-
+    <div id="modal" class="modal">
+        <div id="modalContent" class="modal-content"></div>
+        <div class="button-container"> <!-- Contenedor de los botones -->
+            <button id="btnAceptar" class="modal-btn">Aceptar</button>
+            <button id="btnRechazar" class="modal-btn">Rechazar</button>
+            <button onclick="cerrarModal()" class="modal-btn modal-close">Cerrar</button>
+        </div>
+    </div>
+    
 
     <script type="module" src="verSolicitudes.js"></script>
 </body>
 </html>
-
