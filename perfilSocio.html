@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Perfil del Socio</title>
-    <link rel="stylesheet" href="estilosPerfilsocio.css">
     <link rel="stylesheet" href="estilonav.css">
+    <link rel="stylesheet" href="estilosPerfilsocio.css">
+    <script>
+        function cerrarSesion() {
+            if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -14,15 +21,14 @@
         <div class="menu-container">
             <ul class="menu">
                 <li><a href="inicioSocio.html">Inicio</a></li>
-          <li><a href="paginaSolicitud.html">Solicitud</a></li>
-          <li><a href="perfilSocio.html">Perfil</a></li>
-          <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
+                <li><a href="paginaSolicitud.html">Solicitud</a></li>
+                <li><a href="perfilSocio.html">Perfil</a></li>
+                <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
             </ul>
         </div>
     </header>
     <h2 class="h2-titulo-socio">Perfil del Socio</h2>
     <div class="container">
-        
         <div id="infoSocio">
             <div class="perfil-container">
                 <div class="perfil-avatar">
