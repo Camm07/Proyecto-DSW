@@ -8,13 +8,14 @@ document.addEventListener('DOMContentLoaded', async function() {
         const socioDoc = await getDoc(socioRef);
         if (socioDoc.exists()) {
             const socioData = socioDoc.data();
-            const infoDiv = document.getElementById('infoSocio');
-            infoDiv.innerHTML = `
-                <p>Nombre: ${socioData.nombre} ${socioData.apellidos}</p>
-                <p>Email: ${socioData.correo}</p>
-                <p>TEL: ${socioData.telefono}</p>
-                <p>CURP: ${socioData.curp}</p>
-            `;
+
+            // Actualizando los valores de los inputs con los datos del socio
+            document.getElementById('codigo').value = idSocio;  // Usando el ID del documento como código del socio
+            document.getElementById('usuario').value = `${socioData.nombre} ${socioData.apellidos}` || 'No disponible';
+            document.getElementById('email').value = socioData.correo || 'No disponible';
+            document.getElementById('tel').value = socioData.telefono || 'No disponible';
+
+            // Si necesitas mostrar más información, simplemente añade más campos y actualízalos aquí
         } else {
             console.log("No se encontró el socio");
         }
