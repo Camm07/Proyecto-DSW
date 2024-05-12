@@ -1,127 +1,145 @@
 html {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #061A40;
-  }
-
-header h1 {
-    color: #B9D6F2;
-    padding: 20px;
-    text-align: center;
-    font-size: 50px;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #061A40;
 }
 
-h1 {
+header h1 {
   color: #B9D6F2;
   padding: 20px;
   text-align: center;
   font-size: 50px;
 }
 
+h1 {
+color: #B9D6F2;
+padding: 20px;
+text-align: center;
+font-size: 50px;
+}
+
 #solicitudesList {
-  width: 100%;
-  max-width: 80%; 
-  border-collapse: collapse;
-  margin: 20px auto; 
+width: 100%;
+max-width: 80%; 
+border-collapse: collapse;
+margin: 20px auto; 
 }
 
 #solicitudesList th,
 #solicitudesList td {
-  text-align: left; 
-  padding: 12px;
-  border-bottom: 2px solid #0353A4; 
+text-align: left; 
+padding: 12px;
+border-bottom: 2px solid #0353A4; 
 }
 
 #solicitudesList thead {
-  background-color: #0353A4; 
-  color: #B9D6F2; 
+background-color: #0353A4; 
+color: #B9D6F2; 
 }
 
 #solicitudesList th {
-  font-size: 16px;
+font-size: 16px;
 }
 
 #solicitudesList td {
-  background-color: #B9D6F2; 
-  color: #003559; 
+background-color: #B9D6F2; 
+color: #003559; 
 }
 
 #solicitudesList tbody tr:hover {
-  background-color: #006DAA; 
-  color: #B9D6F2; 
+background-color: #006DAA; 
+color: #B9D6F2; 
 }
 
 .btnAtender {
-  background-color: #006DAA; 
-  border: none; 
-  color: white;
-  padding: 10px 20px; 
-  text-align: center; 
-  text-decoration: none; 
-  display: inline-block;
-  font-size: 16px; 
-  margin: 4px 2px; 
-  cursor: pointer; 
-  border-radius: 5px; 
+background-color: #006DAA; 
+border: none; 
+color: white;
+padding: 10px 20px; 
+text-align: center; 
+text-decoration: none; 
+display: inline-block;
+font-size: 16px; 
+margin: 4px 2px; 
+cursor: pointer; 
+border-radius: 5px; 
 }
 
 .btnAtender:hover {
-  background-color: #0353A4; 
+background-color: #0353A4; 
 }
 /* Estilos para el modal */
 .modal {
-  display: none;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 70%; 
-  max-width: 800px; 
-  height: 50%; 
-  max-height: 80%; 
-  background-color: rgba(0,0,0,0.4);
+display: none;
+position: fixed;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+width: 70%; 
+max-width: 800px; 
+height: 50%; 
+max-height: 80%; 
+background-color: rgba(0,0,0,0.7);
+border-radius: 10px;
+
 }
 
 .modal-content {
-  background-color: #fefefe;
-  padding: 20px;
-  border: 1px solid #888;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  align-items: center;
+/*background-color: #fefefe;
+padding: 20px;
+border: 1px solid #888;
+border-radius: 10px;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+/align-items: center;/
+/display: flex; / Agrega esta línea */
+/*flex-direction: column; / Agrega esta línea */
+/*justify-content: center; / Agrega esta línea */
+/*text-align: center; / Agrega esta línea */
+background-color: #fefefe;
+padding: 20px;
+border: 1px solid #888;
+border-radius: 10px;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+position: fixed;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+max-width: 80%;
+max-height: 80%;
+overflow: auto;
+text-align: center;
 }
 
 
 
 .modal-btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  margin: 10px;
-  
+background-color: #4CAF50;
+color: white;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+margin: 10px;
+
 }
 
 .modal-btn:hover {
-  background-color: #45a049;
+background-color: #45a049;
 }
 
 .modal-close {
-  background-color: #f44336;
+background-color: #f44336;
 }
 
 .modal-close:hover {
-  background-color: #da190b;
+background-color: #da190b;
 }
 .button-container {
-  display: flex;
-  justify-content: center;
+display: flex;
+justify-content: center;
+/*flex-direction: row; / Agrega esta línea para colocar los botones en columna */
+/* align-items: center; /* Agrega esta línea para centrar los botones horizontalmente */
+position: absolute;
+bottom: 20px; /* Cambia la distancia desde abajo según sea necesario */
+width: 100%; /* Ajusta el ancho de los botones al ancho del modal */
 }
-
-
-
-
-  
-
