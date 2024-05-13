@@ -81,15 +81,17 @@ function mostrarModal(solicitudId, data, nombreSocio) {
     document.getElementById('btnRechazar').onclick = () => atenderSolicitud(solicitudId, false);
 }
 
+// Función para atender las solicitudes y actualizar su estado
 async function atenderSolicitud(solicitudId, aceptar) {
     const solicitudRef = doc(db, "Coleccion_Solicitud", solicitudId);
     await updateDoc(solicitudRef, {
         Estatus: aceptar ? "Atendida" : "Rechazada"
     });
     cerrarModal();
-    cargarSolicitudes(document.getElementById('filterStatus').value); // Recargar las solicitudes después de modificar el estatus
+    cargarSolicitudes(document.getElementById('filterStatus').value);
 }
 
-function cerrarModal() {
+// Función para cerrar el modal
+ function cerrarModal() {
     document.getElementById('modal').style.display = 'none';
 }
