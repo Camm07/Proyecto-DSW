@@ -1,57 +1,66 @@
 import { db } from './app.js';
 import {
-    collection, getDocs, doc, updateDoc, getDoc
+    collection, query, orderBy, where, getDocs, doc, updateDoc, getDoc
 } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
-// Carga inicial de las solicitudes
-async function cargarSolicitudes() {
-    const querySnapshot = await getDocs(collection(db, "Coleccion_Solicitud"));
-    // En el forEach que itera sobre las solicitudes:
-    querySnapshot.forEach(async (solicitudDoc) => {
-        const data = solicitudDoc.data();
-        if (data.Id_Socio) {
-            const socioRef = doc(db, "Socios", data.Id_Socio);
-            const socioDoc = await getDoc(socioRef);
-            const socioData = socioDoc.exists() ? socioDoc.data() : { nombre: "Nombre no disponible", apellidos: "Apellido no disponible" };
-            const row = document.createElement('tr');
+// Escuchar el evento de carga del documento para asegurar que el DOM está completamente cargado
+document.addEventListener('DOMContentLoaded', () => {
+    cargarSolicitudes(); // Cargar todas las solicitudes al iniciar
+    document.getElementById('filterStatus').addEventListener('change', function(e) {
+        cargarSolicitudes(e.target.value); // Cargar solicitudes según el estatus seleccionado
+    });
+});
+
+// Función para cargar solicitudes con o sin filtro de estatus
+async function cargarSolicitudes(estatus = 'Todos') {
+    let q;
+    if (estatus === 'Todos') {
+        q = query(collection(db, "Coleccion_Solicitud"), orderBy("Fecha_Hora_Atendida", "desc"));
+    } else {
+        q = query(collection(db, "Coleccion_Solicitud"), where("Estatus", "==", estatus), orderBy("Fecha_Hora_Atendida", "desc"));
+    }
+
+    const querySnapshot = await getDocs(q);
+    const tableBody = document.getElementById('solicitudesList').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = ''; // Limpiar la tabla antes de agregar nuevos datos
+
+    querySnapshot.forEach((docSnapshot) => {
+        const data = docSnapshot.data();
+        const socioRef = doc(db, "Socios", data.Id_Socio);
+        getDoc(socioRef).then(socioDoc => {
+            const socioData = socioDoc.exists() ? socioDoc.data() : { nombre: "Nombre no disponible", apellidos: "" };
+
             const btnAtender = document.createElement('button');
             btnAtender.textContent = 'Atender';
             btnAtender.classList.add('btnAtender');
-            btnAtender.addEventListener('click', () => mostrarModal(
-                solicitudDoc.id, 
-                data.Descripcion, 
-                `${socioData.nombre} ${socioData.apellidos}`, 
-                data.Fecha_Hora_Atendida.toDate().toLocaleDateString("es-ES"),
-                data.Id_Socio // Pasar el ID del socio a la función modal
-            ));
-    
+            btnAtender.onclick = () => mostrarModal(docSnapshot.id, data, `${socioData.nombre} ${socioData.apellidos}`);
+
+            const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${solicitudDoc.id}</td>
+                <td>${docSnapshot.id}</td>
                 <td>${socioData.nombre} ${socioData.apellidos}</td>
                 <td>${data.Descripcion}</td>
                 <td>${data.Fecha_Hora_Atendida.toDate().toLocaleDateString("es-ES")}</td>
                 <td>${data.Id_Socio}</td>
                 <td>${data.Estatus}</td>
+                <td></td>
             `;
-            row.appendChild(btnAtender);
-            document.getElementById('solicitudesList').appendChild(row);
-        }
+            row.children[6].appendChild(btnAtender);
+            tableBody.appendChild(row);
+        });
     });
-    
-
 }
 
-// Muestra el modal para atender la solicitud
-function mostrarModal(solicitudId, descripcion, nombreSocio, fecha, idSocio) {
+// Función para mostrar el modal con los detalles de la solicitud
+function mostrarModal(solicitudId, data, nombreSocio) {
     const modalContent = document.getElementById('modalContent');
     modalContent.innerHTML = `
         <p><strong>Atendiendo solicitud:</strong></p>
         <p><strong>ID Solicitud:</strong> ${solicitudId}</p>
-        <p><strong>ID Socio:</strong> ${idSocio}</p>
+        <p><strong>ID Socio:</strong> ${data.Id_Socio}</p>
         <p><strong>Nombre:</strong> ${nombreSocio}</p>
-        <p><strong>Fecha:</strong> ${fecha}</p>
-        <p><strong>Descripción:</strong> ${descripcion}</p>
-        
+        <p><strong>Fecha:</strong> ${data.Fecha_Hora_Atendida.toDate().toLocaleDateString("es-ES")}</p>
+        <p><strong>Descripción:</strong> ${data.Descripcion}</p>
     `;
     document.getElementById('modal').style.display = 'block';
 
@@ -59,21 +68,17 @@ function mostrarModal(solicitudId, descripcion, nombreSocio, fecha, idSocio) {
     document.getElementById('btnRechazar').onclick = () => atenderSolicitud(solicitudId, false);
 }
 
-
-
-// Función para atender la solicitud
+// Función para atender la solicitud y actualizar su estado
 async function atenderSolicitud(solicitudId, aceptar) {
     const solicitudRef = doc(db, "Coleccion_Solicitud", solicitudId);
     await updateDoc(solicitudRef, {
         Estatus: aceptar ? "Atendida" : "Rechazada"
     });
     cerrarModal();
-    location.reload(); // Recarga la página para actualizar la lista
+    cargarSolicitudes(document.getElementById('filterStatus').value); // Recargar las solicitudes después de modificar el estatus
 }
 
-// Cierra el modal
+// Función para cerrar el modal
 function cerrarModal() {
     document.getElementById('modal').style.display = 'none';
 }
-
-document.addEventListener('DOMContentLoaded', cargarSolicitudes);

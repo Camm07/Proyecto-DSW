@@ -5,19 +5,6 @@
     <title>Ver Solicitudes</title>
     <link rel="stylesheet" href="estilonav.css">
     <link rel="stylesheet" href="css/estiloVerSolicitudes.css">
-    <script>
-        // Función para cerrar sesión con confirmación
-        function cerrarSesion() {
-            if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
-                // Redirige al usuario a la página de inicio
-                window.location.href = 'index.html';
-            }
-        }
-        
-        function cerrarModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-    </script>
 </head>
 <body>
     <header>
@@ -25,15 +12,23 @@
     </header>
     <nav>
         <ul class="menu">
-          <li><a href="inicioAdmin.html">Inicio</a></li>
-          <li><a href="registroSocios.html">Registrar Socios</a></li>
-          <li><a href="verSocios.html">Listado de Socios</a></li>
-          <li><a href="verSolicitudes.html">Ver Solicitudes</a></li>
-          <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
-          </ul>
-      </nav>
+            <li><a href="inicioAdmin.html">Inicio</a></li>
+            <li><a href="registroSocios.html">Registrar Socios</a></li>
+            <li><a href="verSocios.html">Listado de Socios</a></li>
+            <li><a href="verSolicitudes.html">Ver Solicitudes</a></li>
+            <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
     <h1>Listado de Solicitudes</h1>
-
+    <div>
+        <label for="filterStatus">Filtrar por estatus:</label>
+        <select id="filterStatus">
+            <option value="Todos">Todos</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Atendida">Atendida</option>
+            <option value="Rechazada">Rechazada</option>
+        </select>
+    </div>
     <table id="solicitudesList">
         <thead>
             <tr>
@@ -42,25 +37,24 @@
                 <th>Descripción</th>
                 <th>Fecha/Hora</th>
                 <th>ID Socio</th>
-                <th>Acciones</th>
+                <th>Accione</th>
             </tr>
         </thead>
         <tbody>
             <!-- Las filas se llenarán dinámicamente -->
         </tbody>
     </table>
-
     <!-- Modal para atender solicitudes -->
     <div id="modal" class="modal">
         <div id="modalContent" class="modal-content"></div>
-        <div class="button-container"> <!-- Contenedor de los botones -->
+        <div class="button-container">
             <button id="btnAceptar" class="modal-btn">Aceptar</button>
             <button id="btnRechazar" class="modal-btn">Rechazar</button>
             <button onclick="cerrarModal()" class="modal-btn modal-close">Cerrar</button>
         </div>
     </div>
-    
-
-    <script type="module" src="verSolicitudes.js"></script>
+    <script defer type="module" src="verSolicitudes.js"></script>
 </body>
 </html>
+
+
