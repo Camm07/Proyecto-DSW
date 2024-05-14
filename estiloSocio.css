@@ -1,23 +1,134 @@
-
 body {
     font-family: Arial, sans-serif;
-    background-color: #061A40; 
+    background-color: #061A40;
     color: white;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita desbordamiento horizontal */
 }
 
-header h1 {
-    background-color: #B9D6F2;
-    color: #003559;
-    padding: 20px; 
-    text-align: center;
-    font-size: 50px; 
+header {
+    width: 100%;
+    background-color: #003559; /* Color de fondo para el header */
+    text-align: left;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    height: 70px; /* Ajusta la altura del logo */
+    width: auto; /* Mantiene la proporción del logo */
+}
+
+.menu-icon {
+    height: 30px;
+    width: auto;
+    cursor: pointer;
+    position: absolute; /* Asegura que el ícono sea posicionado relativamente al contenedor más cercano con posición relativa o absoluta */
+    top: 10px;
+    right: 50px; /* Reducido de 20px a 10px para mover el ícono más a la izquierda */
+    z-index: 1000;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1400;
+}
+
+.side-menu {
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    background-color: #000;
+    color: white;
+    padding: 50px 20px;
+    box-sizing: border-box;
+    z-index: 1500;
+    transition: right 0.5s;
+}
+
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    padding: 10px 0;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+}
+
+.menu li a:hover {
+    color: #ccc;
+}
+
+.vanguardia-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #003559;
+    color: #ffffff;
+    padding: 20px;
+    margin-top: 150px; /* Ajuste para compensar el header fijo */
+}
+
+.vanguardia-header {
+    width: 30%; /* Ajusta según necesidad */
+}
+
+.vanguardia-content {
+    display: flex;
+    width: 70%; /* Ajusta según necesidad */
+}
+
+.vanguardia-content img {
+    width: calc(33.333% - 10px); /* Tres imágenes, espacio entre ellas */
+    margin: 0 5px; /* Margen para separar las imágenes */
+}
+
+h3, p, h2 {
+    color: white; /* Asegura la visibilidad del texto */
+}
+.bienvenido-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    padding: 10px 0; /* Agrega algo de espacio vertical sin exagerar */
+    margin-top: 80px; /* Ajusta este valor según sea necesario para alinear bajo el header */
 }
 
 h2 {
-    color: #B9D6F2;
-    padding: 20px; 
-    text-align: center;
-    font-size: 35px; 
+    font-family: 'Georgia', serif; /* Usa Georgia como fuente principal */
+    color: #B9D6F2; /* Color de texto claro */
+    font-size: 36px; /* Tamaño de la fuente más grande */
+    text-align: center; /* Asegura que el texto esté centrado */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra sutil para el texto */
+    margin: 20px 0; /* Ajusta el margen para definir el espacio alrededor del texto */
+}
 
 
+
+.vanguardia-section {
+    margin-top: 50px; /* Aumenta este valor si es necesario */
 }

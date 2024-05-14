@@ -1,35 +1,48 @@
-<!-- inicioAdmin.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Panel de SOCIO</title>
     <link rel="stylesheet" href="estiloSocio.css">
-    <link rel="stylesheet" href="estilonav.css">
-    <script>
-        // Función para cerrar sesión con confirmación
-        function cerrarSesion() {
-            if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
-                // Redirige al usuario a la página de inicio
-                window.location.href = 'index.html';
-            }
-        }
-    </script>
+    <script src="InicioSocio.js" defer></script>
 </head>
 <body>
+    <div class="overlay" onclick="toggleMenu()"></div>
     <header>
-        <h1>Club Deportivo del Valle</h1>
+        <img src="imagenes/logoClubDelValle-removebg-preview.png" alt="Logo Club Deportivo del Valle" class="logo">
+        <img src="imagenes/Menu.png" alt="Menú" class="menu-icon" onclick="toggleMenu()">
     </header>
-    <nav>
-        <ul class="menu">
-          <li><a href="inicioSocio.html">Inicio</a></li>
-          <li><a href="paginaSolicitud.html">Solicitud</a></li>
-          <li><a href="perfilSocio.html">Perfil</a></li>
-          <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
-          </ul>
-      </nav>
-    <h2>Bienvenido SOCIO</h2>
 
-   
+
+    <div class="bienvenido-container">
+        <h2>Bienvenido SOCIO</h2>
+    </div>
+    
+    <div class="vanguardia-section">
+        
+        <div class="vanguardia-header">
+            <h3>Instalaciones de Vanguardia</h3>
+            <p class="animate-text">Nuestro club cuenta con los más altos estándares de calidad en servicios, instalaciones y desarrollo sostenible para el aprovechamiento de los recursos naturales, sin dejar de lado los valores.</p>
+        </div>
+        <div class="vanguardia-content">
+            <img src="imagenes/ejemplo1.jpg" alt="Vista Moderna">
+            <img src="imagenes/ejemplo2.jpg" alt="Club House">
+            <img src="imagenes/ejemplo3.jpg" alt="Facilidades Exteriores">
+        </div>
+    </div>
+
+    <div id="side-menu" class="side-menu">
+        <nav>
+            <ul class="menu">
+              <li><a href="inicioSocio.html">Inicio</a></li>
+              <li><a href="paginaSolicitud.html">Solicitud</a></li>
+              <li><a href="perfilSocio.html">Perfil</a></li>
+              <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </div>
+
+ 
+
 </body>
 </html>
