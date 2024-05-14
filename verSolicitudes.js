@@ -76,6 +76,7 @@ function mostrarModal(solicitudId, data, nombreSocio) {
         <p><strong>Nombre:</strong> ${nombreSocio}</p>
         <p><strong>Fecha:</strong> ${data.Fecha_Hora_Atendida.toDate().toLocaleDateString("es-ES")}</p>
         <p><strong>Descripción:</strong> ${data.Descripcion}</p>
+        <input type="text" id="commentBox" placeholder="Escribe un comentario">
     `;
     document.getElementById('modal').style.display = 'block';
 

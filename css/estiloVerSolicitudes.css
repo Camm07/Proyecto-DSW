@@ -77,7 +77,7 @@ top: 50%;
 transform: translate(-50%, -50%);
 width: 70%; 
 max-width: 800px; 
-height: 50%; 
+height: 60%; 
 max-height: 80%; 
 background-color: rgba(0,0,0,0.7);
 border-radius: 10px;
@@ -104,8 +104,10 @@ position: fixed;
 left: 50%;
 top: 50%;
 transform: translate(-50%, -50%);
-max-width: 80%;
-max-height: 80%;
+max-width: 90%;
+max-height: 90%;
+width: 60%;
+height: 65%;
 overflow: auto;
 text-align: center;
 }
@@ -142,4 +144,17 @@ justify-content: center;
 position: absolute;
 bottom: 20px; /* Cambia la distancia desde abajo según sea necesario */
 width: 100%; /* Ajusta el ancho de los botones al ancho del modal */
+}
+#commentBox {
+  width: 60%; /* Ajusta el ancho según sea necesario */
+  padding: 10px; /* Agrega espacio alrededor del texto dentro del input */
+  border: 2px solid #ccc; /* Define el borde y su grosor */
+  border-radius: 5px; /* Redondea los bordes */
+  font-size: 16px; /* Tamaño de fuente */
+  outline: none; /* Elimina el borde predeterminado en el enfoque */
+}
+
+/* Estilos cuando el input está enfocado */
+#commentBox:focus {
+  border-color: #4CAF50; /* Cambia el color del borde cuando el input está enfocado */
 }
