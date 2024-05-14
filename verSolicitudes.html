@@ -17,6 +17,15 @@
             <li><a href="verSocios.html">Listado de Socios</a></li>
             <li><a href="verSolicitudes.html">Ver Solicitudes</a></li>
             <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
+            <script>
+                // Función para cerrar sesión con confirmación
+                function cerrarSesion() {
+                    if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
+                        // Redirige al usuario a la página de inicio
+                        window.location.href = 'index.html';
+                    }
+                }
+            </script>
         </ul>
     </nav>
     <h1>Listado de Solicitudes</h1>
@@ -50,7 +59,7 @@
         <div class="button-container">
             <button id="btnAceptar" class="modal-btn">Aceptar</button>
             <button id="btnRechazar" class="modal-btn">Rechazar</button>
-            <button onclick="cerrarModal()" class="modal-btn modal-close">Cerrar</button>
+            <button id="btnCerrar" class="modal-btn modal-close">Cerrar</button>
         </div>
     </div>
     <script type="module" src="verSolicitudes.js"></script>

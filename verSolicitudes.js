@@ -5,6 +5,8 @@ import {
 
 document.addEventListener('DOMContentLoaded', () => {
     cargarSolicitudes();
+
+    document.querySelector('.modal-close').addEventListener('click', cerrarModal);
     document.getElementById('filterStatus').addEventListener('change', function(e) {
         cargarSolicitudes(e.target.value);
     });
@@ -91,7 +93,7 @@ async function atenderSolicitud(solicitudId, aceptar) {
     cargarSolicitudes(document.getElementById('filterStatus').value);
 }
 
-// Función para cerrar el modal
- function cerrarModal() {
+export function cerrarModal() {
     document.getElementById('modal').style.display = 'none';
 }
+
