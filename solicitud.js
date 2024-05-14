@@ -31,6 +31,7 @@ async function loadSolicitudes() {
                 <td>${data.Estatus}</td>
                 <td>${solicitud.id}</td>
                 <td>${data.Descripcion}</td>
+                <td>${data.Comentario}</td>
             `;
             solicitudesTableBody.appendChild(row);
         });
@@ -56,6 +57,7 @@ formulario.addEventListener('submit', async function(event) {
             Id_Socio: idSocio,
             Descripcion: descripcion,
             Estatus: "Pendiente",
+            Comentario: "",
             Fecha_Hora_Atendida: serverTimestamp(),
         });
         messageDiv.textContent = "Tu solicitud fue enviada exitosamente.";

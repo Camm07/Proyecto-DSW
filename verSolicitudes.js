@@ -85,13 +85,16 @@ function mostrarModal(solicitudId, data, nombreSocio) {
 
 // Función para atender las solicitudes y actualizar su estado
 async function atenderSolicitud(solicitudId, aceptar) {
+    const comentario = document.getElementById('commentBox').value; // Obtener el contenido de la caja de texto
     const solicitudRef = doc(db, "Coleccion_Solicitud", solicitudId);
     await updateDoc(solicitudRef, {
-        Estatus: aceptar ? "Atendida" : "Rechazada"
+        Estatus: aceptar ? "Atendida" : "Rechazada",
+        Comentario: comentario // Agregar el comentario a la colección
     });
     cerrarModal();
     cargarSolicitudes(document.getElementById('filterStatus').value);
 }
+
 
 export function cerrarModal() {
     document.getElementById('modal').style.display = 'none';
