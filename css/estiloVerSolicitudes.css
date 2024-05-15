@@ -184,7 +184,7 @@ width: 100%; /* Ajusta el ancho de los botones al ancho del modal */
   outline: none; 
 }
 .filtro #filterStatus::-ms-expand {
-  display: none; 
+  display: none;
 }
 
 
