@@ -2,14 +2,13 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Solicitud del Socio</title>
+    <title>Reservación del Socio</title>
     <link rel="stylesheet" href="estilonav.css">
     <link rel="stylesheet" href="css/estiloSolicitudSocio.css">
     <script>
         // Función para cerrar sesión con confirmación
         function cerrarSesion() {
             if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
-                // Redirige al usuario a la página de inicio
                 window.location.href = 'index.html';
             }
         }
@@ -24,40 +23,44 @@
             <li><a href="inicioSocio.html">Inicio</a></li>
             <li><a href="paginaSolicitud.html">Solicitud</a></li>
             <li><a href="perfilSocio.html">Perfil</a></li>
-            <li><a href="paginaReservacion.html">Reservacion</a></li>
+            <li><a href="paginaReservacion.html">Reservación</a></li>
             <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
-          </ul>
-      </nav>
+        </ul>
+    </nav>
  
     <div class="container">
-        <h1>Solicitud del Socio</h1>
+        <h1>Reservación del Socio</h1>
         <div class="message"></div>
-        <form id="formularioSolicitud">
+        <form id="formularioReserva">
             <input type="hidden" id="idSocio" name="idSocio" value="ID_DEL_SOCIO">
-            <textarea id="descripcionSolicitud" name="descripcionSolicitud" placeholder="Describa su solicitud aquí" required></textarea>
-            <button type="submit">Enviar Solicitud</button>
+            <label for="fechaReserva">Fecha de la Reservación:</label>
+            <input type="date" id="fechaReserva" name="fechaReserva" required>
+            <label for="espacioReserva">Espacio a reservar:</label>
+                <select id="espacioReserva" name="espacioReserva" required>
+                    <option value="Cancha de tenis">Cancha de tenis</option>
+                    <option value="Salón de eventos">Salón de eventos</option>
+                    <option value="Piscina">Piscina</option>
+                    <!-- Agrega más opciones según los espacios disponibles -->
+                </select>            
+            <button type="submit">Enviar Reserva</button>
         </form>
-        <table id="solicitudesTable">
+        <table id="reservasTable">
             <thead>
                 <tr>
-                    <th>Fecha</th>
+                    <th>Fecha de Reservación</th>
+                    <th>Fecha de Solicitud</th>
                     <th>Estatus</th>
-                    <th>ID Solicitud</th>
-                    <th>Descripción</th>
+                    <th>ID Reserva</th>
+                    <th>Espacio</th>
                     <th>Comentario</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Las filas de solicitudes se agregarán aquí dinámicamente -->
+                <!-- Las filas de reservas se agregarán aquí dinámicamente -->
             </tbody>
         </table>
     </div>
-    <script type="module" src="solicitud.js"></script>
+    <script type="module" src="reserva.js"></script>
 </body>
 </html>
-
-
-
-
-
 

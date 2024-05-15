@@ -29,13 +29,19 @@
     
     <nav>
         <ul class="menu">
-          <li><a href="inicioAdmin.html">Inicio</a></li>
-          <li><a href="registroSocios.html">Registrar Socios</a></li>
-          <li><a href="verSocios.html">Listado de Socios</a></li>
-          <li><a href="verSolicitudes.html">Ver Solicitudes</a></li>
-          <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
-          </ul>
-      </nav>
+            <li><a href="inicioAdmin.html">Inicio</a></li>
+            <li><a href="registroSocios.html">Registrar Socios</a></li>
+            <li><a href="verSocios.html">Listado de Socios</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">Gestión</a>
+                <ul class="dropdown-content">
+                    <li><a href="verSolicitudes.html">Solicitudes</a></li>
+                    <li><a href="VerReservacion.html">Reservaciones</a></li>
+                </ul>
+            </li>
+            <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
 
     <h2>Listado de Socios</h2>
 <div class="centered-container">

@@ -11,6 +11,7 @@
 
 .menu li {
     text-align: center;
+    position: relative; /* Necesario para la posición absoluta del contenido desplegable */
 }
 
 .menu li a {
@@ -23,4 +24,31 @@
 
 .menu li a:hover {
     color: #ffc107; /* Cambio de color al pasar el mouse */
+}
+
+/* Estilos para el contenido desplegable */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #003559; /* Fondo a juego con el menú principal */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    min-width: 160px; /* Ajustar según el contenido */
+}
+
+.dropdown-content a {
+    color: #B9D6F2; /* Letras blanco para contrastar */
+    padding: 12px 16px; /* Espaciado similar al menú principal */
+    text-decoration: none;
+    display: block; /* Ocupar todo el ancho para el clic */
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #0275d8; /* Un azul más claro al pasar el mouse */
+}
+
+/* Mostrar el contenido desplegable al pasar el mouse */
+.menu li:hover .dropdown-content {
+    display: block;
 }

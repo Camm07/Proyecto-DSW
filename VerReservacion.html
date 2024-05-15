@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Ver Solicitudes</title>
+    <title>Ver Reservaciones</title>
     <link rel="stylesheet" href="estilonav.css">
     <link rel="stylesheet" href="css/estiloVerSolicitudes.css">
     <script>
@@ -28,31 +28,31 @@
                 <a href="javascript:void(0)">Gestión</a>
                 <ul class="dropdown-content">
                     <li><a href="verSolicitudes.html">Solicitudes</a></li>
-                    <li><a href="VerReservacion.html">Reservaciones</a></li>
+                    <li><a href="verReservaciones.html">Reservaciones</a></li>
                 </ul>
             </li>
             <li><a href="#" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
         </ul>
     </nav>
-    <h1>Listado de Solicitudes</h1>
+    <h1>Listado de Reservaciones</h1>
     <div class="filtro">
         <label for="filterStatus">Filtrar por estatus:</label>
         <select id="filterStatus">
             <option value="Todos">Todos</option>
             <option value="Pendiente">Pendiente</option>
-            <option value="Atendida">Atendida</option>
+            <option value="Aprobada">Aprobada</option>
             <option value="Rechazada">Rechazada</option>
         </select>
     </div>
-    <table id="solicitudesList">
+    <table id="reservacionesList">
         <thead>
             <tr>
-                <th>ID Solicitud</th>
+                <th>ID Reservación</th>
                 <th>Nombre Socio</th>
-                <th>Descripción</th>
-                <th>Fecha/Hora</th>
+                <th>Espacio</th>
+                <th>Fecha de Reservación</th>
                 <th>ID Socio</th>
-                <th>Acciones   </th>
+                <th>Acciones</th>
                 <th></th>
             </tr>
         </thead>
@@ -60,7 +60,7 @@
             <!-- Las filas se llenarán dinámicamente -->
         </tbody>
     </table>
-    <!-- Modal para atender solicitudes -->
+    <!-- Modal para gestionar reservaciones -->
     <div id="modal" class="modal">
         <div id="modalContent" class="modal-content"></div>
         <div class="button-container">
@@ -69,8 +69,6 @@
             <button id="btnCerrar" class="modal-btn modal-close">Cerrar</button>
         </div>
     </div>
-    <script type="module" src="verSolicitudes.js"></script>
+    <script type="module" src="verReservacion.js"></script>
 </body>
 </html>
-
-
