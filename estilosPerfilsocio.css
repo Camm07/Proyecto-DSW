@@ -56,66 +56,66 @@ html {
     margin-top: 20px; /* Margen superior para separar del menú */
     width: 100%; /* Asegura que el fondo cubra el ancho completo */
 }
-
-/* Aplicar el estilo al div que contiene el título "Perfil del Socio" */
-.container {
-    background-color: #f8f9fa; /* Fondo claro para el contenido */
-    width: 80%; /* Ajuste del ancho del contenedor */
-    margin: 0 auto; /* Centrado y espaciado */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 20px; /* Espaciado interno */
-}
-
 /* Estilos para el contenedor del perfil del socio */
 .perfil-container {
-    background-color: #ffffff; /* Fondo blanco para el contenido del perfil */
-    display: flex;
+    background-color: #B9D6F2; /* Fondo azul claro para el contenedor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    border-radius: 10px; /* Bordes redondeados */
+    margin: 20px auto; /* Margen superior e inferior automático y centrado horizontal */
+    padding: 30px; /* Espaciado interno */
+    max-width: 600px; /* Ancho máximo del contenedor */
     align-items: center;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin: 20px auto;
-    width: auto; /* Ajusta automáticamente el ancho */
+    justify-content: center; /* Centrado horizontal */
 }
 
+/* Estilo de la imagen del perfil */
 .perfil-avatar img {
-    width: 100px;
-    height: 100px;
+    width: 80px; /* Ancho de la imagen reducido */
+    height: 80px; /* Altura de la imagen reducida */
     border-radius: 50%; /* Hacer la imagen circular */
-    margin-right: 20px;
+    text-align: center;
 }
 
+/* Estilos para el formulario */
 .perfil-info {
-    flex-grow: 1; /* Permitir que el contenedor de información ocupe el espacio restante */
+    margin-left: 20px; /* Margen izquierdo para separar del avatar */
 }
 
 .info-campo {
-    margin-bottom: 10px; /* Espaciado entre campos */
+    margin-bottom: 20px; /* Espaciado entre campos */
 }
 
 .info-campo label {
     display: block;
     font-weight: bold; /* Negrita para las etiquetas */
     margin-bottom: 5px;
+    color: #003559; /* Color del texto de las etiquetas */
 }
 
 .info-campo input {
-    width: 100%; /* Ancho completo para los inputs */
+    width: calc(100% - 20px); /* Ancho del input reducido para tener en cuenta el margen izquierdo */
     padding: 10px;
-    border: 1px solid #ccc; /* Borde sutil */
+    border: 1px solid #006DAA; /* Borde sutil en el color principal */
     border-radius: 5px; /* Bordes redondeados */
+    background-color: #f5f5f5; /* Fondo gris claro para los inputs */
+    color: #333; /* Color del texto principal */
+}
+
+/* Estilos para los botones */
+.botones {
+    text-align: center; /* Alineación centrada */
 }
 
 .botones button {
     padding: 10px 20px;
-    color: white; /* Texto blanco */
-    background-color: #007BFF; /* Fondo azul para botones */
+    color: #B9D6F2; /* Texto en color blanco */
+    background-color: #006DAA; /* Fondo azul para botones */
     border: none;
     border-radius: 5px;
     cursor: pointer; /* Cursor como puntero para indicar interactividad */
+    transition: background-color 0.3s; /* Transición suave al cambiar el color de fondo */
 }
 
 .botones button:hover {
-    background-color: #0056b3; /* Cambio de color al pasar el mouse */
+    background-color: #003559; /* Cambio de color al pasar el mouse */
 }

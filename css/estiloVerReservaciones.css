@@ -44,14 +44,32 @@ html {
   #reservacionesList td {
     background-color: #B9D6F2; 
     color: #003559; 
-    text-align: center; /* Centrado el texto en las celdas */
+    /*text-align: center; /* Centrado el texto en las celdas */
   }
   
   #reservacionesList tbody tr:hover {
     background-color: #f2f2f2; 
   }
+
+  .btnAtender {
+    background-color: #006DAA; 
+    border: none; 
+    color: white;
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block;
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    }
+    
+    .btnAtender:hover {
+    background-color: #0353A4; 
+    }
   
-  .btnAction {
+  /*.btnAction {
     background-color: #007bff; 
     border: none; 
     color: white;
@@ -66,7 +84,7 @@ html {
   
   .btnAction:hover {
     background-color: #0056b3; 
-  }
+  }*/
   
   /* Estilos para el modal */
   .modal {

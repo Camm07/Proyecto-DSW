@@ -72,5 +72,26 @@ th {
     background-color: #0353A4; /* Color de fondo de las cabeceras de las tablas */
     color: #B9D6F2; /* Color del texto de las cabeceras de las tablas */
 }
+input[type="date"] {
+    width: 50%; /* Ancho del input de fecha */
+    margin: 0 auto; /* Centra el input horizontalmente */
+    display: block; /* Convierte el input en un elemento de bloque para aplicar márgenes automáticos */
+}
+select {
+    width: 50%; /* Ancho del combobox */
+    margin: 0 auto; /* Centra el combobox horizontalmente */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Borde redondeado */
+    background-color: #B9D6F2; /* Color de fondo */
+    color: #003559; /* Color del texto */
+    border: 1px solid #ccc; /* Borde */
+    
+}
+
+/* Estilo para las opciones del combobox */
+select option {
+    background-color: #B9D6F2; /* Color de fondo de las opciones */
+    color: #003559; /* Color del texto de las opciones */
+}
 
   
