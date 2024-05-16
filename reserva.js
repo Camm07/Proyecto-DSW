@@ -26,10 +26,10 @@ async function cargarReservas() {
         const q = query(reservasRef, where("Id_Socio", "==", idSocio));
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((reserva) => {
-            const data = reserva.data();
+            const data = reserva.data();//Fecha_Reservacion lo deje como cadena, le quite el .date.localblablabla pa que sea puro string
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${data.Fecha_Reservacion.toDate().toLocaleString()}</td>
+                <td>${data.Fecha_Reservacion}</td>
                 <td>${data.Fecha_Hora_Solicitud.toDate().toLocaleString()}</td>
                 <td>${data.Estatus}</td>
                 <td>${reserva.id}</td>
@@ -43,11 +43,16 @@ async function cargarReservas() {
     }
 }
 
+const fechaActual = new Date();
+fechaActual.setDate(fechaActual.getDate() - 1);// un dia menos xd
+const fechaMinima = fechaActual.toISOString().split('T')[0];
+document.getElementById('fechaReserva').setAttribute('min', fechaMinima);// Establecer la fecha mínima xd
+
 formularioReserva.addEventListener('submit', async function(event) {
     event.preventDefault();
     const idSocio = sessionStorage.getItem('socioId');
     const espacio = document.getElementById('espacioReserva').value;
-    const fechaReservacion = new Date(document.getElementById('fechaReserva').value);
+    const fechaIn = document.getElementById('fechaReserva').value;
 
     if (!idSocio) {
         console.error("No se pudo recuperar el ID del socio");
@@ -60,7 +65,7 @@ formularioReserva.addEventListener('submit', async function(event) {
         await addDoc(collection(db, "Coleccion_Reservacion"), {
             Id_Socio: idSocio,
             Espacio: espacio,
-            Fecha_Reservacion: fechaReservacion,
+            Fecha_Reservacion: fechaIn,
             Fecha_Hora_Solicitud: serverTimestamp(),
             Comentario: "",
             Estatus: "Pendiente",
@@ -77,3 +82,5 @@ formularioReserva.addEventListener('submit', async function(event) {
         messageDiv.style.color = "red";
     }
 });
+
+
