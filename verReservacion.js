@@ -38,7 +38,7 @@ async function cargarReservaciones(estatus = 'Todos') {
     });
 
     const results = await Promise.all(promises);
-    results.sort((a, b) => b.data.Fecha_Reservacion.toDate() - a.data.Fecha_Reservacion.toDate());
+    results.sort((a, b) => b.data.Fecha_Reservacion - a.data.Fecha_Reservacion);
 
     const tableBody = document.getElementById('reservacionesList').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = '';
@@ -61,7 +61,7 @@ function appendRow(id, socioData, data) {
     row.innerHTML = `
         <td>${id}</td>
         <td>${socioData.nombre} ${socioData.apellidos}</td>
-        <td>${data.Fecha_Reservacion.toDate().toLocaleDateString("es-ES")}</td>
+        <td>${data.Fecha_Reservacion}</td>
         <td>${data.Estatus}</td>
         <td>${data.Espacio}</td>
         <td></td> <!-- Asegúrate de que este td está para el botón -->
@@ -85,7 +85,7 @@ function mostrarModal(reservaId, data, nombreSocio) {
         <p><strong>ID Reserva:</strong> ${reservaId}</p>
         <p><strong>ID Socio:</strong> ${data.Id_Socio}</p>
         <p><strong>Nombre:</strong> ${nombreSocio}</p>
-        <p><strong>Fecha de Reservación:</strong> ${data.Fecha_Reservacion.toDate().toLocaleDateString("es-ES")}</p>
+        <p><strong>Fecha de Reservación:</strong> ${data.Fecha_Reservacion}</p>
         <p><strong>Espacio:</strong> ${data.Espacio}</p>
         <input type="text" id="commentBox" placeholder="Escribe un comentario">
     `;
