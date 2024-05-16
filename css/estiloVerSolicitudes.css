@@ -12,125 +12,126 @@ header h1 {
 }
 
 h1 {
-  color: #B9D6F2;
-  padding: 20px;
-  text-align: center;
-  font-size: 50px;
+color: #B9D6F2;
+padding: 20px;
+text-align: center;
+font-size: 50px;
 }
 
-#reservacionesList {
-  width: 90%; /* Reducido el ancho para centrarlo */
-  margin: 20px auto; /* Ajustado el margen para centrarlo */
-  border-collapse: collapse;
+#solicitudesList {
+width: 100%;
+max-width: 80%; 
+border-collapse: collapse;
+margin: 20px auto; 
 }
 
-#reservacionesList th,
-#reservacionesList td {
-  text-align: left; /* Alineación del texto */
-    padding: 12px; /* Espaciado interno */
-    border-bottom: 2px solid #0353A4; /* Línea dorada en el borde inferior */
+#solicitudesList th,
+#solicitudesList td {
+text-align: left; 
+padding: 12px;
+border-bottom: 2px solid #0353A4; 
 }
 
-#reservacionesList thead {
-  background-color: #0353A4; 
-  color: #B9D6F2; 
+#solicitudesList thead {
+background-color: #0353A4; 
+color: #B9D6F2; 
 }
 
-#reservacionesList th {
-  font-size: 16px;
-  font-weight: bold; /* Agregado un peso de fuente para los encabezados */
+#solicitudesList th {
+font-size: 16px;
 }
 
-#reservacionesList td {
-  background-color: #B9D6F2; 
-  color: #003559; 
-  text-align: center; /* Centrado el texto en las celdas */
+#solicitudesList td {
+background-color: #B9D6F2; 
+color: #003559; 
 }
 
-#reservacionesList tbody tr:hover {
-  background-color: #f2f2f2; 
+#solicitudesList tbody tr:hover {
+background-color: #006DAA; 
+color: #B9D6F2; 
 }
 
-.btnAction {
-  background-color: #007bff; 
-  border: none; 
-  color: white;
-  padding: 8px 16px; 
-  text-align: center; 
-  text-decoration: none; 
-  display: inline-block;
-  font-size: 14px; 
-  cursor: pointer; 
-  border-radius: 5px; 
+.btnAtender {
+background-color: #006DAA; 
+border: none; 
+color: white;
+padding: 10px 20px; 
+text-align: center; 
+text-decoration: none; 
+display: inline-block;
+font-size: 16px; 
+margin: 4px 2px; 
+cursor: pointer; 
+border-radius: 5px; 
 }
 
-.btnAction:hover {
-  background-color: #0056b3; 
+.btnAtender:hover {
+background-color: #0353A4; 
 }
-
 /* Estilos para el modal */
 .modal {
-  display: none;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 70%; 
-  max-width: 600px; 
-  height: 60%; 
-  max-height: 80%; 
-  background-color: rgba(0,0,0,0.7);
-  border-radius: 10px;
+display: none;
+position: fixed;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+width: 70%; 
+max-width: 600px; 
+height: 60%; 
+max-height: 80%; 
+background-color: rgba(0,0,0,0.7);
+border-radius: 10px;
 }
 
 .modal-content {
-  background-color: #fefefe;
-  padding: 20px;
-  border: 1px solid #888;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 90%;
-  max-height: 90%;
-  width: 60%;
-  height: 65%;
-  overflow: auto;
-  text-align: center;
+background-color: #fefefe;
+padding: 20px;
+border: 1px solid #888;
+border-radius: 10px;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+position: fixed;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+max-width: 90%;
+max-height: 90%;
+width: 60%;
+height: 65%;
+overflow: auto;
+text-align: center;
 }
 
+
+
 .modal-btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  margin: 10px;
+background-color: #4CAF50;
+color: white;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+margin: 10px;
+
 }
 
 .modal-btn:hover {
-  background-color: #45a049;
+background-color: #45a049;
 }
 
 .modal-close {
-  background-color: #f44336;
+background-color: #f44336;
 }
 
 .modal-close:hover {
-  background-color: #da190b;
+background-color: #da190b;
 }
-
 .button-container {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  bottom: 20px; /* Cambia la distancia desde abajo según sea necesario */
-  width: 100%; /* Ajusta el ancho de los botones al ancho del modal */
+display: flex;
+justify-content: center;
+position: absolute;
+bottom: 20px; /* Cambia la distancia desde abajo según sea necesario */
+width: 100%; /* Ajusta el ancho de los botones al ancho del modal */
 }
-
 #commentBox {
   width: 60%; /* Ajusta el ancho según sea necesario */
   padding: 10px; /* Agrega espacio alrededor del texto dentro del input */
@@ -182,9 +183,6 @@ h1 {
   border-color: #666; 
   outline: none; 
 }
-
 .filtro #filterStatus::-ms-expand {
   display: none;
 }
-
-

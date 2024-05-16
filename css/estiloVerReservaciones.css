@@ -1,0 +1,190 @@
+html {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #061A40;
+  }
+  
+  header h1 {
+    color: #B9D6F2;
+    padding: 20px;
+    text-align: center;
+    font-size: 50px;
+  }
+  
+  h1 {
+    color: #B9D6F2;
+    padding: 20px;
+    text-align: center;
+    font-size: 50px;
+  }
+  
+  #reservacionesList {
+    width: 90%; /* Reducido el ancho para centrarlo */
+    margin: 20px auto; /* Ajustado el margen para centrarlo */
+    border-collapse: collapse;
+  }
+  
+  #reservacionesList th,
+  #reservacionesList td {
+    text-align: left; /* Alineación del texto */
+      padding: 12px; /* Espaciado interno */
+      border-bottom: 2px solid #0353A4; /* Línea dorada en el borde inferior */
+  }
+  
+  #reservacionesList thead {
+    background-color: #0353A4; 
+    color: #B9D6F2; 
+  }
+  
+  #reservacionesList th {
+    font-size: 16px;
+    font-weight: bold; /* Agregado un peso de fuente para los encabezados */
+  }
+  
+  #reservacionesList td {
+    background-color: #B9D6F2; 
+    color: #003559; 
+    text-align: center; /* Centrado el texto en las celdas */
+  }
+  
+  #reservacionesList tbody tr:hover {
+    background-color: #f2f2f2; 
+  }
+  
+  .btnAction {
+    background-color: #007bff; 
+    border: none; 
+    color: white;
+    padding: 8px 16px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block;
+    font-size: 14px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+  }
+  
+  .btnAction:hover {
+    background-color: #0056b3; 
+  }
+  
+  /* Estilos para el modal */
+  .modal {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%; 
+    max-width: 600px; 
+    height: 60%; 
+    max-height: 80%; 
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 10px;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    width: 60%;
+    height: 65%;
+    overflow: auto;
+    text-align: center;
+  }
+  
+  .modal-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+  }
+  
+  .modal-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .modal-close {
+    background-color: #f44336;
+  }
+  
+  .modal-close:hover {
+    background-color: #da190b;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 20px; /* Cambia la distancia desde abajo según sea necesario */
+    width: 100%; /* Ajusta el ancho de los botones al ancho del modal */
+  }
+  
+  #commentBox {
+    width: 60%; /* Ajusta el ancho según sea necesario */
+    padding: 10px; /* Agrega espacio alrededor del texto dentro del input */
+    border: 2px solid #ccc; /* Define el borde y su grosor */
+    border-radius: 5px; /* Redondea los bordes */
+    font-size: 16px; /* Tamaño de fuente */
+    outline: none; /* Elimina el borde predeterminado en el enfoque */
+  }
+  
+  /* Estilos cuando el input está enfocado */
+  #commentBox:focus {
+    border-color: #0353A4; /* Cambia el color del borde cuando el input está enfocado */
+  }
+  
+  .filtro {
+    margin: 20px; 
+  }
+  
+  .filtro label {
+    display: block; 
+    margin-bottom: 8px; 
+    font-size: 16px; 
+    color: #B9D6F2; 
+    font-weight: bold; 
+    margin-left: 50px; 
+  }
+  
+  .filtro #filterStatus {
+    width: 15%; 
+    margin-left: 50px; 
+    padding: 8px 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    background-color: #fff; 
+    font-size: 16px; 
+    color: #333; 
+    cursor: pointer; 
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); 
+    -webkit-appearance: none; /* Desactiva la apariencia predeterminada en navegadores WebKit/Blink */
+    -moz-appearance: none; /* Desactiva la apariencia predeterminada en Mozilla */
+    appearance: none; /* Desactiva la apariencia estándar para asegurar consistencia en diferentes navegadores */
+  }
+  
+  .filtro #filterStatus:hover {
+    border-color: #B9D6F2; 
+  }
+  
+  .filtro #filterStatus:focus {
+    border-color: #666; 
+    outline: none; 
+  }
+  
+  .filtro #filterStatus::-ms-expand {
+    display: none;
+  }
+  
+  

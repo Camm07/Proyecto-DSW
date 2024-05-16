@@ -62,8 +62,8 @@ function appendRow(id, socioData, data) {
         <td>${id}</td>
         <td>${socioData.nombre} ${socioData.apellidos}</td>
         <td>${data.Fecha_Reservacion}</td>
-        <td>${data.Estatus}</td>
         <td>${data.Espacio}</td>
+        <td>${data.Estatus}</td>
         <td></td> <!-- Asegúrate de que este td está para el botón -->
     `;
     
