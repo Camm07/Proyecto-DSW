@@ -1,7 +1,9 @@
 // Importa Firebase modules directamente, asumiendo que se usará en un ambiente que soporte módulos ES
-//socios.js
 import { db } from './app.js'; // Asegúrate de que la ruta al archivo app.js es correcta
 import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
+
+const auth = getAuth(); // Obtiene la instancia de FirebaseAuth
 
 document.getElementById('formularioSocio').addEventListener('submit', async function(event) {
     event.preventDefault();
@@ -13,19 +15,23 @@ document.getElementById('formularioSocio').addEventListener('submit', async func
     const telefono = document.getElementById('telefonoSocio').value;
 
     try {
-        await addDoc(collection(db, "Socios"), {
+        const userCredential = await createUserWithEmailAndPassword(auth, correo, contraseña);
+        const user = userCredential.user;
+        console.log('Usuario de Firebase creado con UID:', user.uid);
+
+        const docRef = await addDoc(collection(db, "Socios"), {
             nombre: nombre,
             apellidos: apellidos,
             curp: curp,
             correo: correo,
-            contraseña: contraseña,
             telefono: telefono,
-            tipo: "socio"
+            tipo: "socio",
+            uid: user.uid  // Guarda el UID proporcionado por Firebase Authentication
         });
-        console.log('Socio registrado con éxito');
+        console.log('Socio registrado con éxito, Document ID:', docRef.id);
+        sessionStorage.setItem('socioDocId', docRef.id);  // Guardar el ID del documento para uso posterior
         alert('Socio registrado con éxito');
-        // Opcional: Limpia el formulario después de un registro exitoso
-        document.getElementById('formularioSocio').reset();
+        document.getElementById('formularioSocio').reset(); // Limpia el formulario después de un registro exitoso
     } catch (error) {
         console.error('Error al registrar el socio:', error);
         alert('Error al registrar el socio: ' + error.message);

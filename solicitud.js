@@ -1,69 +1,63 @@
 // solicitud.js
 import { db } from './app.js';
-import { collection, addDoc, serverTimestamp, getDoc, doc, getDocs, query, where } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+import { collection, addDoc, serverTimestamp, getDocs, query, where } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
 const formulario = document.getElementById('formularioSolicitud');
 const messageDiv = document.querySelector('.message');
 const solicitudesTableBody = document.querySelector('#solicitudesTable tbody');
 
 document.addEventListener('DOMContentLoaded', function() {
-    const idSocio = sessionStorage.getItem('socioId');
-    if (idSocio) {
-        document.getElementById('idSocio').value = idSocio;
-        loadSolicitudes();
+    const idDocumentoSocio = sessionStorage.getItem('socioDocId');
+    if (idDocumentoSocio) {
+        document.getElementById('idSocio').value = idDocumentoSocio;
+        loadSolicitudes(idDocumentoSocio);
     } else {
-        console.log("ID del socio no encontrado en sessionStorage");
+        console.error("ID del documento del socio no encontrado en sessionStorage");
     }
 });
 
-async function loadSolicitudes() {
-    const idSocio = sessionStorage.getItem('socioId');
-    if (idSocio) {
-        solicitudesTableBody.innerHTML = ''; // Limpiar la tabla antes de cargar las solicitudes
-        const solicitudesRef = collection(db, "Coleccion_Solicitud");
-        const q = query(solicitudesRef, where("Id_Socio", "==", idSocio));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((solicitud) => {
-            const data = solicitud.data();
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${data.Fecha_Hora_Atendida.toDate().toLocaleString()}</td>
-                <td>${data.Estatus}</td>
-                <td>${solicitud.id}</td>
-                <td>${data.Descripcion}</td>
-                <td>${data.Comentario}</td>
-            `;
-            solicitudesTableBody.appendChild(row);
-        });
-    } else {
-        console.log("ID del socio no disponible para cargar las solicitudes");
-    }
+async function loadSolicitudes(idDocumentoSocio) {
+    solicitudesTableBody.innerHTML = '';
+    const q = query(collection(db, "Coleccion_Solicitud"), where("Id_Socio", "==", idDocumentoSocio));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${data.Fecha_Hora_Atendida.toDate().toLocaleString()}</td>
+            <td>${data.Estatus}</td>
+            <td>${doc.id}</td>
+            <td>${data.Descripcion}</td>
+            <td>${data.Comentario}</td>
+        `;
+        solicitudesTableBody.appendChild(row);
+    });
 }
 
 formulario.addEventListener('submit', async function(event) {
     event.preventDefault();
-    const idSocio = sessionStorage.getItem('socioId');
     const descripcion = document.getElementById('descripcionSolicitud').value;
+    const idDocumentoSocio = sessionStorage.getItem('socioDocId');
 
-    if (!idSocio) {
-        console.error("No se pudo recuperar el ID del socio");
-        messageDiv.textContent = "Error al enviar la solicitud: No se pudo recuperar el ID del socio";
+    if (!idDocumentoSocio) {
+        console.error("No se pudo recuperar el ID del documento del socio");
+        messageDiv.textContent = "Error al enviar la solicitud: No se pudo recuperar el ID del documento del socio";
         messageDiv.style.color = "red";
         return;
     }
 
     try {
         await addDoc(collection(db, "Coleccion_Solicitud"), {
-            Id_Socio: idSocio,
+            Id_Socio: idDocumentoSocio,
             Descripcion: descripcion,
             Estatus: "Pendiente",
             Comentario: "",
             Fecha_Hora_Atendida: serverTimestamp(),
         });
         messageDiv.textContent = "Tu solicitud fue enviada exitosamente.";
-        loadSolicitudes(); // Recargar la lista de solicitudes para ver la nueva solicitud agregada
+        loadSolicitudes(idDocumentoSocio);  // Recargar la lista de solicitudes
 
-        setTimeout(function() {
+        setTimeout(() => {
             messageDiv.textContent = "";
         }, 5000);
     } catch (error) {

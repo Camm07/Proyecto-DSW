@@ -1,12 +1,12 @@
-//verSolicitudes.js
+// verSolicitudes.js
 import { db } from './app.js';
 import {
-    collection, query, orderBy, where, getDocs, doc, updateDoc, getDoc
+    collection, query, orderBy, where, getDocs, doc, getDoc
 } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+import { updateDoc } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     cargarSolicitudes();
-
     document.querySelector('.modal-close').addEventListener('click', cerrarModal);
     document.getElementById('filterStatus').addEventListener('change', function(e) {
         cargarSolicitudes(e.target.value);
@@ -84,21 +84,27 @@ function mostrarModal(solicitudId, data, nombreSocio) {
     document.getElementById('btnAceptar').onclick = () => atenderSolicitud(solicitudId, true);
     document.getElementById('btnRechazar').onclick = () => atenderSolicitud(solicitudId, false);
 }
-
 // Función para atender las solicitudes y actualizar su estado
 async function atenderSolicitud(solicitudId, aceptar) {
     const comentario = document.getElementById('commentBox').value; // Obtener el contenido de la caja de texto
     const solicitudRef = doc(db, "Coleccion_Solicitud", solicitudId);
-    await updateDoc(solicitudRef, {
-        Estatus: aceptar ? "Atendida" : "Rechazada",
-        Comentario: comentario // Agregar el comentario a la colección
-    });
-    cerrarModal();
-    cargarSolicitudes(document.getElementById('filterStatus').value);
+
+    try {
+        await updateDoc(solicitudRef, {
+            Estatus: aceptar ? "Atendida" : "Rechazada",
+            Comentario: comentario // Agregar el comentario a la colección
+        });
+        alert('La solicitud ha sido actualizada.');
+        cerrarModal();
+        cargarSolicitudes(document.getElementById('filterStatus').value); // Refrescar la lista de solicitudes
+    } catch (error) {
+        console.error("Error al actualizar la solicitud:", error);
+        alert("Error al procesar la solicitud.");
+    }
 }
 
 
-export function cerrarModal() {
+function cerrarModal() {
     document.getElementById('modal').style.display = 'none';
 }
 

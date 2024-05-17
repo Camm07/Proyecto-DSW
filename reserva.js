@@ -9,48 +9,42 @@ const messageDiv = document.querySelector('.message');
 const reservasTableBody = document.querySelector('#reservasTable tbody');
 
 document.addEventListener('DOMContentLoaded', function() {
-    const idSocio = sessionStorage.getItem('socioId');
+    const idSocio = sessionStorage.getItem('socioDocId');
     if (idSocio) {
         document.getElementById('idSocio').value = idSocio;
-        cargarReservas();
+        cargarReservas(idSocio);
     } else {
         console.log("ID del socio no encontrado en sessionStorage");
     }
 });
 
-async function cargarReservas() {
-    const idSocio = sessionStorage.getItem('socioId');
-    if (idSocio) {
-        reservasTableBody.innerHTML = ''; // Limpiar la tabla antes de cargar las reservas
-        const reservasRef = collection(db, "Coleccion_Reservacion");
-        const q = query(reservasRef, where("Id_Socio", "==", idSocio));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((reserva) => {
-            const data = reserva.data();//Fecha_Reservacion lo deje como cadena, le quite el .date.localblablabla pa que sea puro string
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${data.Fecha_Reservacion}</td>
-                <td>${data.Fecha_Hora_Solicitud.toDate().toLocaleString()}</td>
-                <td>${data.Estatus}</td>
-                <td>${reserva.id}</td>
-                <td>${data.Espacio}</td>
-                <td>${data.Comentario}</td>
-            `;
-            reservasTableBody.appendChild(row);
-        });
-    } else {
-        console.log("ID del socio no disponible para cargar las reservas");
-    }
+async function cargarReservas(idSocio) {
+    reservasTableBody.innerHTML = ''; // Limpiar la tabla antes de cargar las reservas
+    const q = query(collection(db, "Coleccion_Reservacion"), where("Id_Socio", "==", idSocio));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((reserva) => {
+        const data = reserva.data();
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${data.Fecha_Reservacion}</td>
+            <td>${data.Fecha_Hora_Solicitud.toDate().toLocaleString()}</td>
+            <td>${data.Estatus}</td>
+            <td>${reserva.id}</td>
+            <td>${data.Espacio}</td>
+            <td>${data.Comentario}</td>
+        `;
+        reservasTableBody.appendChild(row);
+    });
 }
 
 const fechaActual = new Date();
-fechaActual.setDate(fechaActual.getDate() - 1);// un dia menos xd
+fechaActual.setDate(fechaActual.getDate() - 1); // un dia menos
 const fechaMinima = fechaActual.toISOString().split('T')[0];
-document.getElementById('fechaReserva').setAttribute('min', fechaMinima);// Establecer la fecha mínima xd
+document.getElementById('fechaReserva').setAttribute('min', fechaMinima); // Establecer la fecha mínima
 
 formularioReserva.addEventListener('submit', async function(event) {
     event.preventDefault();
-    const idSocio = sessionStorage.getItem('socioId');
+    const idSocio = sessionStorage.getItem('socioDocId');
     const espacio = document.getElementById('espacioReserva').value;
     const fechaIn = document.getElementById('fechaReserva').value;
 
@@ -71,7 +65,7 @@ formularioReserva.addEventListener('submit', async function(event) {
             Estatus: "Pendiente",
         });
         messageDiv.textContent = "Tu reserva fue enviada exitosamente.";
-        cargarReservas(); // Recargar la lista de reservas para ver la nueva añadida
+        cargarReservas(idSocio); // Recargar la lista de reservas para ver la nueva añadida
 
         setTimeout(function() {
             messageDiv.textContent = "";

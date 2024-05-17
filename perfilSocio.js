@@ -1,25 +1,29 @@
+// perfilSocio.js
 import { db } from './app.js';
 import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
 
-document.addEventListener('DOMContentLoaded', async function() {
-    const idSocio = sessionStorage.getItem('socioId');
-    if (idSocio) {
-        const socioRef = doc(db, "Socios", idSocio);
-        const socioDoc = await getDoc(socioRef);
-        if (socioDoc.exists()) {
-            const socioData = socioDoc.data();
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("Session Storage Key Check:", sessionStorage.getItem('socioDocId')); // Diagnóstico
 
-            // Actualizando los valores de los inputs con los datos del socio
-            document.getElementById('codigo').value = idSocio;  // Usando el ID del documento como código del socio
-            document.getElementById('usuario').value = `${socioData.nombre} ${socioData.apellidos}` || 'No disponible';
-            document.getElementById('email').value = socioData.correo || 'No disponible';
-            document.getElementById('tel').value = socioData.telefono || 'No disponible';
-
-            // Si necesitas mostrar más información, simplemente añade más campos y actualízalos aquí
-        } else {
-            console.log("No se encontró el socio");
-        }
+    const socioDocId = sessionStorage.getItem('socioDocId');
+    if (socioDocId) {
+        console.log("Attempting to fetch document with ID:", socioDocId); // Diagnóstico
+        const socioDocRef = doc(db, "Socios", socioDocId);
+        getDoc(socioDocRef).then((docSnap) => {
+            if (docSnap.exists()) {
+                const socioData = docSnap.data();
+                console.log("Socio Data Loaded:", socioData); // Diagnóstico
+                document.getElementById('codigo').value = socioDocId;
+                document.getElementById('usuario').value = `${socioData.nombre} ${socioData.apellidos}`;
+                document.getElementById('email').value = socioData.correo;
+                document.getElementById('tel').value = socioData.telefono;
+            } else {
+                console.error("No socio found with provided ID");
+            }
+        });
     } else {
-        console.log("ID del socio no encontrado en sessionStorage");
+        console.error("No Document ID Found in sessionStorage");
     }
 });
+
