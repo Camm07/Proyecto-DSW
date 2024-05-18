@@ -107,56 +107,6 @@ function displaySocios(snapshot) {
 document.querySelector('.close').addEventListener('click', function() {
     document.getElementById('modal').style.display = 'none';
 });
-
-
-
-
-/*var miid="";
-var e="";
-function displaySocios(snapshot) {
-    const table = document.getElementById('sociosTable');
-    let tbody = table.querySelector('tbody');
-    if (!tbody) {
-        tbody = document.createElement('tbody');
-        table.appendChild(tbody);
-    } else {
-        tbody.innerHTML = ''; // Limpiar la tabla antes de añadir nuevos resultados
-    }
-
-    snapshot.forEach(doc => {
-        const data = doc.data();
-        const row = document.createElement('tr');
-        const nameCell = document.createElement('td');
-        nameCell.textContent = `${data.nombre} ${data.apellidos}`;
-        const emailCell = document.createElement('td');
-        emailCell.textContent = data.correo;
-        const phoneCell = document.createElement('td');
-        phoneCell.textContent = data.telefono;
-        const statusCell = document.createElement('td');
-        statusCell.textContent = data.status;
-        const editButton = document.createElement('button'); // Botón de editar
-        const editCell = document.createElement('td');
-        editButton.textContent = 'Editar';
-        editButton.classList.add('edit-button'); 
-        editButton.addEventListener('click', () => {
-           miid=doc.id;
-           console.log("llegue aqui "+doc.id + " = " + miid);
-           const data = doc.data();
-           document.getElementById('editNombre').value = data.nombre;
-           document.getElementById('editApellidos').value = data.apellidos;
-           document.getElementById('editCorreo').value = data.correo;
-           document.getElementById('editTelefono').value = data.telefono;
-           document.getElementById('modal').style.display = 'block';
-        });
-        editCell.appendChild(editButton);
-        row.appendChild(nameCell);
-        row.appendChild(emailCell);
-        row.appendChild(phoneCell);
-        row.appendChild(statusCell);
-        row.appendChild(editCell);
-        tbody.appendChild(row);
-    });
-}*/
 // hijo de su she madre - oraaa
 document.addEventListener('DOMContentLoaded', () => {
     console.log("aaaa 2");
