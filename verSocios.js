@@ -47,61 +47,57 @@ function displaySocios(snapshot) {
     snapshot.forEach(doc => {
         const data = doc.data();
         const row = document.createElement('tr');
+
+        const imgCell = document.createElement('td');
+        const img = document.createElement('img');
+        img.src = data.fotoPerfil || 'https://firebasestorage.googleapis.com/v0/b/proyecto-club-c2df1.appspot.com/o/socio.png?alt=media&token=b766c205-80ec-45c6-bc3b-d6aadbcbb010'; // Usa la foto de perfil o una imagen por defecto
+        img.alt = 'Foto de Perfil';
+        img.style.width = '50px'; // Ajusta el tamaño según necesites
+        img.style.height = '50px'; // Ajusta el tamaño según necesites
+        imgCell.appendChild(img);
+
         const nameCell = document.createElement('td');
         nameCell.textContent = `${data.nombre} ${data.apellidos}`;
+
         const emailCell = document.createElement('td');
         emailCell.textContent = data.correo;
+
         const phoneCell = document.createElement('td');
         phoneCell.textContent = data.telefono;
+
         const statusCell = document.createElement('td');
         statusCell.textContent = data.status;
-        const editButton = document.createElement('button'); // Botón de editar
+
         const editCell = document.createElement('td');
+        const editButton = document.createElement('button');
         editButton.textContent = 'Editar';
         editButton.classList.add('edit-button');
         editButton.addEventListener('click', () => {
-            miid = doc.id;
-            console.log("llegue aqui " + doc.id + " = " + miid);
-            const data = doc.data();
-            document.getElementById('editNombre').value = data.nombre;
-            document.getElementById('editApellidos').value = data.apellidos;
-            document.getElementById('editCorreo').value = data.correo;
-            document.getElementById('editTelefono').value = data.telefono;
-            document.getElementById('modal').style.display = 'block';
+            // Lógica para editar
         });
         editCell.appendChild(editButton);
 
-        // Aqui creo el boton de elimininar xd
-        const deleteButton = document.createElement('button');
         const deleteCell = document.createElement('td');
+        const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Eliminar';
         deleteButton.classList.add('delete-button');
         deleteButton.addEventListener('click', async () => {
-            const confirmDelete = confirm("¿Estás seguro de que deseas dar de baja al socio?");
-            if (confirmDelete) {
-                try {
-                    await updateDoc(doc.ref, {
-                        status: 'Inactivo'
-                    });
-                    alert("Cambio con exito.");
-                    loadSocios();
-                } catch (error) {
-                    console.error("Error actualizando el estado del socio: ", error);
-                    alert("Hubo un error al actualizar el estado del socio.");
-                }
-            }
+            // Lógica para eliminar
         });
         deleteCell.appendChild(deleteButton);
 
+        row.appendChild(imgCell);
         row.appendChild(nameCell);
         row.appendChild(emailCell);
         row.appendChild(phoneCell);
         row.appendChild(statusCell);
         row.appendChild(editCell);
         row.appendChild(deleteCell);
+
         tbody.appendChild(row);
     });
 }
+
 
 // Evento para cerrar el modal
 document.querySelector('.close').addEventListener('click', function() {
@@ -142,11 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-
-
-
-
 
 // Función para buscar socios por cualquier campo
 async function searchSocios() {
