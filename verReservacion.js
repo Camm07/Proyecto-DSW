@@ -14,12 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
 async function cargarReservaciones(estatus = 'Todos') {
     let q;
     if (estatus === 'Todos') {
-        q = query(collection(db, "Coleccion_Reservacion"), orderBy("Fecha_Reservacion", "desc"));
+        q = query(collection(db, "Coleccion_Reservacion"), orderBy("Fecha_Hora_Solicitud", "desc"));
     } else {
         q = query(
             collection(db, "Coleccion_Reservacion"),
             where("Estatus", "==", estatus),
-            orderBy("Fecha_Reservacion", "desc")
+            orderBy("Fecha_Hora_Solicitud", "desc")
         );
     }
 
@@ -86,6 +86,7 @@ function mostrarModal(reservaId, data, nombreSocio) {
         <p><strong>ID Socio:</strong> ${data.Id_Socio}</p>
         <p><strong>Nombre:</strong> ${nombreSocio}</p>
         <p><strong>Fecha de Reservación:</strong> ${data.Fecha_Reservacion}</p>
+        <p><strong>Fecha de Solicitud:</strong> ${data.Fecha_Hora_Solicitud.toDate().toLocaleString()}</p>
         <p><strong>Espacio:</strong> ${data.Espacio}</p>
         <input type="text" id="commentBox" placeholder="Escribe un comentario">
     `;
