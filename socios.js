@@ -26,7 +26,8 @@ document.getElementById('formularioSocio').addEventListener('submit', async func
             correo: correo,
             telefono: telefono,
             tipo: "socio",
-            uid: user.uid  // Guarda el UID proporcionado por Firebase Authentication
+            uid: user.uid,// Guarda el UID proporcionado por Firebase Authentication
+            status:"activo"  
         });
         console.log('Socio registrado con éxito, Document ID:', docRef.id);
         sessionStorage.setItem('socioDocId', docRef.id);  // Guardar el ID del documento para uso posterior

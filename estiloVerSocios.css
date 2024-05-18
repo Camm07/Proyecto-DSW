@@ -1,9 +1,8 @@
-
 html {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #061A40;
-  }
+}
 
 header h1 {
     color: #B9D6F2;
@@ -11,7 +10,6 @@ header h1 {
     text-align: center;
     font-size: 50px;
 }
-
 
 h2 {
     color: #B9D6F2;
@@ -22,20 +20,38 @@ h2 {
 
 .centered-container {
     display: flex;
-    justify-content: center;
     flex-direction: column; 
+    align-items: center;
     margin: 20px; 
 }
 
-.input-group {
-    width: 100%; 
-    max-width: 500px; 
-    margin: 20px auto; 
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
 }
 
-.input {
-    width: 100%; 
-    padding: 0 1rem;
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.input-group .icon {
+    position: absolute;
+    left: 10px;
+    width: 24px;
+    height: 24px;
+    fill: #171717;
+}
+
+.input-group .input {
+    width: 100%;
+    padding: 5px 5px 5px 40px;
     border: 2px solid transparent;
     border-radius: 8px;
     outline: none;
@@ -43,54 +59,55 @@ h2 {
     color: #0d0c22;
     box-shadow: 0 0 5px #B9D6F2, 0 0 0 10px #f5f5f5eb;
     transition: .3s ease;
-}  
-  .input::placeholder {
-    color: #171717;
-  }
-  
-  .icon {
-    position: absolute;
-    left: 1rem;
-    fill: #171717;
-    width: 1rem;
-    height: 1rem;
-  }
+}
 
-  
-  /* Estilos para la tabla */
-  #sociosTable {
+.input-group .input::placeholder {
+    color: #171717;
+}
+
+select {
+    padding: 3px;
+    font-size: 16px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background-color: #B9D6F2;
+    color: #0d0c22;
+    box-shadow: 0 0 5px #B9D6F2, 0 0 0 10px #f5f5f5eb;
+    transition: .3s ease;
+}
+
+#sociosTable {
     width: 100%;
-    max-width: 80%; /* Reduce el ancho máximo de la tabla */
+    max-width: 80%;
     border-collapse: collapse;
-    margin: 20px auto; /* Centra la tabla y añade espacio arriba y abajo */
+    margin: 20px auto;
 }
 
 #sociosTable th, #sociosTable td {
-    text-align: left; /* Alineación del texto */
-    padding: 12px; /* Espaciado interno */
-    border-bottom: 2px solid #0353A4; /* Línea dorada en el borde inferior */
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid #0353A4;
 }
 
 #sociosTable thead {
-    background-color: #0353A4; /* Fondo azul */
-    color: #B9D6F2; /* Letras en azul clarito */
+    background-color: #0353A4;
+    color: #B9D6F2;
 }
 
 #sociosTable th {
-    font-size: 16px; /* Tamaño de letra para encabezados */
+    font-size: 16px;
 }
 
 #sociosTable td {
-    background-color: #B9D6F2; /* Fondo azul clarito para las celdas */
-    color: #003559; /* Texto en azul oscuro */
+    background-color: #B9D6F2;
+    color: #003559;
 }
 
 #sociosTable tbody tr:hover {
-    background-color: #006DAA; /* Cambio de color al pasar el cursor */
-    color: #B9D6F2; /* Letras en azul clarito al pasar el cursor */
+    background-color: #006DAA;
+    color: #B9D6F2;
 }
 
-/* Estilos del contenido de la ventana modal */
 .modal-content {
     background-color: #0353A4;
     padding: 30px;
@@ -115,15 +132,16 @@ h2 {
     border: none;
     border-radius: 5px;
 }
+
 .modal-content label {
-    color: #B9D6F2; 
+    color: #B9D6F2;
     padding-top: 10px;
- 
 }
+
 .modal-content input[type="text"],
 .modal-content input[type="email"],
 .modal-content input[type="password"],
-.modal-content input[type="tel"]{
+.modal-content input[type="tel"] {
     background-color: #B9D6F2;
     color: #003559;
     font-size: 14px;
@@ -139,8 +157,17 @@ h2 {
 .modal-content button:hover {
     background-color: #003559;
 }
+.delete-button {
+    background-color: #006DAA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
 
-  
-  
-  
-  
+.delete-button:hover {
+    background-color: #003559;
+}
