@@ -29,7 +29,7 @@ async function loadSocios() {
     displaySocios(querySnapshot);
 }
 
-// Función para mostrar los socios en la tabla
+
 // Función para mostrar los socios en la tabla
 var miid = "";
 var e = "";
