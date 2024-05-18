@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "firebase": "^10.11.1"
+    "firebase": "^10.11.1",
+    "node-mailjet": "^6.0.5"
   }
 }
