@@ -28,6 +28,7 @@
 
 /* Estilos para el contenido desplegable */
 .dropdown-content {
+    list-style: none;
     display: none;
     position: absolute;
     background-color: #003559; /* Fondo a juego con el menú principal */

@@ -37,4 +37,5 @@ document.getElementById('formularioSocio').addEventListener('submit', async func
         console.error('Error al registrar el socio:', error);
         alert('Error al registrar el socio: ' + error.message);
     }
+
 });

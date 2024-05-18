@@ -156,12 +156,12 @@ width: 100%; /* Ajusta el ancho de los botones al ancho del modal */
   font-size: 16px; 
   color: #B9D6F2; 
   font-weight: bold; 
-  margin-left: 50px; 
+  margin-left: 130px; 
 }
 
 .filtro #filterStatus {
   width: 15%; 
-  margin-left: 50px; 
+  margin-left: 130px; 
   padding: 8px 12px; 
   border: 1px solid #ccc; 
   border-radius: 4px; 
