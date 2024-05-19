@@ -38,7 +38,7 @@ async function cargarReservas(idSocio) {
 }
 
 const fechaActual = new Date();
-fechaActual.setDate(fechaActual.getDate() - 1); // un dia menos
+fechaActual.setDate(fechaActual.getDate()); 
 const fechaMinima = fechaActual.toISOString().split('T')[0];
 document.getElementById('fechaReserva').setAttribute('min', fechaMinima); // Establecer la fecha mínima
 
