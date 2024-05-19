@@ -74,6 +74,14 @@ function displaySocios(snapshot) {
         editButton.classList.add('edit-button');
         editButton.addEventListener('click', () => {
             // Lógica para editar
+            miid = doc.id;
+            console.log("llegue aqui " + doc.id + " = " + miid);
+            const data = doc.data();
+            document.getElementById('editNombre').value = data.nombre;
+            document.getElementById('editApellidos').value = data.apellidos;
+            document.getElementById('editCorreo').value = data.correo;
+            document.getElementById('editTelefono').value = data.telefono;
+            document.getElementById('modal').style.display = 'block';
         });
         editCell.appendChild(editButton);
 
@@ -83,6 +91,12 @@ function displaySocios(snapshot) {
         deleteButton.classList.add('delete-button');
         deleteButton.addEventListener('click', async () => {
             // Lógica para eliminar
+            const confirmDelete = confirm("¿Estás seguro de que deseas dar de baja al socio?");
+            if (confirmDelete) {
+                await updateDoc(doc(db, "Socios", doc.id), { status: 'Inactivo' });
+                alert("Socio dado de baja con éxito.");
+                loadSocios();
+            }
         });
         deleteCell.appendChild(deleteButton);
 
