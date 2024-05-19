@@ -17,7 +17,7 @@ exports.enviarCorreoBienvenida = functions.firestore
                 Messages: [{
                     From: {
                         Email: "tzluquingo@ittepic.edu.mx",
-                        Name: "Club Deportivo del Valle"
+                        Name: "Gerencia del club deportivo del valle"
                     },
                     To: [{
                         Email: email,

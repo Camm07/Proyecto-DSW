@@ -36,12 +36,40 @@ document.getElementById('formularioSocio').addEventListener('submit', async func
             fotoPerfil: defaultImageUrl  // Asigna la URL de la imagen por defecto
         });
         console.log('Socio registrado con éxito, Document ID:', docRef.id);
-        sessionStorage.setItem('socioDocId', docRef.id);  // Guardar el ID del documento para uso posterior
-        alert('Socio registrado con éxito');
-        document.getElementById('formularioSocio').reset(); // Limpia el formulario después de un registro exitoso
+        sessionStorage.setItem('socioDocId', docRef.id); // Guardar el ID del documento para uso posterior
+         // Enviar el correo de bienvenida
+         const correoEnviado = await enviarCorreoBienvenida(nombre, correo);
+         alert('Socio registrado con éxito y correo de bienvenida enviado.');
+         
+        document.getElementById('formularioSocio').reset();// Limpia el formulario después de un registro exitoso
+        
+
     } catch (error) {
         console.error('Error al registrar el socio:', error);
         alert('Error al registrar el socio: ' + error.message);
     }
+
+    
 });
+
+async function enviarCorreoBienvenida(nombre, email) {
+    try {
+        const response = await fetch('http://localhost:3000/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nombre, email })
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            console.log('Correo de bienvenida enviado con éxito:', data);
+        } else {
+            throw new Error('Error al enviar el correo de bienvenida');
+        }
+    } catch (error) {
+        console.error('Error al enviar el correo de bienvenida:', error);
+    }
+}
 
