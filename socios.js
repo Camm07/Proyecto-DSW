@@ -32,7 +32,7 @@ document.getElementById('formularioSocio').addEventListener('submit', async func
             telefono: telefono,
             tipo: "socio",
             uid: user.uid, // Guarda el UID proporcionado por Firebase Authentication
-            status: "activo",
+            status: "Activo",
             fotoPerfil: defaultImageUrl  // Asigna la URL de la imagen por defecto
         });
         console.log('Socio registrado con éxito, Document ID:', docRef.id);
