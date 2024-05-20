@@ -1,7 +1,7 @@
 // verSocios.js
 // Importa Firebase modules
 import { db } from './app.js';
-import { collection, query, where, getDocs, updateDoc,doc } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+import { collection, query, where, getDocs, updateDoc,doc,getFirestore } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
 
 // Función para cargar y mostrar todos los socios
@@ -34,7 +34,7 @@ async function loadSocios() {
 var miid = "";
 var e = "";
 
-function displaySocios(snapshot) {
+async function displaySocios(snapshot) {
     const table = document.getElementById('sociosTable');
     let tbody = table.querySelector('tbody');
     if (!tbody) {
@@ -44,8 +44,10 @@ function displaySocios(snapshot) {
         tbody.innerHTML = ''; // Limpiar la tabla antes de añadir nuevos resultados
     }
 
-    snapshot.forEach(doc => {
-        const data = doc.data();
+    const db = getFirestore(); // Obtén la referencia a la base de datos
+
+    snapshot.forEach(docSnapshot => {
+        const data = docSnapshot.data();
         const row = document.createElement('tr');
 
         const imgCell = document.createElement('td');
@@ -74,9 +76,9 @@ function displaySocios(snapshot) {
         editButton.classList.add('edit-button');
         editButton.addEventListener('click', () => {
             // Lógica para editar
-            miid = doc.id;
-            console.log("llegue aqui " + doc.id + " = " + miid);
-            const data = doc.data();
+            miid = docSnapshot.id;
+            console.log("llegue aqui " + docSnapshot.id + " = " + miid);
+            const data = docSnapshot.data();
             document.getElementById('editNombre').value = data.nombre;
             document.getElementById('editApellidos').value = data.apellidos;
             document.getElementById('editCorreo').value = data.correo;
@@ -93,7 +95,8 @@ function displaySocios(snapshot) {
             // Lógica para eliminar
             const confirmDelete = confirm("¿Estás seguro de que deseas dar de baja al socio?");
             if (confirmDelete) {
-                await updateDoc(doc(db, "Socios", doc.id), { status: 'Inactivo' });
+                const docRef = doc(db, "Socios", docSnapshot.id); // Obtén la referencia al documento
+                await updateDoc(docRef, { status: 'Inactivo' });
                 alert("Socio dado de baja con éxito.");
                 loadSocios();
             }
