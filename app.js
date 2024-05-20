@@ -27,19 +27,25 @@ async function handleLogin(email, password) {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
-        // Primero verifica si el usuario es un administrador
+        // Verifica si el usuario es un administrador
         const userRef = doc(db, "Usuario", user.uid);
         const userSnap = await getDoc(userRef);
         if (userSnap.exists() && userSnap.data().tipo === "administrador") {
             window.location.href = 'inicioAdmin.html';
         } else {
-            // Si no es administrador, verifica si es un socio usando el UID
+            // Si no es administrador, verifica si es un socio
             const socioRef = query(collection(db, "Socios"), where("uid", "==", user.uid));
             const socioSnap = await getDocs(socioRef);
             if (!socioSnap.empty) {
                 const socioDoc = socioSnap.docs[0];
-                sessionStorage.setItem('socioDocId', socioDoc.id);  // Almacena el ID del documento para uso posterior
-                window.location.href = 'inicioSocio.html';
+                const socioData = socioDoc.data();
+                if (socioData.status === "Activo") {
+                    sessionStorage.setItem('socioDocId', socioDoc.id);  // Almacena el ID del documento para uso posterior
+                    window.location.href = 'inicioSocio.html';
+                } else {
+                    alert("Tu cuenta está inactiva. Por favor, contacta al administrador para más información.");
+                    auth.signOut(); // Opcional: Desconecta al usuario
+                }
             } else {
                 throw new Error("Datos del socio no encontrados en Firestore.");
             }
@@ -63,4 +69,3 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("El formulario de login no está presente en esta página.");
     }
 });
-
