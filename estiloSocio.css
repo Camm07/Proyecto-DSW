@@ -27,14 +27,35 @@ header {
     width: auto; /* Mantiene la proporción del logo */
 }
 
+html{
+    background-color: #000;
+}
+
+.menu-icon-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    right: 70px; /* Ajusta la posición del contenedor */
+    z-index: 1000;
+}
+
 .menu-icon {
     height: 30px;
     width: auto;
-    cursor: pointer;
-    position: absolute; /* Asegura que el ícono sea posicionado relativamente al contenedor más cercano con posición relativa o absoluta */
-    top: 10px;
-    right: 50px; /* Reducido de 20px a 10px para mover el ícono más a la izquierda */
-    z-index: 1000;
+}
+
+.menu-text {
+    font-family: 'Arial', sans-serif;
+    color: white;
+    font-size: 18px;
+    margin-left: 10px;
+    transition: color 0.3s ease;
+}
+
+.menu-icon-container:hover .menu-text {
+    color: #ccc; /* Cambia el color al pasar el mouse */
 }
 
 .overlay {
@@ -49,11 +70,11 @@ header {
 }
 
 .side-menu {
-    width: 300px;
+    width: 250px; /* Reduce el ancho del menú para una apariencia más elegante */
     height: 100%;
     position: fixed;
     top: 0;
-    right: -300px;
+    right: -250px;
     background-color: #000;
     color: white;
     padding: 50px 20px;
@@ -83,39 +104,17 @@ header {
     color: #ccc;
 }
 
-.vanguardia-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #003559;
-    color: #ffffff;
-    padding: 20px;
-    margin-top: 150px; /* Ajuste para compensar el header fijo */
-}
-
-.vanguardia-header {
-    width: 30%; /* Ajusta según necesidad */
-}
-
-.vanguardia-content {
-    display: flex;
-    width: 70%; /* Ajusta según necesidad */
-}
-
-.vanguardia-content img {
-    width: calc(33.333% - 10px); /* Tres imágenes, espacio entre ellas */
-    margin: 0 5px; /* Margen para separar las imágenes */
-}
-
-h3, p, h2 {
-    color: white; /* Asegura la visibilidad del texto */
-}
 .bienvenido-container {
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
-    padding: 10px 0; /* Agrega algo de espacio vertical sin exagerar */
-    margin-top: 80px; /* Ajusta este valor según sea necesario para alinear bajo el header */
+    padding: 5px 0; /* Agrega algo de espacio vertical sin exagerar */
+    margin-top: 100px; /* Ajusta este valor según sea necesario para alinear bajo el header */
+    /*width: 80%;*/
+    /*max-width: 1200px;
+    min-width: 300px; /* Ancho mínimo */
+    height: 60px;
+    max-height: 60px; /* Altura máxima */
 }
 
 h2 {
@@ -127,8 +126,69 @@ h2 {
     margin: 20px 0; /* Ajusta el margen para definir el espacio alrededor del texto */
 }
 
-
-
 .vanguardia-section {
-    margin-top: 50px; /* Aumenta este valor si es necesario */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Usa space-between para separar los elementos */
+    background-color: #003559;
+    color: #ffffff;
+    padding: 40px 20px; /* Aumenta el padding para mayor espacio */
+    margin-top: 30px; /* Ajuste para compensar el header fijo */
+}
+
+.vanguardia-header {
+    width: 40%; /* Ajusta según necesidad */
+}
+
+.vanguardia-content {
+    display: flex;
+    width: 50%; /* Ajusta según necesidad */
+    justify-content: space-between; /* Distribuye las imágenes uniformemente */
+    margin-bottom: 30px;
+}
+
+/*.vanguardia-content img {
+    width: calc(33.333% - 10px); /* Tres imágenes, espacio entre ellas */
+   /* margin: 0 5px; /* Margen para separar las imágenes */
+/*}
+*/
+h3, p, h2 {
+    color: white; /* Asegura la visibilidad del texto */
+}
+#carouselExampleIndicators {
+    max-width: 600px;
+    max-height: 300px;
+    margin-left: 50px; /* Centra el carrusel horizontalmente */
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  #carouselExampleIndicators .carousel-inner {
+    max-height: 400px;
+  }
+  #carouselExampleIndicators .carousel-inner img {
+    object-fit: cover;
+    height: 100%;
+  }
+footer{
+    background-color: #000;
+}
+
+footer div{
+    display: flex;
+    flex-direction: row;
+    margin-left: 360px;
+    padding-top: 20px;
+}
+#iconoface{
+    width: 25px;
+    height: 25px;
+    margin-left: 30px;
+}
+#p2{
+    margin-left: 30px;
+}
+#iconosmenu{
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
 }

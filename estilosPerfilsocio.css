@@ -63,9 +63,10 @@ html {
     border-radius: 10px; /* Bordes redondeados */
     margin: 20px auto; /* Margen superior e inferior automático y centrado horizontal */
     padding: 30px; /* Espaciado interno */
-    max-width: 600px; /* Ancho máximo del contenedor */
+    max-width: 400px; /* Ancho máximo del contenedor */
     align-items: center;
     justify-content: center; /* Centrado horizontal */
+
 }
 
 /* Estilo de la imagen del perfil */
@@ -78,7 +79,7 @@ html {
 
 /* Estilos para el formulario */
 .perfil-info {
-    margin-left: 20px; /* Margen izquierdo para separar del avatar */
+    margin-left: 100px; /* Margen izquierdo para separar del avatar */
 }
 
 .info-campo {
@@ -101,9 +102,27 @@ html {
     color: #333; /* Color del texto principal */
 }
 
+.info-campo input {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.info-campo input[disabled] {
+    font-weight: normal;
+    color: #666;
+    background-color: transparent;
+}
+
+
 /* Estilos para los botones */
 .botones {
     text-align: center; /* Alineación centrada */
+    margin-right: 100px;
 }
 
 .botones button {
@@ -119,3 +138,48 @@ html {
 .botones button:hover {
     background-color: #003559; /* Cambio de color al pasar el mouse */
 }
+
+/* Estilos para el menú desplegable */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #003559;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #f0f0f0;
+}
+
+.dropdown-content a:hover {
+    background-color: #f0f0f0;
+    color: #003559;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover img {
+    opacity: 0.8;
+}
+
+#profileImage {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+    transition: opacity 0.3s ease;
+}
+
