@@ -87,21 +87,28 @@ async function displaySocios(snapshot) {
         });
         editCell.appendChild(editButton);
 
-        const deleteCell = document.createElement('td');
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Eliminar';
-        deleteButton.classList.add('delete-button');
-        deleteButton.addEventListener('click', async () => {
-            // Lógica para eliminar
-            const confirmDelete = confirm("¿Estás seguro de que deseas dar de baja al socio?");
-            if (confirmDelete) {
-                const docRef = doc(db, "Socios", docSnapshot.id); // Obtén la referencia al documento
-                await updateDoc(docRef, { status: 'Inactivo' });
-                alert("Socio dado de baja con éxito.");
-                loadSocios();
-            }
+         // Botón de eliminar o reactivar
+         const actionCell = document.createElement('td');
+         const actionButton = document.createElement('button');
+         actionButton.textContent = data.status === 'Activo' ? 'Eliminar' : 'Reactivar';
+         actionButton.classList.add(data.status === 'Activo' ? 'delete-button' : 'reactivate-button');
+         actionButton.addEventListener('click', async () => {
+             if (data.status === 'Activo') {
+                 if (confirm("¿Estás seguro de que deseas dar de baja al socio?")) {
+                     await updateDoc(doc(db, "Socios", docSnapshot.id), { status: 'Inactivo' });
+                     alert("Socio dado de baja con éxito.");
+                     loadSocios();
+                 }
+             } else {
+                 if (confirm("¿Deseas reactivar a este socio?")) {
+                     await updateDoc(doc(db, "Socios", docSnapshot.id), { status: 'Activo' });
+                     alert("Socio reactivado con éxito.");
+                     loadSocios();
+                 }
+             }
         });
-        deleteCell.appendChild(deleteButton);
+        
+        actionCell.appendChild(actionButton);
 
         row.appendChild(imgCell);
         row.appendChild(nameCell);
@@ -109,7 +116,7 @@ async function displaySocios(snapshot) {
         row.appendChild(phoneCell);
         row.appendChild(statusCell);
         row.appendChild(editCell);
-        row.appendChild(deleteCell);
+        row.appendChild(actionCell);
 
         tbody.appendChild(row);
     });
