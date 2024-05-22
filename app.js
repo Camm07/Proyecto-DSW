@@ -31,6 +31,7 @@ async function handleLogin(email, password) {
         const userRef = doc(db, "Usuario", user.uid);
         const userSnap = await getDoc(userRef);
         if (userSnap.exists() && userSnap.data().tipo === "administrador") {
+            sessionStorage.setItem('userName', userSnap.data().correo); // Almacena el nombre del administrador
             window.location.href = 'inicioAdmin.html';
         } else {
             // Si no es administrador, verifica si es un socio
@@ -40,6 +41,7 @@ async function handleLogin(email, password) {
                 const socioDoc = socioSnap.docs[0];
                 const socioData = socioDoc.data();
                 if (socioData.status === "Activo") {
+                    sessionStorage.setItem('userName', socioData.nombre);
                     sessionStorage.setItem('socioDocId', socioDoc.id);  // Almacena el ID del documento para uso posterior
                     window.location.href = 'inicioSocio.html';
                 } else {

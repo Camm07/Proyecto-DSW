@@ -12,6 +12,7 @@
 </head>
 <header>
     <img src="imagenes/logoClubDelValle-removebg-preview.png" alt="Logo Club Deportivo del Valle" class="logo">
+    <h1 style="margin-right: 1100px;font-size: 18px;"><span id="userName"></span></h1>
     <div class="menu-icon-container" onclick="toggleMenu()">
         <img src="imagenes/menu-de-puntos.png" alt="Menú" class="menu-icon">
         <span class="menu-text">Menú</span>
@@ -88,6 +89,18 @@
         </nav>
     </div>
     
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const userName = sessionStorage.getItem('userName');
+          if(userName==null){window.location.href = 'index.html';}
+          if (userName) {
+              document.getElementById('userName').textContent = userName;
+          } else {
+              console.error('Nombre de usuario no encontrado en sessionStorage xddd');
+          }
+      });
+  </script>
+
 </body>
 <footer>
     <div>

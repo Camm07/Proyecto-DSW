@@ -18,6 +18,7 @@
 <body>
     <header>
         <h1>Club Deportivo del Valle</h1>
+        <h1 style="margin-right: 1100px;font-size: 18px;"><span id="userName"></span></h1>
     </header>
     <nav>
         <ul class="menu">
@@ -71,6 +72,17 @@
     </div>
     <script type="module" src="authGuard.js"></script>
     <script type="module" src="verSolicitudes.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userName = sessionStorage.getItem('userName');
+            if(userName==null){window.location.href = 'index.html';}
+            if (userName) {
+                document.getElementById('userName').textContent = userName;
+            } else {
+                console.error('Nombre de usuario no encontrado en sessionStorage');
+            }
+        });
+    </script>
 </body>
 </html>
 
