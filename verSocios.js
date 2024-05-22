@@ -90,6 +90,7 @@ async function displaySocios(snapshot) {
          // Botón de eliminar o reactivar
          const actionCell = document.createElement('td');
          const actionButton = document.createElement('button');
+         actionButton.classList.add('edit-button');
          actionButton.textContent = data.status === 'Activo' ? 'Eliminar' : 'Reactivar';
          actionButton.classList.add(data.status === 'Activo' ? 'delete-button' : 'reactivate-button');
          actionButton.addEventListener('click', async () => {
