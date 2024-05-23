@@ -42,6 +42,7 @@ async function handleLogin(email, password) {
                 const socioData = socioDoc.data();
                 if (socioData.status === "Activo") {
                     sessionStorage.setItem('userName', socioData.nombre);
+                    document.getElementById('profileImage', socioData.id); 
                     sessionStorage.setItem('socioDocId', socioDoc.id);  // Almacena el ID del documento para uso posterior
                     window.location.href = 'inicioSocio.html';
                 } else {

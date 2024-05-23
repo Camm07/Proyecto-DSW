@@ -3,7 +3,33 @@ import { db, storage } from './app.js';
 import { doc, getDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 import { ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js';
 
+
+async function loadProfileImage() {
+    const socioDocId = sessionStorage.getItem('socioDocId');
+    if (socioDocId) {
+        const socioDocRef = doc(db, "Socios", socioDocId);
+        const docSnap = await getDoc(socioDocRef);
+        if (docSnap.exists()) {
+            const socioData = docSnap.data();
+            const profileImage = document.getElementById('profileImage');
+            const userName = document.getElementById('userName');
+            if (profileImage) {
+                profileImage.src = socioData.fotoPerfil || 'imagenes/socio.png';
+            }
+            if (userName) {
+                userName.textContent = socioData.nombre;
+            }
+        } else {
+            console.error('Documento del socio no encontrado.');
+        }
+    } else {
+        console.error('ID del documento del socio no encontrado en sessionStorage.');
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async function() {
+    await loadProfileImage();
+
     const socioDocId = sessionStorage.getItem('socioDocId');
     if (socioDocId) {
         const socioDocRef = doc(db, "Socios", socioDocId);
