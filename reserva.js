@@ -10,8 +10,9 @@ const reservasTableBody = document.querySelector('#reservasTable tbody');
 
 document.addEventListener('DOMContentLoaded', function() {
     const idSocio = sessionStorage.getItem('socioDocId');
+
     if (idSocio) {
-        document.getElementById('idSocio').value = idSocio;
+        document.getElementById('idSocio').value = idSocio;      
         cargarReservas(idSocio);
     } else {
         console.log("ID del socio no encontrado en sessionStorage");
@@ -50,12 +51,21 @@ formularioReserva.addEventListener('submit', async function(event) {
 
     if (!idSocio) {
         console.error("No se pudo recuperar el ID del socio");
-        messageDiv.textContent = "Error al enviar la reserva: No se pudo recuperar el ID del socio";
+        messageDiv.textContent = "Error al enviar la reserva: No se pudo recuperar el ID, el correo o el nombre del socio";
         messageDiv.style.color = "red";
         return;
     }
-
-    try {
+    // Obtener los datos del socio desde Firestore
+    const socioRef = doc(db, "Socios", idSocio);
+    const socioDoc = await getDoc(socioRef);
+    if (!socioDoc.exists()) {
+        throw new Error("Socio no encontrado");
+    }
+    const socioData = socioDoc.data();
+    const correoSocio = socioData.correo;
+    const nombreSocio = socioData.nombre;
+    const contraseña = socioData.contraseña;
+    try{
         await addDoc(collection(db, "Coleccion_Reservacion"), {
             Id_Socio: idSocio,
             Espacio: espacio,
@@ -70,6 +80,7 @@ formularioReserva.addEventListener('submit', async function(event) {
         setTimeout(function() {
             messageDiv.textContent = "";
         }, 5000);
+    
     } catch (error) {
         console.error("Error al enviar la reserva: ", error);
         messageDiv.textContent = "Error al enviar la reserva.";

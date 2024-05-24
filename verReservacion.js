@@ -28,7 +28,7 @@ async function cargarReservaciones(estatus = 'Todos') {
         const data = docSnapshot.data();
         const socioRef = doc(db, "Socios", data.Id_Socio);
         return getDoc(socioRef).then(socioDoc => {
-            const socioData = socioDoc.exists() ? socioDoc.data() : { nombre: "Nombre no disponible", apellidos: "" };
+            const socioData = socioDoc.exists() ? socioDoc.data() : { nombre: "Nombre no disponible", apellidos: "" ,correo:""};
             return {
                 id: docSnapshot.id,
                 socioData,
@@ -98,15 +98,64 @@ function mostrarModal(reservaId, data, nombreSocio) {
 
 // Función para autorizar o rechazar reservas
 async function autorizarReserva(reservaId, aceptar) {
-    const comentario = document.getElementById('commentBox').value;
-    const reservaRef = doc(db, "Coleccion_Reservacion", reservaId);
-    await updateDoc(reservaRef, {
-        Estatus: aceptar ? "Aprobada" : "Rechazada",
-        Comentario: comentario
-    });
-    cerrarModal();
-    cargarReservaciones(document.getElementById('filterStatus').value);
+    try {
+        const comentario = document.getElementById('commentBox').value;
+        const reservaRef = doc(db, "Coleccion_Reservacion", reservaId);
+        
+        // Obtener los datos de la reserva
+        const reservaDoc = await getDoc(reservaRef);
+        if (!reservaDoc.exists()) {
+            throw new Error('No se encontró la reservación');
+        }
+        const reservaData = reservaDoc.data();
+        
+        // Obtener los datos del socio
+        const socioRef = doc(db, "Socios", reservaData.Id_Socio);
+        const socioDoc = await getDoc(socioRef);
+        if (!socioDoc.exists()) {
+            throw new Error('No se encontró el socio');
+        }
+
+        const socioData = socioDoc.data();
+        
+        // Actualizar el estado de la reserva
+        await updateDoc(reservaRef, {
+            Estatus: aceptar ? "Aprobada" : "Rechazada",
+            Comentario: comentario
+        });
+
+        const estatus = aceptar ? "Aprobada" : "Rechazada";
+
+        // Enviar correo al socio
+        const response = await fetch('http://localhost:3000/correo-reservacion', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nombre: socioData.nombre,
+                email: socioData.correo,
+                espacio: reservaData.Espacio,
+                fechaReservacion: reservaData.Fecha_Reservacion,
+                comentario: comentario,
+                estatus: estatus
+            })
+        });
+
+        if (!response.ok) {
+            console.error('Error al enviar el correo de notificación:', response.statusText);
+        } else {
+            console.log('Correo de notificación enviado con éxito');
+        }
+
+        cerrarModal();
+        cargarReservaciones(document.getElementById('filterStatus').value);
+
+    } catch (error) {
+        console.error('Error en el proceso de autorizar reserva:', error.message);
+    }
 }
+
 
 function cerrarModal() {
     document.getElementById('modal').style.display = 'none';

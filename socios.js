@@ -60,7 +60,14 @@ document.getElementById('formularioSocio').addEventListener('submit', async func
 
             // Guardar el ID del documento en sessionStorage
             sessionStorage.setItem('socioDocId', docRef.id);
+            sessionStorage.setItem('socioCorreo', correo);
+            sessionStorage.setItem('socioNombre', nombre);
 
+            console.log('Datos almacenados en sessionStorage:', {
+                id: docRef.id,
+                correo: correo,
+                nombre: nombre
+            });
             // Enviar el correo de bienvenida
             const correoEnviado = await enviarCorreoBienvenida(nombre, correo);
             alert('Socio registrado con éxito y correo de bienvenida enviado.');

@@ -94,6 +94,33 @@ async function atenderSolicitud(solicitudId, aceptar) {
             Estatus: aceptar ? "Atendida" : "Rechazada",
             Comentario: comentario // Agregar el comentario a la colección
         });
+
+        // Obtener los datos del socio
+        const solicitudDoc = await getDoc(solicitudRef);
+        const solicitudData = solicitudDoc.data();
+        const socioRef = doc(db, "Socios", solicitudData.Id_Socio);
+        const socioDoc = await getDoc(socioRef);
+        const socioData = socioDoc.data();
+
+        // Enviar correo al socio
+        const response = await fetch('http://localhost:3000/correo-solicitud', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nombre: socioData.nombre,
+                email: socioData.correo,
+                comentario: comentario,
+                estatus: aceptar ? "Atendida" : "Rechazada"
+            })
+        });
+
+        if (!response.ok) {
+            console.error('Error al enviar el correo de notificación:', response.statusText);
+        } else {
+            console.log('Correo de notificación enviado con éxito');
+        }
         alert('La solicitud ha sido actualizada.');
         cerrarModal();
         cargarSolicitudes(document.getElementById('filterStatus').value); // Refrescar la lista de solicitudes
