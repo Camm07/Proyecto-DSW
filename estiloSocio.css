@@ -101,20 +101,39 @@ html{
   }
 
   /* Estilos para el submenú */
-.submenu {
+  .submenu {
     display: none; /* Oculto por defecto */
     list-style-type: none;
-    padding-left: 20px; /* Indentación del submenú */
-    background-color: #fff; /* Color de fondo del submenú */
-    border-left: 2px solid #000; /* Línea para separar el submenú */
+    padding: 5px; /* Reducción de padding para hacerlo más compacto */
+    background-color: #000; /* Color de fondo del submenú */
+    border-left: 2px solid #e18426; /* Línea para separar el submenú */
+    width: 100px; /* Ajusta el ancho del submenú a un valor más estrecho */
+    position: absolute; /* Posiciona el submenú fuera del flujo del documento principal */
+    left: 100%; /* Coloca el submenú a la derecha del menú principal */
+    top: 19%; /* Alinea la parte superior del submenú con la parte superior del menú principal */
 }
 
 .menu li:hover .submenu {
     display: block; /* Mostrar submenú al pasar el ratón */
+    background-color: #c25d27;
+    border-left: 2px solid #0095E9; 
+    color: #000;
 }
 
 .opciones-submenu {
-    padding: 5px 20px;
+    padding: 5px; /* Padding reducido para elementos del submenú */
+    color: #fff; /* Color del texto */
+    display: block; /* Asegura que los enlaces del submenú ocupen toda la línea */
+    font-size: 14px; /* Tamaño de fuente más pequeño para un diseño más compacto */
+}
+
+#bosubme{
+    color: #fff;
+}
+
+#bosubme:hover{
+    background-color: #0095E9;
+    
 }
 
 .overlay {
