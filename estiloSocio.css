@@ -8,7 +8,7 @@ body {
 }
 header {
     width: calc(100% - 250px); /* Deja espacio para el menú lateral */
-    background-color: white; /* Color de fondo para el header */
+    background-color: #fff; /* Color de fondo para el header */
     text-align: left;
     float: left;
     position: fixed;
@@ -77,10 +77,28 @@ html{
     align-items: center;
 }
 
-.menu li a:hover {
+.opciones:hover {
     background-color: #024873;
     border-radius: 4px;
 }
+
+
+#inicio{
+    background-color: #fff;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+#inicio::before {
+    top: -10px; /* Mitad de la altura del pseudo-elemento */
+    right: -10px; /* Mitad del ancho del pseudo-elemento */
+    border-top-right-radius: 20px;
+  }
+
+#inicio::after {
+    bottom: -10px;
+    right: -10px;
+    border-bottom-right-radius: 20px;
+  }
 
 .overlay {
     display: none; /* Por defecto oculto */
@@ -133,14 +151,58 @@ html{
 
 .bienvenido-container {
     width: 100%; /* Ajusta según necesidad */
-    height: 700px; /* Aumenta la altura para más espacio */
+    height: 600px; /* Aumenta la altura para más espacio */
     background-color: #fff;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     padding-left: 20%;
+    padding-top: 8%;
 }
 
+#avi{
+    font-family: 'Roboto', sans-serif; /* Aplica la tipografía elegida */
+    font-weight: 600; /* Roboto en su variante más gruesa */
+    font-size: 1.5rem; /* Ajusta el tamaño según necesites */
+    color: #fff; /* Color del texto para buen contraste */
+    margin-left: 47%;
+}
+
+#avicont{
+    width: 97%;
+    height: 40px;
+    background-color: #0095E9;
+    padding-top: 6px;
+}
+
+#eventos-cont {
+    width: 100%; /* Ajusta según necesidad */
+    height: 600px; /* Aumenta la altura para más espacio */
+    background-color: #fff;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20%;
+    padding-top: 3%;
+}
+
+#eve{
+    font-family: 'Roboto', sans-serif; /* Aplica la tipografía elegida */
+    font-weight: 600; /* Roboto en su variante más gruesa */
+    font-size: 1.5rem; /* Ajusta el tamaño según necesites */
+    color: #fff; /* Color del texto para buen contraste */
+    margin-left: 47%;
+}
+
+#evecont{
+    width: 97%;
+    height: 40px;
+    background-color: #0095E9;
+    padding-top: 6px;
+}
+
+
+/*'''''''''''CAROUSEL'''''''''*/
 .vanguardia-header {
     width: 30%; /* Ajusta según necesidad */
     margin-left: 250px;

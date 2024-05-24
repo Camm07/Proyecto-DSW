@@ -30,17 +30,20 @@
           <ul class="menu">
             <center><img id="profileImage" src="imagenes/socio.png" alt="Perfil" /></center>
             <center><li><h1 style="font-size: 18px;"><span id="userName"></span></h1></li></center>
-            <li><a href="inicioSocio.html"><img id="iconosmenu" src="imagenes/pagina-de-inicio.png">Inicio</a></li>
-            <li><a href="paginaSolicitud.html"><img id="iconosmenu" src="imagenes/solicitud.png">Solicitud</a></li>
-            <li><a href="perfilSocio.html"><img id="iconosmenu" src="imagenes/usuario.png">Perfil</a></li>
-            <li><a href="paginaReservacion.html"><img id="iconosmenu" src="imagenes/reserva.png">Reservacion</a></li>
+            <li id="inicio"><a href="inicioSocio.html" style="color: black;"><img id="iconosmenu" src="imagenes/pagina-de-inicio2.png">Inicio</a></li>
+            <li><a class="opciones" href="paginaSolicitud.html"><img id="iconosmenu" src="imagenes/solicitud.png">Solicitud</a></li>
+            <li><a class="opciones" href="perfilSocio.html"><img id="iconosmenu" src="imagenes/usuario.png">Perfil</a></li>
+            <li><a class="opciones" href="paginaReservacion.html"><img id="iconosmenu" src="imagenes/reserva.png">Reservacion</a></li>
             <br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <li><a style="background-color: #730602;" href="#" onclick="cerrarSesion(); return false;"><img id="iconosmenu" src="imagenes/cerrar-sesion.png">Cerrar Sesión</a></li>
+            <li><a style="background-color: #8a3e3e;" href="#" onclick="cerrarSesion(); return false;"><img id="iconosmenu" src="imagenes/cerrar-sesion.png">Cerrar Sesión</a></li>
           </ul>
       </nav>
   </div>
 
   <div class="bienvenido-container">
+    <div id="avicont">
+        <h1 id="avi">AVISOS</h1>
+    </div>
     <div class="vanguardia-content">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
             <div class="carousel-indicators">
@@ -82,6 +85,12 @@
         </div>
     </div>
 </div>
+
+    <div id="eventos-cont">
+        <div id="evecont">
+            <h1 id="eve">EVENTOS</h1>
+        </div>
+    </div>
 
   
 
