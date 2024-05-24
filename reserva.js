@@ -64,7 +64,7 @@ formularioReserva.addEventListener('submit', async function(event) {
     const socioData = socioDoc.data();
     const correoSocio = socioData.correo;
     const nombreSocio = socioData.nombre;
-    const contraseña = socioData.contraseña;
+  
     try{
         await addDoc(collection(db, "Coleccion_Reservacion"), {
             Id_Socio: idSocio,
@@ -74,6 +74,25 @@ formularioReserva.addEventListener('submit', async function(event) {
             Comentario: "",
             Estatus: "Pendiente",
         });
+
+        const response = await fetch('http://localhost:3000/correo-reserva', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nombre: nombreSocio,
+                email: correoSocio,
+                espacio: espacio,
+                fechaReservacion: fechaIn
+            })
+        });
+
+        if (!response.ok) {
+            console.error('Error al enviar el correo de notificación:', response.statusText);
+        } else {
+            console.log('Correo de notificación enviado con éxito');
+        }
         messageDiv.textContent = "Tu reserva fue enviada exitosamente.";
         cargarReservas(idSocio); // Recargar la lista de reservas para ver la nueva añadida
 

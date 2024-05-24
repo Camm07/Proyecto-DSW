@@ -1,6 +1,7 @@
 // solicitud.js
 import { db } from './app.js';
-import { collection, addDoc, serverTimestamp, getDocs, query, where } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+import { collection, addDoc, serverTimestamp, getDocs, query, where, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+
 
 const formulario = document.getElementById('formularioSolicitud');
 const messageDiv = document.querySelector('.message');
@@ -46,6 +47,16 @@ formulario.addEventListener('submit', async function(event) {
         return;
     }
 
+// Obtener los datos del socio desde Firestore
+const socioRef = doc(db, "Socios", idDocumentoSocio);
+const socioDoc = await getDoc(socioRef);
+if (!socioDoc.exists()) {
+    throw new Error("Socio no encontrado");
+}
+const socioData = socioDoc.data();
+const correoSocio = socioData.correo;
+const nombreSocio = socioData.nombre;
+
     try {
         await addDoc(collection(db, "Coleccion_Solicitud"), {
             Id_Socio: idDocumentoSocio,
@@ -54,6 +65,24 @@ formulario.addEventListener('submit', async function(event) {
             Comentario: "",
             Fecha_Hora_Atendida: serverTimestamp(),
         });
+
+        const response = await fetch('http://localhost:3000/correo-soli', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nombre: nombreSocio,
+                email: correoSocio,
+                comentario: descripcion,
+            })
+        });
+
+        if (!response.ok) {
+            console.error('Error al enviar el correo de notificación:', response.statusText);
+        } else {
+            console.log('Correo de notificación enviado con éxito');
+        }
         messageDiv.textContent = "Tu solicitud fue enviada exitosamente.";
         loadSolicitudes(idDocumentoSocio);  // Recargar la lista de solicitudes
 

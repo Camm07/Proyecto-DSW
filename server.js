@@ -41,26 +41,29 @@ app.post('/send-email', (req, res) => {
     });
 });
 
-/*
-// correo reservaciones
+//correo reservaciones socio
+app.post('/correo-reserva', (req, res) => {
+    const { nombre, email, espacio, fechaReservacion} = req.body;
 
-app.post('/reserve', (req, res) => {
-    const { idSocio, espacio, fechaIn, email, nombre,contraseña } = req.body;
     const transporter = nodemailer.createTransport({
-        service: 'gmail', // Puedes usar otro servicio de correo si lo prefieres
+        service: 'hotmail', 
         auth: {
-            user: email, 
-            pass: contraseña 
+            user: "clubdelvalleproyecto@hotmail.com", // Correo del socio
+            pass: 'ProyectoClub123456' // Contraseña del socio
         }
     });
-    // Datos del administrador
-    const adminEmail = 'clubdelvalleproyecto@hotmail.com'; // Reemplaza con el correo del administrador
 
     const mailOptions = {
-        from: email,
-        to: adminEmail,
-        subject: 'Nueva Reserva Realizada',
-        text: `Estimado Administrador,\n\nEl socio ${nombre} (${email}) ha realizado una reserva.\n\nDetalles de la reserva:\n- Espacio: ${espacio}\n- Fecha: ${fechaIn}\n\nSaludos,\nClub Deportivo del Valle`
+        from: "clubdelvalleproyecto@hotmail.com",
+        to: 'clubdelvalleproyecto@hotmail.com', // Correo del administrador
+        subject: `Nueva Reservación de ${email}`,
+        text: `Estimado Administrador,
+
+        El socio ${nombre} con (${email}) ha realizado una reservación.
+
+        Detalles de la reservación
+        Espacio: ${espacio}
+        Fecha de Reservación: ${fechaReservacion}`
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -68,12 +71,47 @@ app.post('/reserve', (req, res) => {
             console.error('Error al enviar el correo:', error);
             res.status(500).send('Error al enviar el correo');
         } else {
-            console.log('Correo enviado:', info.response);
-            res.status(200).send('Reserva creada y correo enviado con éxito');
+            console.log('Correo enviado con éxito:', info.response);
+            res.status(200).send('Correo enviado con éxito');
         }
     });
 });
-*/
+
+//correo reservaciones socio
+app.post('/correo-soli', (req, res) => {
+    const { nombre, email, comentario} = req.body;
+
+    const transporter = nodemailer.createTransport({
+        service: 'hotmail', 
+        auth: {
+            user: "clubdelvalleproyecto@hotmail.com", // Correo del socio
+            pass: 'ProyectoClub123456' // Contraseña del socio
+        }
+    });
+
+    const mailOptions = {
+        from: "clubdelvalleproyecto@hotmail.com",
+        to: 'clubdelvalleproyecto@hotmail.com', // Correo del administrador
+        subject: `Nueva Reservación de ${email}`,
+        text: `Estimado Administrador,
+
+        El socio ${nombre} con (${email}) ha realizado una solicitud.
+
+        Detalles de la solicitud
+        Comentario: ${comentario}`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error al enviar el correo:', error);
+            res.status(500).send('Error al enviar el correo');
+        } else {
+            console.log('Correo enviado con éxito:', info.response);
+            res.status(200).send('Correo enviado con éxito');
+        }
+    });
+});
+
 //enviarcorreo administrador reservaciones
 app.post('/correo-reservacion', (req, res) => {
     const { nombre, email, espacio, fechaReservacion, comentario, estatus } = req.body;
