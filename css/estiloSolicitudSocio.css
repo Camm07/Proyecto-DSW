@@ -1,97 +1,341 @@
-html {
-    margin: 0;
+body {
     font-family: Arial, sans-serif;
     background-color: #061A40;
+    color: white;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita desbordamiento horizontal */
+}
+header {
+    width: calc(100% - 250px); /* Deja espacio para el menú lateral */
+    background-color: #fff; /* Color de fondo para el header */
+    text-align: left;
+    float: left;
+    position: fixed;
+    top: 0;
+    left: 250px; /* Mueve el header a la derecha del menú */
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Añade una sombra para separar el header */
+}
+.title {
+    font-family: 'Roboto', sans-serif; /* Aplica la tipografía elegida */
+    font-weight: 600; /* Roboto en su variante más gruesa */
+    font-size: 2rem; /* Ajusta el tamaño según necesites */
+    color: #000; /* Color del texto para buen contraste */
+    margin-left: 40%;
+    /*text-shadow: 
+        -1px -1px 0 #EC5D00,  
+        1px -1px 0 #EC5D00,  
+        -1px 1px 0 #EC5D00,  
+        1px 1px 0 #EC5D00; /* Sombra azul para simular el borde */
+}
+html{
+    background-color: #f5f5f5;
+}
+.logo {
+    height: 60px; /* Ajusta la altura del logo */
+    width: auto; /* Mantiene la proporción del logo */
+    margin-left: 20%;
+}
+
+/*''''''''''''DISEÑO MENU'''''''''''''''*/
+#iconosmenu {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.side-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #1a1a1a;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Añade una sombra para separar el menú */
+    z-index: 999;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 10px 20px;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.opciones:hover {
+    background-color: #024873;
+    border-radius: 4px;
+}
+
+
+#inicio{
+    background-color: #fff;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+#inicio::before {
+    top: -10px; /* Mitad de la altura del pseudo-elemento */
+    right: -10px; /* Mitad del ancho del pseudo-elemento */
+    border-top-right-radius: 20px;
   }
 
-header h1 {
-    color: #B9D6F2;
-    padding: 20px;
-    text-align: center;
-    font-size: 50px;
+#inicio::after {
+    bottom: -10px;
+    right: -10px;
+    border-bottom-right-radius: 20px;
+  }
+
+  /* Estilos para el submenú */
+  .submenu {
+    display: none; /* Oculto por defecto */
+    list-style-type: none;
+    padding: 5px; /* Reducción de padding para hacerlo más compacto */
+    background-color: #000; /* Color de fondo del submenú */
+    border-left: 2px solid #e18426; /* Línea para separar el submenú */
+    width: 100px; /* Ajusta el ancho del submenú a un valor más estrecho */
+    position: absolute; /* Posiciona el submenú fuera del flujo del documento principal */
+    left: 100%; /* Coloca el submenú a la derecha del menú principal */
+    top: 19%; /* Alinea la parte superior del submenú con la parte superior del menú principal */
 }
 
-body { 
-    font-family: Arial, sans-serif; 
+.menu li:hover .submenu {
+    display: block; /* Mostrar submenú al pasar el ratón */
+    background-color: #c25d27;
+    border-left: 2px solid #0095E9; 
+    color: #000;
 }
 
-.container { 
-    width: 100%; 
-    max-width: 750px; 
-    margin: 50px auto; 
-    padding: 20px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    background-color: #0353A4; /* Color de fondo de las ventanas modales */
-    border-radius: 8px; 
-    text-align: center;
-    color: #B9D6F2; /* Color del texto */
+.opciones-submenu {
+    padding: 5px; /* Padding reducido para elementos del submenú */
+    color: #fff; /* Color del texto */
+    display: block; /* Asegura que los enlaces del submenú ocupen toda la línea */
+    font-size: 14px; /* Tamaño de fuente más pequeño para un diseño más compacto */
 }
 
-input, textarea, button { 
-    width: 100%; 
-    padding: 10px; 
-    margin-top: 10px; 
-    margin-bottom: 20px; 
-    border-radius: 5px; 
-    background-color: #B9D6F2; /* Color de fondo de los inputs y botones */
-    color: #003559; /* Color del texto de los inputs y botones */
-    border: 1px solid #ccc; 
+#bosubme{
+    color: #fff;
 }
 
-button { 
-    background-color: #006DAA; /* Color de fondo del botón principal */
-    color: #B9D6F2; /* Color del texto del botón principal */
-    border: none; 
-    cursor: pointer; 
-}
-
-button:hover { 
-    background-color: #003559; /* Color de fondo del botón principal al pasar el cursor */
-}
-
-.message { 
-    /*color: green;*/
-    color: #4CAF50; 
-    font-weight: bold;
-    margin-bottom: 20px; 
-}
-
-table { 
-    width: 100%; 
-    border-collapse: collapse; 
-    margin-top: 20px; 
-}
-
-th, td { 
-    border: 1px solid #ddd; 
-    padding: 8px; 
-    text-align: left; 
-}
-
-th { 
-    background-color: #0353A4; /* Color de fondo de las cabeceras de las tablas */
-    color: #B9D6F2; /* Color del texto de las cabeceras de las tablas */
-}
-input[type="date"] {
-    width: 50%; /* Ancho del input de fecha */
-    margin: 0 auto; /* Centra el input horizontalmente */
-    display: block; /* Convierte el input en un elemento de bloque para aplicar márgenes automáticos */
-}
-select {
-    width: 50%; /* Ancho del combobox */
-    margin: 0 auto; /* Centra el combobox horizontalmente */
-    padding: 10px; /* Espaciado interno */
-    border-radius: 5px; /* Borde redondeado */
-    background-color: #B9D6F2; /* Color de fondo */
-    color: #003559; /* Color del texto */
-    border: 1px solid #ccc; /* Borde */
+#bosubme:hover{
+    background-color: #0095E9;
     
+}
+
+.overlay {
+    display: none; /* Por defecto oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    z-index: 998;
+}
+
+.menu-icon-container {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.menu-text {
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    header {
+        width: 100%; /* En pantallas pequeñas, el header ocupa el 100% del ancho */
+        left: 0;
+    }
+
+    .side-menu {
+        width: 100%; /* El menú lateral ocupa el 100% del ancho en pantallas pequeñas */
+        height: auto;
+        display: none; /* Por defecto oculto en pantallas pequeñas */
+    }
+
+    .menu-icon-container {
+        display: block; /* Muestra el icono del menú en pantallas pequeñas */
+    }
+}
+#userName{
+    color: white;
+}
+#profileImage {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+    transition: opacity 0.3s ease;
+}
+
+/*''''''''''''''''''DISEÑO CONTENIDO'''''''''''''''''''*/
+
+.bienvenido-container {
+    width: 100%;
+    height: auto;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 25%;
+    padding-top: 8%;
+    padding-right: 5%;
+}
+/*''''''''''''''''Pagina para tabla solicitud''''''''*/
+
+/* Contenedor del contenido */
+.container {
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    color: #000;
+    /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+}
+#subtitu{
+    font-family: 'Roboto', sans-serif; /* Aplica la tipografía elegida */
+    font-weight: 600; /* Roboto en su variante más gruesa */
+    font-size: 1.5rem;
+}
+
+/* Estilos para los inputs, textarea y botones */
+input, textarea, button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #333;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+#botonenvio {
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    font-family: inherit;
+    width: 30%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Mensajes */
+.message {
+    color: #28a745;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Centrado de la tabla */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #333;
+    font-family: inherit;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #343a40;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e9ecef;
+}
+
+input[type="date"], select {
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #333;
+    border: 1px solid #ccc;
+    font-family: inherit;
 }
 
 /* Estilo para las opciones del combobox */
 select option {
-    background-color: #B9D6F2; /* Color de fondo de las opciones */
-    color: #003559; /* Color del texto de las opciones */
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+/*''''''''''DISEÑO FOOTER'''''''''''''''''*/
+
+
+footer {
+    background-color: #666769;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {
+    margin: 0 10px;
+}
+
+#iconoface {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+#p2 {
+    margin-left: 10px;
 }
 
   

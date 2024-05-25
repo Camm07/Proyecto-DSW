@@ -12,9 +12,11 @@ async function loadProfileImage() {
         if (docSnap.exists()) {
             const socioData = docSnap.data();
             const profileImage = document.getElementById('profileImage');
+            const profileImage1 = document.getElementById('profileImage1');
             const userName = document.getElementById('userName');
-            if (profileImage) {
+            if (profileImage || profileImage1) {
                 profileImage.src = socioData.fotoPerfil || 'imagenes/socio.png';
+                profileImage1.src = socioData.fotoPerfil || 'imagenes/socio.png';
             }
             if (userName) {
                 userName.textContent = socioData.nombre;
@@ -44,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     }
 
-    document.getElementById('changeProfilePic').addEventListener('click', function() {
+    document.getElementById('profileImage1').addEventListener('click', function() {
         document.getElementById('fileInput').click();
     });
 
