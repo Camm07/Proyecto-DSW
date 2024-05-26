@@ -1,0 +1,562 @@
+html {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #061A40; 
+  }
+  
+  .header-logo {
+    position: fixed;  /* Fija el logo para que se mantenga en posición al hacer scroll */
+    top: 10px;  /* Distancia desde el borde superior de la ventana */
+    left: 20px;  /* Distancia desde el borde izquierdo de la ventana */
+    z-index: 1000;  /* Asegura que el logo se muestre sobre otros elementos */
+  }
+  
+  .header-logo img {
+    height: 50px;  /* Altura del logo, ajusta según tus necesidades */
+    width: auto;  /* Mantiene la proporción del logo automáticamente */
+  }
+  
+  .menu-button {
+    position: fixed;  /* Fija el botón del menú para que se mantenga en posición al hacer scroll */
+    top: 10px;  /* Distancia desde el borde superior de la ventana */
+    right: 20px;  /* Distancia desde el borde derecho de la ventana */
+    z-index: 1000;  /* Asegura que el botón del menú se muestre sobre otros elementos */
+    
+  }
+  
+  .menu-button img {
+    cursor: pointer;
+    height: 30px;  /* Altura del botón del menú, ajusta según tus necesidades */
+    width: auto;  /* Mantiene la proporción del botón automáticamente */
+  }
+  
+  /* Estilo para el menú deslizante */
+  .sidenav {
+    height: 100%;  /* Altura completa de la pantalla */
+    width: 0;      /* Ancho inicial cuando el menú está cerrado */
+    position: fixed;  /* Posicionamiento fijo */
+    z-index: 1;    /* Asegura que el menú se despliegue sobre el contenido */
+    top: 0;
+    left: 0;
+    background-color: #111;  /* Fondo negro para el menú */
+    overflow-x: hidden;  /* Oculta el contenido horizontalmente fuera del menú */
+    transition: 0.5s;  /* Suaviza la transición del menú */
+    padding-top: 60px;  /* Espacio en la parte superior */
+  }
+  
+  /* Estilo para los ítems del menú */
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Botón para cerrar el menú */
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  
+  #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #c5601a; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 2s ease-in-out;
+  }
+  
+  #main-content {
+      display: none;
+  }
+  
+  .hero-image {
+    height: 100vh;  /* Altura completa de la ventana */
+    width: 100%;    /* Ancho completo */
+    background-image: url('IMG/fondoValle.jpg');
+    background-position: center center; /* Centra la imagen */
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center; /* Alineación vertical al centro */
+    justify-content: center; /* Alineación horizontal al centro */
+    text-align: center; /* Asegura que el texto dentro esté centrado */
+    flex-direction: column; /* Elementos organizados en columna */
+  }
+  
+  .hero-text {
+    padding: 20px; /* Añade algo de padding alrededor del texto */
+     /* Fondo semitransparente para mejorar la legibilidad */
+    color: white; /* Texto blanco para contrastar con el fondo oscuro */
+    border-radius: 8px; /* Bordes redondeados para el contenedor del texto */
+    max-width: 800px; /* Controla la anchura máxima del texto para evitar líneas demasiado largas */
+    margin: auto; /* Centra el bloque de texto horizontalmente */
+  }
+  
+  .hero-text p {
+    text-align: justify; /* Justifica el texto */
+    text-justify: inter-word; /* Ajusta el justificado para mejorar el espaciado */
+    font-size: 18px; /* Tamaño del texto */
+    line-height: 1.6; /* Espaciado entre líneas para mejorar la legibilidad */
+    font-size: 20px;
+  }
+  
+  .hero-text h1{
+    font-size: 60px;
+  }
+  
+  
+  
+  
+  #social {
+    position: fixed;  /* Fija la barra de íconos para que se mantenga visible al hacer scroll */
+    bottom: 20px;  /* Coloca la barra de íconos 20px por encima del borde inferior de la pantalla */
+    left: 50%;  /* Posiciona la barra de íconos al 50% del lado izquierdo, en el centro horizontal */
+    transform: translateX(-50%); /* Desplaza la barra de íconos a la izquierda en un 50% de su ancho, centrando exactamente en el medio */
+    z-index: 1000;  /* Asegura que los íconos estén sobre otros elementos */
+  }
+  
+  .social-icon {
+    display: inline-block;
+    border-radius: 50%;  /* Hace que los íconos sean completamente redondos */
+    background: #98833b;  /* Color de fondo general (puedes personalizar cada uno como antes) */
+    padding: 8px;  /* Espacio alrededor del ícono */
+    margin: 5px;  /* Espacio entre íconos */
+    color: white;  /* Color del ícono */
+    text-align: center;
+    width: 30px;  /* Ancho fijo */
+    height: 30px;  /* Altura fija */
+    font-size: 16px;  /* Tamaño del ícono */
+  }
+  
+  /* Colores específicos para cada red social, si se mantiene el diseño anterior */
+  .fa-facebook-f { background: #3b5998; }
+  .fa-instagram { background: #E1306C; }
+  .fa-twitter { background: #1DA1F2; }
+  .fa-youtube { background: #FF0000; }
+  
+  .social-icon:hover {
+    opacity: 0.9;  /* Efecto de transparencia al pasar el ratón */
+  }
+  
+  .social-icon:active {
+    transform: scale(0.9);  /* Efecto de reducción al hacer clic */
+  }
+  
+  .social-icon img {
+    width: 100%;  /* Asegura que la imagen cubra todo el círculo */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 50%; /* Hace que la imagen sea circular */
+  }
+  
+  .vanguard-section {
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #061A40; /* Color de fondo igual al del HTML */
+    border-radius: 8px;
+    color: white; /* Cambia el color del texto a blanco para contraste */
+  }
+  
+  .vanguard-section h2 {
+    color: #E0E0E0; /* Color más claro para el título */
+    font-size: 24px;
+  }
+  
+  .vanguard-section p {
+    color: #B0C4DE; /* Color más claro para la descripción */
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .vanguard-images img {
+    height: 500px; /* Altura fija para todas las imágenes */
+    width: auto; /* Anchura se ajusta automáticamente para mantener la proporción */
+    margin: 0 10px;
+    border-radius: 8px;
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+    transition: transform 0.3s ease;
+  }
+  
+  .vanguard-images img:hover {
+    transform: scale(1.05);
+  }
+  
+  .section-container {
+    display: flex;
+    align-items: center; /* Alinea los ítems verticalmente en el centro */
+    justify-content: space-between; /* Espacia los ítems uniformemente */
+    background-color: #061A40; /* Color de fondo del contenedor */
+    padding: 20px; /* Espacio alrededor del contenido */
+    color: white; /* Color de texto */
+  }
+  
+  .section-title {
+    font-size: 24px; /* Tamaño del título */
+    margin-right: 20px; /* Margen derecho para espacio entre título y descripción */
+    white-space: nowrap; /* Asegura que el título esté en una sola línea */
+  }
+  
+  .section-description {
+    flex: 1; /* Permite que la descripción ocupe el espacio restante */
+    font-size: 18px; /* Tamaño de la descripción */
+  }
+  
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .spacer {
+    height: 40px; /* Ajusta este valor según el espacio que desees */
+    width: 100%;
+  }
+  
+  .section-container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    background-color: #061A40; 
+    padding: 20px; 
+    color: white; 
+    border-radius: 8px;
+    margin: 20px auto;
+  }
+  
+  .section-image {
+    width: 50%;
+  }
+  
+  .section-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .section-content {
+    width: 45%;
+    padding: 20px;
+  }
+  
+  .section-title {
+    font-size: 30px;
+    margin-bottom: 20px;
+    margin-left: 110px;
+  }
+  
+  .section-description {
+    font-size: 18px;
+    margin-bottom: 20px;
+  
+  }
+  
+  .section-button {
+    background-color: #8FCB9B;
+    color: #061A40;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .section-button:hover {
+    background-color: #76B482;
+  }
+  
+  
+  /* Estilo para el contenedor de planes */
+  .plans-container {
+    text-align: center;
+    background-color: #061A40; /* Asegúrate que el color de fondo coincida con tu diseño */
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Estilo para el texto descriptivo debajo del título */
+  .section-description {
+    text-align: justify;
+    text-justify: inter-word;
+    margin: auto; /* Centra el bloque de texto horizontalmente */
+    max-width: 800px; /* Controla la anchura máxima del texto para evitar líneas demasiado largas */
+  }
+  
+  /* Estilo para los contenedores de cada plan */
+  .plan {
+    margin: 20px;
+    display: inline-block;
+    width: 30%;
+    vertical-align: top; /* Alinea los elementos verticalmente desde la parte superior */
+  }
+  
+  /* Estilo para las imágenes de los planes */
+  .plan img {
+    width: 100%;  /* Mantiene el ancho al 100% para igualar el tamaño */
+    height: 450px; /* Fija un alto constante para todas las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+    border-radius: 8px;
+  }
+  
+  /* Estilo para los botones bajo cada imagen */
+  .plan-button {
+    background-color: #8FCB9B;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+    width: 100%; /* Hace que el botón tenga el ancho completo del contenedor .plan */
+  }
+  
+  .plan-button:hover {
+    background-color: #76B482;
+  }
+  
+  /* Estilo para la información detallada que se muestra al hacer clic */
+  .plan-info {
+    text-align: left;
+    padding: 10px;
+    background-color: #fefefe;
+    color: #333;
+    border-radius: 8px;
+    margin-top: 10px;
+    display: none; /* Inicialmente oculto */
+  }
+  
+  
+  .custom-container {
+    position: fixed;
+    bottom: 50px; /* Se posiciona en la parte inferior de la página */
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    transform: translateY(110%); /* Ajustado para ocultar completamente el contenedor más abajo */
+    transition: transform 0.5s ease-in-out;
+    z-index: 1000;
+  }
+  
+  /* Clase para mostrar el contenedor */
+  .show-container {
+    transform: translateY(-10%); /* Ajustado para que el contenedor aparezca más arriba */
+  }
+  
+  .section {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .section h2 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  
+  button {
+    padding: 15px 40px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    width: auto;
+  }
+  
+  button:hover {
+    background-color: #45A049;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .fira-sans-thin {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .fira-sans-extralight {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  .fira-sans-light {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .fira-sans-regular {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .fira-sans-medium {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .fira-sans-semibold {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .fira-sans-bold {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .fira-sans-extrabold {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  .fira-sans-black {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .fira-sans-thin-italic {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .fira-sans-extralight-italic {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+  }
+  
+  .fira-sans-light-italic {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .fira-sans-regular-italic {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .fira-sans-medium-italic {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .fira-sans-semibold-italic {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+  }
+  
+  .fira-sans-bold-italic {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .fira-sans-extrabold-italic {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+  }
+  
+  .fira-sans-black-italic {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+  
+  
+  
+  
+  

@@ -1,0 +1,6 @@
+body {
+    margin: 0; /* Elimina los márgenes predeterminados del navegador */
+    height: 100vh; /* Asegura que el body tome al menos el alto completo de la pantalla */
+    background: url('IMG/sitio-en-construccion.png') no-repeat center center fixed; /* Ajusta 'tu-imagen.jpg' al nombre de tu imagen */
+    background-size: cover; /* Asegura que la imagen cubra todo el espacio disponible sin distorsionarse */
+}
