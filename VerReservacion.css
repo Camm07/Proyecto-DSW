@@ -195,22 +195,26 @@ html{
     padding-left: 25%;
     padding-top: 8%;
     padding-right: 5%;
+
 }
 /*''''''''''''''''Pagina para tabla solicitud''''''''*/
 
 /* Contenedor del contenido */
 /* Contenedor del contenido */
 .container {
-    width: 90%; /* Ajusta el porcentaje según el diseño general que necesites */
-    max-width: 1200px; /* Asegúrate de establecer un max-width adecuado */
+    width: 100%;
+    max-width: 1200px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     border-radius: 8px;
     text-align: center;
     color: #000;
-    margin-right: 500px; /* Aumenta este valor para mover la tabla más a la derecha */
+    position: absolute; /* Cambia a 'fixed' si deseas que sea en relación a la ventana */
+    right: 0; /* Ajusta según necesites para mover hacia la derecha */
 }
+
+
 
 #subtitu{
     font-family: 'Roboto', sans-serif; /* Aplica la tipografía elegida */
