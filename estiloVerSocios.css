@@ -1,173 +1,556 @@
-html {
-    margin: 0;
+body {
     font-family: Arial, sans-serif;
     background-color: #061A40;
+    color: white;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita desbordamiento horizontal */
+}
+header {
+    width: calc(100% - 250px); /* Deja espacio para el menú lateral */
+    background-color: #fff; /* Color de fondo para el header */
+    text-align: left;
+    float: left;
+    position: fixed;
+    top: 0;
+    left: 250px; /* Mueve el header a la derecha del menú */
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Añade una sombra para separar el header */
+}
+.title {
+    font-family: 'Roboto', sans-serif; /* Aplica la tipografía elegida */
+    font-weight: 600; /* Roboto en su variante más gruesa */
+    font-size: 2rem; /* Ajusta el tamaño según necesites */
+    color: #000; /* Color del texto para buen contraste */
+    margin-left: 40%;
+    /*text-shadow: 
+        -1px -1px 0 #EC5D00,  
+        1px -1px 0 #EC5D00,  
+        -1px 1px 0 #EC5D00,  
+        1px 1px 0 #EC5D00; /* Sombra azul para simular el borde */
+}
+html{
+    background-color: #f5f5f5;
+}
+.logo {
+    height: 60px; /* Ajusta la altura del logo */
+    width: auto; /* Mantiene la proporción del logo */
+    margin-left: 20%;
 }
 
-header h1 {
-    color: #B9D6F2;
-    padding: 20px;
-    text-align: center;
-    font-size: 50px;
+/*''''''''''''DISEÑO MENU'''''''''''''''*/
+#iconosmenu {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }
 
-h2 {
-    color: #B9D6F2;
+.side-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #1a1a1a;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Añade una sombra para separar el menú */
+    z-index: 999;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 10px 20px;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.opciones:hover {
+    background-color: #024873;
+    border-radius: 4px;
+}
+
+
+#inicio{
+    background-color: #fff;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+#inicio::before {
+    top: -10px; /* Mitad de la altura del pseudo-elemento */
+    right: -10px; /* Mitad del ancho del pseudo-elemento */
+    border-top-right-radius: 20px;
+  }
+
+#inicio::after {
+    bottom: -10px;
+    right: -10px;
+    border-bottom-right-radius: 20px;
+  }
+
+  /* Estilos para el submenú */
+  .submenu {
+    display: none; /* Oculto por defecto */
+    list-style-type: none;
+    padding: 5px; /* Reducción de padding para hacerlo más compacto */
+    background-color: #000; /* Color de fondo del submenú */
+    border-left: 2px solid #e18426; /* Línea para separar el submenú */
+    width: 100px; /* Ajusta el ancho del submenú a un valor más estrecho */
+    position: absolute; /* Posiciona el submenú fuera del flujo del documento principal */
+    left: 100%; /* Coloca el submenú a la derecha del menú principal */
+    top: 19%; /* Alinea la parte superior del submenú con la parte superior del menú principal */
+}
+
+.menu li:hover .submenu {
+    display: block; /* Mostrar submenú al pasar el ratón */
+    background-color: #c25d27;
+    border-left: 2px solid #0095E9; 
+    color: #000;
+}
+
+.opciones-submenu {
+    padding: 5px; /* Padding reducido para elementos del submenú */
+    color: #fff; /* Color del texto */
+    display: block; /* Asegura que los enlaces del submenú ocupen toda la línea */
+    font-size: 14px; /* Tamaño de fuente más pequeño para un diseño más compacto */
+}
+
+#bosubme{
+    color: #fff;
+}
+
+#bosubme:hover{
+    background-color: #0095E9;
+    
+}
+
+.overlay {
+    display: none; /* Por defecto oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    z-index: 998;
+}
+
+.menu-icon-container {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.menu-text {
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    header {
+        width: 100%; /* En pantallas pequeñas, el header ocupa el 100% del ancho */
+        left: 0;
+    }
+
+    .side-menu {
+        width: 100%; /* El menú lateral ocupa el 100% del ancho en pantallas pequeñas */
+        height: auto;
+        display: none; /* Por defecto oculto en pantallas pequeñas */
+    }
+
+    .menu-icon-container {
+        display: block; /* Muestra el icono del menú en pantallas pequeñas */
+    }
+}
+#userName{
+    color: white;
+}
+#profileImage {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+    transition: opacity 0.3s ease;
+}
+
+/*''''''''''''''''''DISEÑO CONTENIDO'''''''''''''''''''*/
+
+.bienvenido-container {
+    width: 100%; /* Ajusta según necesidad */
+    height: 600px; /* Aumenta la altura para más espacio */
+    background-color: #f5f5f5;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20%;
+    padding-top: 8%;
+}
+
+#avi{
+    font-family: 'Roboto', sans-serif; /* Aplica la tipografía elegida */
+    font-weight: 600; /* Roboto en su variante más gruesa */
+    font-size: 1.5rem; /* Ajusta el tamaño según necesites */
+    color: #fff; /* Color del texto para buen contraste */
+    margin-left: 47%;
+}
+
+#avicont{
+    width: 97%;
+    height: 40px;
+    background-color: #0095E9;
+    padding-top: 6px;
+}
+
+#eventos-cont {
+    width: 100%; /* Ajusta según necesidad */
+    height: 600px; /* Aumenta la altura para más espacio */
+    background-color: #f5f5f5;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20%;
+    padding-top: 3%;
+}
+
+#eve{
+    font-family: 'Roboto', sans-serif; /* Aplica la tipografía elegida */
+    font-weight: 600; /* Roboto en su variante más gruesa */
+    font-size: 1.5rem; /* Ajusta el tamaño según necesites */
+    color: #fff; /* Color del texto para buen contraste */
+    margin-left: 47%;
+}
+
+#evecont{
+    width: 97%;
+    height: 40px;
+    background-color: #0095E9;
+    padding-top: 6px;
+}
+
+.miContenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh; 
+}
+.card {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 4px 8px var(--color-azul-claro);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .card-body {
     padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+
+  }
+  
+  .card-text {
+    font-size: 1em;
+  }
+
+  .button {
+    position: relative;
+    width: 175px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px solid #34974d;
+    background-color: #3aa856;
+  }
+  
+  .button, .button__icon, .button__text {
+    transition: all 0.3s;
+  }
+  
+  .button .button__text {
+    transform: translateX(30px);
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .button .button__icon {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: #34974d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+  }
+  
+  .button .svg {
+    width: 30px;
+    stroke: #fff;
+  }
+  
+  .button:hover {
+    background: #34974d;
+  }
+  
+  .button:hover .button__text {
+    color: transparent;
+  }
+  
+  .button:hover .button__icon {
+    width: 148px;
+    transform: translateX(0);
+  }
+  
+  .button:active .button__icon {
+    background-color: #2e8644;
+  }
+  
+  .button:active {
+    border: 1px solid #2e8644;
+  }
+
+/*'''''''''''CAROUSEL'''''''''*/
+.vanguardia-header {
+    width: 30%; /* Ajusta según necesidad */
+    margin-left: 250px;
+    margin-right: 60px;
+}
+
+.vanguardia-content {
+    display: flex;
+    width: 60%; /* Ajusta según necesidad */
+    justify-content: space-between; /* Distribuye las imágenes uniformemente */
+    /*margin-top: 50%; /* Ajusta según necesidad */
+    
+}
+
+h3, p {
+    color: white; /* Asegura la visibilidad del texto */
+}
+
+#carouselExampleIndicators {
+    max-width: 1000px; /* Aumenta el ancho máximo del carrusel */
+    margin: 20px auto; /* Centra el carrusel horizontalmente */
+}
+
+#carouselExampleIndicators .carousel-inner {
+    max-height: 600px; /* Aumenta la altura máxima del carrusel */
+}
+
+#carouselExampleIndicators .carousel-inner img {
+    object-fit: cover;
+    height: 100%;
+}
+
+#carouselExampleIndicators .carousel-caption {
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mejor legibilidad */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.vanguardia-section {
+    width: 100%;
+    padding: 40px 20px; /* Aumenta el padding para mayor espacio */
+    margin-top: 30px; /* Ajuste para compensar el header fijo */
+    background: radial-gradient(ellipse, orangered, transparent, orange) orange;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: orange;
+    display: flex;
+    float: right;
+    color: #ffffff;
+}
+
+.vanguardia-header {
+    margin-bottom: 20px;
+}
+
+.vanguardia-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/*''''''''''DISEÑO FOOTER'''''''''''''''''*/
+
+
+footer {
+    background-color: #666769;
+    color: white;
     text-align: center;
-    font-size: 35px;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {
+    margin: 0 10px;
+}
+
+#iconoface {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+#p2 {
+    margin-left: 10px;
+}
+
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
 }
 
 .centered-container {
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    margin: 20px; 
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .filter-container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 30px;
-    width: 100%;
-    max-width: 500px;
     margin-bottom: 20px;
 }
 
 .input-group {
-    position: relative;
     display: flex;
     align-items: center;
-    flex-grow: 1;
+    gap: 10px;
 }
 
-.input-group .icon {
-    position: absolute;
-    left: 10px;
+.icon {
+    fill: #666;
     width: 24px;
     height: 24px;
-    fill: #171717;
 }
 
-.input-group .input {
+.input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Estilos para la tabla */
+table {
     width: 100%;
-    padding: 5px 5px 5px 40px;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    outline: none;
-    background-color: #B9D6F2;
-    color: #0d0c22;
-    box-shadow: 0 0 5px #B9D6F2, 0 0 0 10px #f5f5f5eb;
-    transition: .3s ease;
-}
-
-.input-group .input::placeholder {
-    color: #171717;
-}
-
-select {
-    padding: 3px;
-    font-size: 16px;
-    border: 2px solid transparent;
-    border-radius: 8px;
-   
-    color: #0d0c22;
-   
-    transition: .3s ease;
-}
-
-#sociosTable {
-    width: 100%;
-    max-width: 80%;
     border-collapse: collapse;
-    margin: 20px auto;
 }
 
-#sociosTable th, #sociosTable td {
+th, td {
     text-align: left;
-    padding: 12px;
-    border-bottom: 2px solid #0353A4;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
 }
 
-#sociosTable thead {
-    background-color: #0353A4;
-    color: #B9D6F2;
+th {
+    background-color: #f0f0f0;
 }
 
-#sociosTable th {
-    font-size: 16px;
+tr:hover {
+    background-color: #f9f9f9;
 }
 
-#sociosTable td {
-    background-color: #B9D6F2;
-    color: #003559;
-}
-
-#sociosTable tbody tr:hover {
-    background-color: #006DAA;
-    color: #B9D6F2;
+/* Estilos para la ventana modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
 .modal-content {
-    background-color: #0353A4;
-    padding: 30px;
-    margin: auto;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 500px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.modal-content input[type="text"],
-.modal-content input[type="email"],
-.modal-content input[type="password"],
-.modal-content input[type="tel"],
-.modal-content button {
+.close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"] {
     width: 100%;
     padding: 8px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-.modal-content label {
-    color: #B9D6F2;
-    padding-top: 10px;
-}
-
-.modal-content input[type="text"],
-.modal-content input[type="email"],
-.modal-content input[type="password"],
-.modal-content input[type="tel"] {
-    background-color: #B9D6F2;
-    color: #003559;
-    font-size: 14px;
-}
-
-.modal-content button {
-    background-color: #006DAA;
-    color: #B9D6F2;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.modal-content button:hover {
-    background-color: #003559;
-}
-.delete-button {
-    background-color: #006DAA;
+button {
+    background-color: #5cb85c;
     color: white;
+    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    padding: 12px 12px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
 }
 
-.delete-button:hover {
-    background-color: #003559;
+button:hover {
+    background-color: #4cae4c;
 }
+

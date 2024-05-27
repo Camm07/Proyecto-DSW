@@ -186,222 +186,130 @@ html{
 /*''''''''''''''''''DISEÑO CONTENIDO'''''''''''''''''''*/
 
 .bienvenido-container {
-    width: 100%; /* Ajusta según necesidad */
-    height: 600px; /* Aumenta la altura para más espacio */
-    background-color: #f5f5f5;
-    display: block;
-    justify-content: center;
-    align-items: center;
-    padding-left: 20%;
-    padding-top: 8%;
-}
-
-#avi{
-    font-family: 'Roboto', sans-serif; /* Aplica la tipografía elegida */
-    font-weight: 600; /* Roboto en su variante más gruesa */
-    font-size: 1.5rem; /* Ajusta el tamaño según necesites */
-    color: #fff; /* Color del texto para buen contraste */
-    margin-left: 47%;
-}
-
-#avicont{
-    width: 97%;
-    height: 40px;
-    background-color: #0095E9;
-    padding-top: 6px;
-}
-
-#eventos-cont {
-    width: 100%; /* Ajusta según necesidad */
-    height: 600px; /* Aumenta la altura para más espacio */
-    background-color: #f5f5f5;
-    display: block;
-    justify-content: center;
-    align-items: center;
-    padding-left: 20%;
-    padding-top: 3%;
-}
-
-#eve{
-    font-family: 'Roboto', sans-serif; /* Aplica la tipografía elegida */
-    font-weight: 600; /* Roboto en su variante más gruesa */
-    font-size: 1.5rem; /* Ajusta el tamaño según necesites */
-    color: #fff; /* Color del texto para buen contraste */
-    margin-left: 47%;
-}
-
-#evecont{
-    width: 97%;
-    height: 40px;
-    background-color: #0095E9;
-    padding-top: 6px;
-}
-
-.miContenedor{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60vh; 
-}
-.card {
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin: 20px;
-    box-shadow: 0 4px 8px var(--color-azul-claro);
-    transition: transform 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card img {
     width: 100%;
     height: auto;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-  }
-  
-  .card-body {
-    padding: 20px;
-  }
-  
-  .card-title {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    font-family: 'Roboto', sans-serif;
-
-  }
-  
-  .card-text {
-    font-size: 1em;
-  }
-
-  .button {
-    position: relative;
-    width: 175px;
-    height: 40px;
-    cursor: pointer;
+    background-color: #f5f5f5;
     display: flex;
+    justify-content: center;
     align-items: center;
+    padding-left: 25%;
+    padding-top: 8%;
+    padding-right: 5%;
+}
+/*''''''''''''''''Pagina para tabla solicitud''''''''*/
+
+/* Contenedor del contenido */
+/* Contenedor del contenido */
+.container {
+    width: 90%; /* Ajusta el porcentaje según el diseño general que necesites */
+    max-width: 1200px; /* Asegúrate de establecer un max-width adecuado */
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    color: #000;
+    margin-right: 500px; /* Aumenta este valor para mover la tabla más a la derecha */
+}
+
+#subtitu{
+    font-family: 'Roboto', sans-serif; /* Aplica la tipografía elegida */
+    font-weight: 600; /* Roboto en su variante más gruesa */
+    font-size: 1.5rem;
+}
+
+/* Estilos para los inputs, textarea y botones */
+input, textarea, button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #333;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+#botonenvio {
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    font-family: inherit;
+    width: 30%;
     border: 1px solid #34974d;
     background-color: #3aa856;
-  }
-  
-  .button, .button__icon, .button__text {
-    transition: all 0.3s;
-  }
-  
-  .button .button__text {
-    transform: translateX(30px);
-    color: #fff;
-    font-weight: 600;
-  }
-  
-  .button .button__icon {
-    position: absolute;
-    transform: translateX(109px);
-    height: 100%;
-    width: 39px;
-    background-color: #34974d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 20px;
-  }
-  
-  .button .svg {
-    width: 30px;
-    stroke: #fff;
-  }
-  
-  .button:hover {
-    background: #34974d;
-  }
-  
-  .button:hover .button__text {
-    color: transparent;
-  }
-  
-  .button:hover .button__icon {
-    width: 148px;
-    transform: translateX(0);
-  }
-  
-  .button:active .button__icon {
-    background-color: #2e8644;
-  }
-  
-  .button:active {
-    border: 1px solid #2e8644;
-  }
-
-/*'''''''''''CAROUSEL'''''''''*/
-.vanguardia-header {
-    width: 30%; /* Ajusta según necesidad */
-    margin-left: 250px;
-    margin-right: 60px;
 }
 
-.vanguardia-content {
-    display: flex;
-    width: 60%; /* Ajusta según necesidad */
-    justify-content: space-between; /* Distribuye las imágenes uniformemente */
-    /*margin-top: 50%; /* Ajusta según necesidad */
-    
+button:hover {
+    background-color: #0056b3;
 }
 
-h3, p {
-    color: white; /* Asegura la visibilidad del texto */
-}
-
-#carouselExampleIndicators {
-    max-width: 1000px; /* Aumenta el ancho máximo del carrusel */
-    margin: 20px auto; /* Centra el carrusel horizontalmente */
-}
-
-#carouselExampleIndicators .carousel-inner {
-    max-height: 600px; /* Aumenta la altura máxima del carrusel */
-}
-
-#carouselExampleIndicators .carousel-inner img {
-    object-fit: cover;
-    height: 100%;
-}
-
-#carouselExampleIndicators .carousel-caption {
-    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mejor legibilidad */
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.vanguardia-section {
-    width: 100%;
-    padding: 40px 20px; /* Aumenta el padding para mayor espacio */
-    margin-top: 30px; /* Ajuste para compensar el header fijo */
-    background: radial-gradient(ellipse, orangered, transparent, orange) orange;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-color: orange;
-    display: flex;
-    float: right;
-    color: #ffffff;
-}
-
-.vanguardia-header {
+/* Mensajes */
+.message {
+    color: #28a745;
+    font-weight: bold;
     margin-bottom: 20px;
 }
 
-.vanguardia-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Centrado de la tabla */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #333;
+    font-family: inherit;
+    text-align: center;
+}
 
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: center;
+    
+}
+
+th {
+    background-color: #343a40;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e9ecef;
+}
+
+input[type="date"], select {
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #333;
+    border: 1px solid #ccc;
+    font-family: inherit;
+}
+
+/* Estilo para las opciones del combobox */
+select option {
+    background-color: #f1f1f1;
+    color: #333;
+}
 
 /*''''''''''DISEÑO FOOTER'''''''''''''''''*/
 
@@ -436,5 +344,9 @@ footer p {
     margin-left: 10px;
 }
 
-
-
+.filtro {
+    display: flex;
+    /* Mantiene los elementos alineados a la derecha */
+    margin-left: 80px; /* Ajusta según sea necesario */
+    margin-top: 100px; /* Ajusta este valor para mover el filtro hacia abajo */
+}
