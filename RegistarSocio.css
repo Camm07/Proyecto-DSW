@@ -128,6 +128,13 @@ html{
     font-size: 14px; /* Tamaño de fuente más pequeño para un diseño más compacto */
 }
 
+.opciones-submenu {
+    padding: 5px; /* Padding reducido para elementos del submenú */
+    color: #fff; /* Color del texto */
+    display: block; /* Asegura que los enlaces del submenú ocupen toda la línea */
+    font-size: 14px; /* Tamaño de fuente más pequeño para un diseño más compacto */
+}
+
 #bosubme{
     color: #fff;
 }

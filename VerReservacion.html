@@ -32,7 +32,7 @@
             <ul class="menu">
               <center><img id="profileImage" src="imagenes/socio.png" alt="Perfil" /></center>
               <center><li><h1 style="font-size: 18px;"><span id="userName"></span></h1></li></center>
-              <li ><a href="inicioAdmin.html" ><img id="iconosmenu" src="imagenes/pagina-de-inicio2.png">Inicio</a>
+              <li ><a class="opciones" href="inicioAdmin.html" ><img id="iconosmenu" src="imagenes/pagina-de-inicio2.png">Inicio</a>
                   <ul class="submenu">
                       <li id="bosubme"><a href="#avi" class="opciones-submenu">Avisos</a></li>
                       <li id="bosubme"><a href="#evecont" class="opciones-submenu">Eventos</a></li>
@@ -53,13 +53,14 @@
             <h1 id="subtitu">Listado de reservaciones</h1>
             <div class="message"></div>
             <div class="filtro">
-                <label for="filterStatus"><h4>Filtrar por estatus:</h4></label>
+                <!--label for="filterStatus"><h4>Filtrar por estatus:</h4></label-->
                 <select id="filterStatus">
                     <option value="Todos">Todos</option>
                     <option value="Pendiente">Pendiente</option>
                     <option value="Aprobada">Aprobada</option>
                     <option value="Rechazada">Rechazada</option>
                 </select>
+                <br>
             </div>
             <table id="reservacionesList">
                 <thead>
@@ -101,6 +102,7 @@
         });
     </script>
 </body>
+<br><br><br><br><br><br><br><br><br><br>
 <footer>
     <div>
         <p>Reservados todos los derechos© 2024 @equipo2</p>

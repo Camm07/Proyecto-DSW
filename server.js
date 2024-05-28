@@ -77,7 +77,7 @@ app.post('/correo-reserva', (req, res) => {
     });
 });
 
-//correo reservaciones socio
+//correo solicitudes socio
 app.post('/correo-soli', (req, res) => {
     const { nombre, email, comentario} = req.body;
 
