@@ -20,12 +20,13 @@
 </head>
 <body>
     <header>
-    <h1>Registro de socios</h1>
-    <img src="imagenes/clublogo3.png" alt="Logo Club Deportivo del Valle" class="logo" >
-    <!--<div class="menu-icon-container" onclick="toggleMenu()">-->
+        <h1 class="title">Club del Valle</h1>
+      <img src="imagenes/clublogo3.png" alt="Logo Club Deportivo del Valle" class="logo" >
+        <!--<div class="menu-icon-container" onclick="toggleMenu()">-->
            <!-- <img src="imagenes/menu-de-puntos.png" alt="Menú" class="menu-icon">-->
-
-</header>
+            
+        </div>
+    </header>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -38,13 +39,18 @@
             <ul class="menu">
               <center><img id="profileImage" src="imagenes/socio.png" alt="Perfil" /></center>
               <center><li><h1 style="font-size: 18px;"><span id="userName"></span></h1></li></center>
-              <li><a class="opciones"  href="inicioAdmin.html"><img id="iconosmenu" src="imagenes/pagina-de-inicio.png">Inicio</a>
+              <li><a href="inicioAdmin.html"><img id="iconosmenu" src="imagenes/pagina-de-inicio2.png">Inicio</a>
+                  <ul class="submenu">
+                      <li id="bosubme"><a href="#avi" class="opciones-submenu" >Avisos</a></li>
+                      <li id="bosubme"><a href="#evecont" class="opciones-submenu" >Eventos</a></li>
+                  </ul>
               </li>
-              <li id="inicio"><a style="color: black;" href="registroSocios.html"><img id="iconosmenu" src="imagenes/solicitud2.png">Registrar socios</a></li>
-
+              <li id="inicio"><a style="color: black;" class="opciones" href="registroSocios.html"><img id="iconosmenu" src="imagenes/solicitud.png">Registrar Socios</a></li>
               <li><a class="opciones" href="verSocios.html"><img id="iconosmenu" src="imagenes/usuario.png">Listado de socios</a></li>
-              <li><a class="opciones" href="VerReservacion.html"><img id="iconosmenu" src="imagenes/reserva.png">Reservacion</a></li>
-              <br><br><br><br><br><br><br><br><br><br><br><br><br>
+              <li><a class="opciones" href="verSolicitudes.html"><img id="iconosmenu" src="imagenes/solicitud.png">Solicitud</a></li>
+              <li><a class="opciones" href="VerReservacion.html"><img id="iconosmenu" src="imagenes/reserva.png">Reservaciones</a></li>
+             
+              <br><br><br><br><br><br><br><br><br><br><br><br>
               <li style="background-color: #8a3e3e;"><a href="#" onclick="cerrarSesion(); return false;"><img id="iconosmenu" src="imagenes/cerrar-sesion.png">Cerrar Sesión</a></li>
             </ul>
         </nav>
