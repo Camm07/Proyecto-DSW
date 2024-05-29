@@ -147,10 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("aaaa 2");
     console.log(miid);
     const guardarCambiosBtn = document.getElementById('guardarCambios');
-    guardarCambiosBtn.addEventListener('click', async () => {
-        event.preventDefault(); 
+    guardarCambiosBtn.addEventListener('click', async (event) => {
+        event.preventDefault();
         console.log("Entre aquixd");
-        console.log("JAJA : "+miid);
+        console.log("JAJA : " + miid);
         const nombre = document.getElementById('editNombre').value;
         const apellidos = document.getElementById('editApellidos').value;
         const correo = document.getElementById('editCorreo').value;
@@ -164,19 +164,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 correo: correo,
                 telefono: telefono
             });
-            loadSocios();
-            await loadSocios();
+            await loadSocios(); // Se llama una sola vez, no es necesario llamarlo dos veces seguidas
             console.log("NICE");
-            alert('Modificación exitosa');
+            showMessageModal('Modificación exitosa'); // Usando modal en lugar de alert
             document.getElementById('modal').style.display = 'none';
         } catch (error) {
-            e=error;
-            console.error("Error actualizando documento: "+ error);
-            console.log(e);
-            alert('Ha ocurrido un error al actualizar' + error);
+            console.error("Error actualizando documento: ", error);
+            showMessageModal('Ha ocurrido un error al actualizar: ' + error.message); // Usando modal para errores
         }
     });
 });
+
 
 // Función para mostrar mensajes en un modal de Bootstrap
 function showMessageModal(message) {

@@ -28,22 +28,22 @@ document.getElementById('formularioSocio').addEventListener('submit', async func
             querySnapshot.forEach((doc) => {
                 usuarioExistente = { id: doc.id, data: doc.data() };
             });
-
+    
             if (usuarioExistente.data.status === "Inactivo") {
                 // Actualizar estado a Activo
                 await updateDoc(doc(db, "Socios", usuarioExistente.id), {
                     status: "Activo"
                 });
-                alert(`El usuario ${correo} ha sido reactivado.`);
+                showMessageModal(`El usuario ${correo} ha sido reactivado.`);
             } else {
-                alert(`El usuario ${correo} ya está activo.`);
+                showMessageModal(`El usuario ${correo} ya está activo.`);
             }
         } else {
             // Si el usuario no existe, registrar nuevo usuario en Firebase Auth
             const userCredential = await createUserWithEmailAndPassword(auth, correo, contraseña);
             const user = userCredential.user;
             console.log('Usuario de Firebase creado con UID:', user.uid);
-
+    
             // Registrar nuevo usuario en Firestore
             const docRef = await addDoc(collection(db, "Socios"), {
                 nombre: nombre,
@@ -57,12 +57,12 @@ document.getElementById('formularioSocio').addEventListener('submit', async func
                 fotoPerfil: defaultImageUrl
             });
             console.log('Socio registrado con éxito, Document ID:', docRef.id);
-
+    
             // Guardar el ID del documento en sessionStorage
             sessionStorage.setItem('socioDocId', docRef.id);
             sessionStorage.setItem('socioCorreo', correo);
             sessionStorage.setItem('socioNombre', nombre);
-
+    
             console.log('Datos almacenados en sessionStorage:', {
                 id: docRef.id,
                 correo: correo,
@@ -70,18 +70,28 @@ document.getElementById('formularioSocio').addEventListener('submit', async func
             });
             // Enviar el correo de bienvenida
             const correoEnviado = await enviarCorreoBienvenida(nombre, correo);
-            alert('Socio registrado con éxito y correo de bienvenida enviado.');
+            showMessageModal('Socio registrado con éxito y correo de bienvenida enviado.');
         }
-
+    
         // Limpiar el formulario después de un registro exitoso o reactivación
         document.getElementById('formularioSocio').reset();
-
+    
     } catch (error) {
         console.error('Error al registrar el socio:', error);
-        alert('Error al registrar el socio: ' + error.message);
+        showMessageModal('Error al registrar el socio: ' + error.message);
     }
+    
 });
 
+function showMessageModal(message) {
+    const modalBody = document.getElementById('messageModalBody');
+    modalBody.textContent = message;
+    const messageModal = new bootstrap.Modal(document.getElementById('messageModal'), {
+      keyboard: false
+    });
+    messageModal.show();
+  }
+  
 
 async function enviarCorreoBienvenida(nombre, email) {
     try {
