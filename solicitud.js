@@ -56,6 +56,7 @@ if (!socioDoc.exists()) {
 const socioData = socioDoc.data();
 const correoSocio = socioData.correo;
 const nombreSocio = socioData.nombre;
+const telefono = socioData.telefono;
 
     try {
         await addDoc(collection(db, "Coleccion_Solicitud"), {
@@ -75,6 +76,7 @@ const nombreSocio = socioData.nombre;
                 nombre: nombreSocio,
                 email: correoSocio,
                 comentario: descripcion,
+                telefono: telefono
             })
         });
 
@@ -85,7 +87,7 @@ const nombreSocio = socioData.nombre;
         }
         messageDiv.textContent = "Tu solicitud fue enviada exitosamente.";
         loadSolicitudes(idDocumentoSocio);  // Recargar la lista de solicitudes
-
+        
         setTimeout(() => {
             messageDiv.textContent = "";
         }, 5000);

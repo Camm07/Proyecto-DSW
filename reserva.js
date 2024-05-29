@@ -64,6 +64,7 @@ formularioReserva.addEventListener('submit', async function(event) {
     const socioData = socioDoc.data();
     const correoSocio = socioData.correo;
     const nombreSocio = socioData.nombre;
+    const telefono = socioData.telefono;
   
     try{
         await addDoc(collection(db, "Coleccion_Reservacion"), {
@@ -84,7 +85,8 @@ formularioReserva.addEventListener('submit', async function(event) {
                 nombre: nombreSocio,
                 email: correoSocio,
                 espacio: espacio,
-                fechaReservacion: fechaIn
+                fechaReservacion: fechaIn,
+                telefono: telefono
             })
         });
 
