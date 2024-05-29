@@ -74,6 +74,7 @@
         <table id="sociosTable">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Foto</th> <!-- Nueva columna para la foto de perfil -->
                     <th>Nombre</th>
                     <th>Correo</th>
@@ -122,6 +123,44 @@
         }
     });
 </script>
+<!-- Modal para mensajes -->
+<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="messageModalLabel">Mensaje del Sistema</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="messageModalBody">
+          <!-- Mensaje dinámico -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de confirmación -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmationModalLabel">Confirmación Requerida</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="confirmationModalBody">
+          ¿Estás seguro de que deseas realizar esta acción?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="confirmBtn">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
 </body>
 <br><br><br><br><br><br>
 <footer>

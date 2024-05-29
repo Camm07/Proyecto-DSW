@@ -50,6 +50,10 @@ async function displaySocios(snapshot) {
         const data = docSnapshot.data();
         const row = document.createElement('tr');
 
+        const idCell = document.createElement('td');
+        idCell.textContent = docSnapshot.id; // Añade el ID del documento de Firestore como texto de la celda
+        row.appendChild(idCell);
+
         const imgCell = document.createElement('td');
         const img = document.createElement('img');
         img.src = data.fotoPerfil || 'https://firebasestorage.googleapis.com/v0/b/proyecto-club-c2df1.appspot.com/o/socio.png?alt=media&token=b766c205-80ec-45c6-bc3b-d6aadbcbb010'; // Usa la foto de perfil o una imagen por defecto
@@ -93,21 +97,31 @@ async function displaySocios(snapshot) {
          actionButton.classList.add('edit-button');
          actionButton.textContent = data.status === 'Activo' ? 'Eliminar' : 'Reactivar';
          actionButton.classList.add(data.status === 'Activo' ? 'delete-button' : 'reactivate-button');
-         actionButton.addEventListener('click', async () => {
-             if (data.status === 'Activo') {
-                 if (confirm("¿Estás seguro de que deseas dar de baja al socio?")) {
-                     await updateDoc(doc(db, "Socios", docSnapshot.id), { status: 'Inactivo' });
-                     alert("Socio dado de baja con éxito.");
-                     loadSocios();
-                 }
-             } else {
-                 if (confirm("¿Deseas reactivar a este socio?")) {
-                     await updateDoc(doc(db, "Socios", docSnapshot.id), { status: 'Activo' });
-                     alert("Socio reactivado con éxito.");
-                     loadSocios();
-                 }
-             }
-        });
+         actionButton.addEventListener('click', () => {
+            if (data.status === 'Activo') {
+              showConfirmationModal("¿Estás seguro de que deseas dar de baja al socio?", async () => {
+                try {
+                  await updateDoc(doc(db, "Socios", docSnapshot.id), { status: 'Inactivo' });
+                  loadSocios();
+                  showMessageModal("Socio dado de baja con éxito.");
+                } catch (error) {
+                  showMessageModal("Error al dar de baja al socio: " + error.message);
+                }
+              });
+            } else {
+              showConfirmationModal("¿Deseas reactivar a este socio?", async () => {
+                try {
+                  await updateDoc(doc(db, "Socios", docSnapshot.id), { status: 'Activo' });
+                  loadSocios();
+                  showMessageModal("Socio reactivado con éxito.");
+                } catch (error) {
+                  showMessageModal("Error al reactivar al socio: " + error.message);
+                }
+              });
+            }
+          });
+          
+          
         
         actionCell.appendChild(actionButton);
 
@@ -164,6 +178,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Función para mostrar mensajes en un modal de Bootstrap
+function showMessageModal(message) {
+    const messageModalBody = document.getElementById('messageModalBody');
+    messageModalBody.textContent = message;
+    const messageModal = new bootstrap.Modal(document.getElementById('messageModal'), {
+      keyboard: false
+    });
+    messageModal.show();
+  }
+  
+// Función para mostrar el modal de confirmación y manejar la respuesta
+function showConfirmationModal(message, onConfirm) {
+    const confirmationModalBody = document.getElementById('confirmationModalBody');
+    confirmationModalBody.textContent = message;
+    const confirmBtn = document.getElementById('confirmBtn');
+  
+    const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'), {
+      keyboard: false,
+      backdrop: 'static'
+    });
+  
+    // Función que se ejecutará al confirmar
+    confirmBtn.onclick = function() {
+      onConfirm(); // Ejecuta la función de confirmación
+      confirmationModal.hide();
+    };
+  
+    confirmationModal.show();
+  }
+
+  
 // Función para buscar socios por cualquier campo
 async function searchSocios() {
     const searchTerm = document.getElementById('searchBox').value.toLowerCase();

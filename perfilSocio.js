@@ -14,8 +14,10 @@ async function loadProfileImage() {
             const profileImage = document.getElementById('profileImage');
             const profileImage1 = document.getElementById('profileImage1');
             const userName = document.getElementById('userName');
-            if (profileImage || profileImage1) {
+            if (profileImage) {
                 profileImage.src = socioData.fotoPerfil || 'imagenes/socio.png';
+            }
+            if (profileImage1) {
                 profileImage1.src = socioData.fotoPerfil || 'imagenes/socio.png';
             }
             if (userName) {
