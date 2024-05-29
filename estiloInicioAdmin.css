@@ -42,6 +42,17 @@ html{
     margin-left: 20%;
 }
 
+.modal-content {
+    background-color: #ffffff; /* Fondo blanco para el modal */
+    color: #333; /* Texto gris oscuro para mejor visibilidad */
+}
+
+.modal-header, .modal-body, .modal-footer {
+    color: #333; /* Asegura que el texto sea visible en un fondo claro */
+}
+
+
+
 /*''''''''''''DISEÑO MENU'''''''''''''''*/
 #iconosmenu {
     width: 20px;

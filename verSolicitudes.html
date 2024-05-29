@@ -16,12 +16,11 @@
     <script>
         // Función para cerrar sesión con confirmación
         function cerrarSesion() {
-            if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
-                // Redirige al usuario a la página de inicio
-                window.location.href = 'index.html';
-            }
-        }
-    </script>
+    // Muestra el modal de Bootstrap
+    $('#logoutModal').modal('show');
+}
+
+    </script> 
 </head>
 <body>
     <header>
@@ -124,6 +123,27 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal de confirmación para cerrar sesión -->
+<div id="logoutModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="color: #333;">¿Estás seguro de que quieres cerrar sesión?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="confirmLogout()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmLogout() {
+        window.location.href = 'paginaPrincipal.html'; // Redirige al usuario a la página principal
+    }
+</script>
     
 </body>
 
