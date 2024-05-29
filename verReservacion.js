@@ -23,6 +23,8 @@ async function cargarReservaciones(estatus = 'Todos') {
         );
     }
 
+    
+
     const querySnapshot = await getDocs(q);
     const results = await Promise.all(querySnapshot.docs.map(docSnapshot => {
         const data = docSnapshot.data();
@@ -41,6 +43,15 @@ async function cargarReservaciones(estatus = 'Todos') {
     tableBody.innerHTML = '';
     results.forEach(({ id, socioData, data }) => appendRow(id, socioData, data));
 }
+
+function showMessageModal(message) {
+    const modalBody = document.getElementById('messageModalBody');
+    modalBody.textContent = message;
+    const messageModal = new bootstrap.Modal(document.getElementById('messageModal'), {
+      keyboard: false
+    });
+    messageModal.show();
+  }
 
 function appendRow(id, socioData, data) {
     const tableBody = document.getElementById('reservacionesList').getElementsByTagName('tbody')[0];
@@ -79,65 +90,57 @@ function mostrarModal(reservaId, data, nombreSocio) {
     document.getElementById('btnRechazar').onclick = () => autorizarReserva(reservaId, false);
 }
 
-async function autorizarReserva(reservaId, aceptar) {
+// Aquí se muestra cómo se reemplazaría alert() en la función autorizarReserva
 
-    try{
-    const comentario = document.getElementById('commentBox').value;
-    const reservaRef = doc(db, "Coleccion_Reservacion", reservaId);
-         // Obtener los datos de la reserva
-         const reservaDoc = await getDoc(reservaRef);
-         if (!reservaDoc.exists()) {
-             throw new Error('No se encontró la reservación');
-         }
-         const reservaData = reservaDoc.data();
-         
-         // Obtener los datos del socio
-         const socioRef = doc(db, "Socios", reservaData.Id_Socio);
-         const socioDoc = await getDoc(socioRef);
-         if (!socioDoc.exists()) {
-             throw new Error('No se encontró el socio');
-         }
- 
-         const socioData = socioDoc.data();
-         
-         // Actualizar el estado de la reserva
-         await updateDoc(reservaRef, {
-             Estatus: aceptar ? "Aprobada" : "Rechazada",
-             Comentario: comentario
-         });
- 
-         const estatus = aceptar ? "Aprobada" : "Rechazada";
- 
-         // Enviar correo al socio
-         const response = await fetch('http://localhost:3000/correo-reservacion', {
-             method: 'POST',
-             headers: {
-                 'Content-Type': 'application/json'
-             },
-             body: JSON.stringify({
-                 nombre: socioData.nombre,
-                 email: socioData.correo,
-                 espacio: reservaData.Espacio,
-                 fechaReservacion: reservaData.Fecha_Reservacion,
-                 comentario: comentario,
-                 estatus: estatus
-             })
-         });
- 
-         if (!response.ok) {
-             console.error('Error al enviar el correo de notificación:', response.statusText);
-         } else {
-             console.log('Correo de notificación enviado con éxito');
-         }
- 
-         cerrarModal();
-         cargarReservaciones(document.getElementById('filterStatus').value);
- 
-     } catch (error) {
-         console.error('Error en el proceso de autorizar reserva:', error.message);
-     }
-    
+async function autorizarReserva(reservaId, aceptar) {
+    try {
+        const comentario = document.getElementById('commentBox').value;
+        const reservaRef = doc(db, "Coleccion_Reservacion", reservaId);
+        const reservaDoc = await getDoc(reservaRef);
+        if (!reservaDoc.exists()) {
+            throw new Error('No se encontró la reservación');
+        }
+        const reservaData = reservaDoc.data();
+        const socioRef = doc(db, "Socios", reservaData.Id_Socio);
+        const socioDoc = await getDoc(socioRef);
+        if (!socioDoc.exists()) {
+            throw new Error('No se encontró el socio');
+        }
+        const socioData = socioDoc.data();
+        await updateDoc(reservaRef, {
+            Estatus: aceptar ? "Aprobada" : "Rechazada",
+            Comentario: comentario
+        });
+        const estatus = aceptar ? "Aprobada" : "Rechazada";
+        const response = await fetch('http://localhost:3000/correo-reservacion', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nombre: socioData.nombre,
+                email: socioData.correo,
+                espacio: reservaData.Espacio,
+                fechaReservacion: reservaData.Fecha_Reservacion,
+                comentario: comentario,
+                estatus: estatus
+            })
+        });
+        if (!response.ok) {
+            console.error('Error al enviar el correo de notificación:', response.statusText);
+            showMessageModal('Error al enviar el correo de notificación: ' + response.statusText); // Reemplazado de alert()
+        } else {
+            console.log('Correo de notificación enviado con éxito');
+            showMessageModal('Correo de notificación enviado con éxito'); // Reemplazado de alert()
+        }
+        cerrarModal();
+        cargarReservaciones(document.getElementById('filterStatus').value);
+    } catch (error) {
+        console.error('Error en el proceso de autorizar reserva:', error.message);
+        showMessageModal('Error en el proceso de autorizar reserva: ' + error.message); // Reemplazado de alert()
+    }
 }
+
 
 function cerrarModal() {
     document.getElementById('modal').style.display = 'none';

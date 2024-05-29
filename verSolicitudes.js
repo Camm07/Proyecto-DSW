@@ -86,16 +86,16 @@ function mostrarModal(solicitudId, data, nombreSocio) {
 }
 // Función para atender las solicitudes y actualizar su estado
 async function atenderSolicitud(solicitudId, aceptar) {
-    const comentario = document.getElementById('commentBox').value; // Obtener el contenido de la caja de texto
+    const comentario = document.getElementById('commentBox').value;
     const solicitudRef = doc(db, "Coleccion_Solicitud", solicitudId);
 
     try {
         await updateDoc(solicitudRef, {
             Estatus: aceptar ? "Atendida" : "Rechazada",
-            Comentario: comentario // Agregar el comentario a la colección
+            Comentario: comentario
         });
 
-        // Obtener los datos del socio
+        // Suponiendo que los datos del socio están disponibles
         const solicitudDoc = await getDoc(solicitudRef);
         const solicitudData = solicitudDoc.data();
         const socioRef = doc(db, "Socios", solicitudData.Id_Socio);
@@ -117,17 +117,37 @@ async function atenderSolicitud(solicitudId, aceptar) {
         });
 
         if (!response.ok) {
-            console.error('Error al enviar el correo de notificación:', response.statusText);
+            await showMessageModal('Error al enviar el correo de notificación: ' + response.statusText);
         } else {
-            console.log('Correo de notificación enviado con éxito');
+            await showMessageModal('Correo de notificación enviado con éxito');
         }
-        alert('La solicitud ha sido actualizada.');
+
+        await showMessageModal('La solicitud ha sido actualizada.');
         cerrarModal();
-        cargarSolicitudes(document.getElementById('filterStatus').value); // Refrescar la lista de solicitudes
+        cargarSolicitudes(document.getElementById('filterStatus').value);
+
     } catch (error) {
         console.error("Error al actualizar la solicitud:", error);
-        alert("Error al procesar la solicitud.");
+        await showMessageModal("Error al procesar la solicitud: " + error.message);
     }
+}
+
+
+function showMessageModal(message) {
+    const modalBody = document.getElementById('messageModalBody');
+    modalBody.textContent = message;
+    
+    const messageModal = new bootstrap.Modal(document.getElementById('messageModal'), {
+      keyboard: false
+    });
+    
+    messageModal.show();
+
+    return new Promise((resolve) => {
+        document.getElementById('messageModal').addEventListener('hidden.bs.modal', function () {
+            resolve();
+        }, { once: true });
+    });
 }
 
 
