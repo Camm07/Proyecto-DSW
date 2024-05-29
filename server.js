@@ -41,9 +41,9 @@ app.post('/send-email', (req, res) => {
     });
 });
 
-//correo reservaciones socio
+//correo reservaciones socio de socio a administrador
 app.post('/correo-reserva', (req, res) => {
-    const { nombre, email, espacio, fechaReservacion} = req.body;
+    const { nombre, email, espacio, fechaReservacion,telefono} = req.body;
 
     const transporter = nodemailer.createTransport({
         service: 'hotmail', 
@@ -63,7 +63,9 @@ app.post('/correo-reserva', (req, res) => {
 
         Detalles de la reservación
         Espacio: ${espacio}
-        Fecha de Reservación: ${fechaReservacion}`
+        Fecha de Reservación: ${fechaReservacion}
+        Teléfono: ${telefono}`
+        
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -77,9 +79,9 @@ app.post('/correo-reserva', (req, res) => {
     });
 });
 
-//correo solicitudes socio
+//correo solicitudes socio, de socio a administrador
 app.post('/correo-soli', (req, res) => {
-    const { nombre, email, comentario} = req.body;
+    const { nombre, email, comentario,telefono} = req.body;
 
     const transporter = nodemailer.createTransport({
         service: 'hotmail', 
@@ -92,13 +94,14 @@ app.post('/correo-soli', (req, res) => {
     const mailOptions = {
         from: "clubdelvalleproyecto@hotmail.com",
         to: 'clubdelvalleproyecto@hotmail.com', // Correo del administrador
-        subject: `Nueva Reservación de ${email}`,
+        subject: `Nueva Solicitud de ${email}`,
         text: `Estimado Administrador,
 
         El socio ${nombre} con (${email}) ha realizado una solicitud.
 
         Detalles de la solicitud
-        Comentario: ${comentario}`
+        Comentario: ${comentario}
+        Teléfono: ${telefono}`
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -112,7 +115,7 @@ app.post('/correo-soli', (req, res) => {
     });
 });
 
-//enviarcorreo administrador reservaciones
+//enviarcorreo administrador reservaciones de administrador a socio
 app.post('/correo-reservacion', (req, res) => {
     const { nombre, email, espacio, fechaReservacion, comentario, estatus } = req.body;
 
@@ -139,7 +142,7 @@ app.post('/correo-reservacion', (req, res) => {
     });
 });
 
-//enviarcorreo administrador solicitudes
+//enviarcorreo administrador solicitudes - de administrador a socio
 app.post('/correo-solicitud', (req, res) => {
     const { nombre, email, comentario, estatus } = req.body;
 
