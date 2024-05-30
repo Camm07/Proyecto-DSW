@@ -3,9 +3,14 @@ body {
   background-color: #061A40;
   color: white;
   margin: 0;
-  padding: 0;
+  padding: 0 0 100px 0; /* Añade un padding inferior de 100px */
   overflow-x: hidden; /* Evita desbordamiento horizontal */
 }
+
+.bienvenido-container {
+  padding-bottom: 1500px; /* Espacio adicional en la parte inferior */
+}
+
 header {
   width: calc(100% - 250px); /* Deja espacio para el menú lateral */
   background-color: #fff; /* Color de fondo para el header */
@@ -514,25 +519,67 @@ tr:hover {
 }
 
 /* Estilos para la ventana modal */
+/* Estilos para el modal */
 .modal {
+  display: none; /* Ocultar por defecto */
   position: fixed;
-  top: 0;
+  z-index: 1;
   left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
+  overflow: auto;
+  background-color: rgb(0,0,0); /* Color de fondo negro */
+  background-color: rgba(0,0,0,0.4); /* Color de fondo con opacidad */
 }
 
+/* Contenido del modal */
 .modal-content {
-  background-color: #fff;
+  background-color: #fefefe;
+  margin: 15% auto; /* Centrado vertical y horizontal */
   padding: 20px;
-  border-radius: 5px;
-  width: 500px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border: 1px solid #888;
+  width: 80%;
+  color: black; /* Color de texto */
+  font-weight: bold; /* Peso de la fuente en negritas */
+  position: relative; /* Para posicionar los botones de manera absoluta */
+}
+
+/* Botones del modal */
+.modal-btn {
+  background-color: #4CAF50; /* Verde */
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: auto;
+  opacity: 0.9;
+  display: inline-block;
+}
+
+.modal-btn:hover {
+  opacity: 1;
+}
+
+/* Contenedor de botones */
+.button-container {
+  text-align: center;
+  padding: 0px;
+  
+  margin-top: -200px;
+}
+
+/* Botón de cerrar */
+.modal-close {
+  background-color: red; /* Rojo para el botón de cerrar */
+}
+
+
+
+p {
+  color:#343a40
+
 }
 
 .close {
