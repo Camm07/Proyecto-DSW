@@ -8,7 +8,8 @@
     "firebase": "^10.11.1",
     "firebase-admin": "^12.1.1",
     "node-mailjet": "^6.0.5",
-    "nodemailer": "^6.9.13"
+    "nodemailer": "^6.9.13",
+    "twilio": "^5.1.0"
   },
   "scripts": {
     "start": "node server.js"
