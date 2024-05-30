@@ -533,48 +533,54 @@ tr:hover {
   background-color: rgba(0,0,0,0.4); /* Color de fondo con opacidad */
 }
 
-/* Contenido del modal */
+/* Estilos para la ventana modal */
+
+
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* Centrado vertical y horizontal */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
-  color: black; /* Color de texto */
-  font-weight: bold; /* Peso de la fuente en negritas */
-  position: relative; /* Para posicionar los botones de manera absoluta */
-}
-
-/* Botones del modal */
-.modal-btn {
-  background-color: #4CAF50; /* Verde */
+  width: 50%; /* Ancho reducido para un modal más pequeño */
+  max-width: 600px; /* Límite máximo para el ancho del modal */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  position: relative;
+  margin-left: 550px;
+  margin-top: 180px;
+  
+  }
+  
+  /* Botones del modal */
+  .modal-btn {
+  background-color: #4CAF50;
   color: white;
-  padding: 10px 20px;
-  margin: 8px 0;
+  padding: 8px 16px;
+  margin: 10px;
   border: none;
   cursor: pointer;
-  width: auto;
-  opacity: 0.9;
-  display: inline-block;
-}
-
-.modal-btn:hover {
-  opacity: 1;
-}
-
-/* Contenedor de botones */
-.button-container {
+  width: 100px;
   text-align: center;
-  padding: 0px;
+  transition: background-color 0.3s;
+  }
   
-  margin-top: -200px;
-}
-
-/* Botón de cerrar */
-.modal-close {
-  background-color: red; /* Rojo para el botón de cerrar */
-}
-
+  #btnRechazar {
+  background-color: #f44336;
+  }
+  
+  #btnCerrar {
+  background-color: #555;
+  }
+  
+  .modal-btn:hover {
+  opacity: 1;
+  }
+  
+  /* Contenedor de botones */
+  .button-container {
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
+  }
+  
 
 
 p {

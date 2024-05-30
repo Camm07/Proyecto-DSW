@@ -517,33 +517,53 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 80%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; /* Controla la visibilidad mediante JavaScript */
     align-items: center;
     justify-content: center;
     z-index: 1000;
+    margin-top: 100px;
   }
   
-  .modal-content {
+  .modal-content1 {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
-    width: 500px;
+    width: 40%; /* Reducción del ancho para que no sea tan horizontal */
+    max-width: 400px; /* Límite máximo para el ancho del modal, para dispositivos más grandes */
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 700px;
+}
+.modal-cont {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 40%; /* Reducción del ancho para que no sea tan horizontal */
+  max-width: 400px; /* Límite máximo para el ancho del modal, para dispositivos más grandes */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 700px;
+}
   
   .close {
-    float: right;
+    align-self: flex-end;
     font-size: 28px;
     cursor: pointer;
+    margin-bottom: 10px; 
   }
   
   label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    width: 100%; 
   }
   
   input[type="text"] {
@@ -561,12 +581,24 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    width: 100%; /* Ajusta el ancho del botón para hacerlo más adecuado al nuevo tamaño del modal */
+    margin-top: 20px; //* Botón más ajustado al tamaño del modal */
   }
   
   button:hover {
     background-color: #4cae4c;
   }
   
+  #guardarCambios {
+    margin-left: 70px; /* Empuja el botón hacia la derecha */
+    margin-right: 0; /* Mantiene el botón pegado al borde derecho */
+    width: 50%; 
+}
+
+
+
+
+
   #subtitu{
     font-family: 'Roboto', sans-serif; /* Aplica la tipografía elegida */
     font-weight: 600; /* Roboto en su variante más gruesa */
