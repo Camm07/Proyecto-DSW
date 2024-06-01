@@ -206,21 +206,20 @@ html{
 }
 
 
-
 /* Estilo del Contenedor Interno y Formulario */
-.bienvenido-container {
+/*.bienvenido-container {
     width: 100%;
     padding: 10% 10% 4% 10%; /* Reduce el padding lateral para un diseño más estirado */
-    background-color: #f5f5f5;
+/*    background-color: #f5f5f5;
     display: flex;
     justify-content: flex-end; /* Alinea el contenido hacia el final (derecha) */
-    align-items: center;
+/*    align-items: center;
     min-height: 100vh; /* Asegura que ocupe al menos toda la altura de la ventana */
-    margin-left: 8%; /* Agrega un margen izquierdo adicional para empujar aún más a la derecha */
-}
+/*    margin-left: 8%; /* Agrega un margen izquierdo adicional para empujar aún más a la derecha */
+/*}*/
 
 .container {
-    width: 90%; /* Incrementa el ancho para hacer el contenedor más largo */
+    width: 70%; /* Incrementa el ancho para hacer el contenedor más largo */
     max-width: none; /* Elimina el límite máximo de ancho */
     padding: 40px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);

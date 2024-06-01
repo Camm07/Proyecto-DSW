@@ -80,6 +80,8 @@
             <form id="passwordResetForm">
                 <input type="email" id="resetEmail" placeholder="Ingresa tu correo electrónico" required>
                 <button type="submit">Enviar enlace de recuperación</button>
+                <p id="errorMessage" class="error-message" style="display:none;"></p>
+            <p id="successMessage" class="success-message" style="display:none;"></p>
             </form>
         </div>
     </div>
@@ -88,6 +90,7 @@
     <!-- Asegúrate de que la ruta a tu script 'app.js' es correcta -->
     <script type="module" src="./app.js"></script>
     <script type="module" src="./recuperar.js"></script>
+    
 </body>
 </html>
 

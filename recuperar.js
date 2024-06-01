@@ -1,4 +1,3 @@
-//recuperar.js
 import { getAuth, sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -6,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('passwordResetModal');
     const closeBtn = document.querySelector('.close');
     const passwordResetForm = document.getElementById('passwordResetForm');
+    const errorMessage = document.getElementById('error-message');
 
     if (forgotPasswordButton) {
         forgotPasswordButton.addEventListener('click', function() {
@@ -30,16 +30,17 @@ document.addEventListener('DOMContentLoaded', function() {
                         alert('Correo de recuperación enviado. Revisa tu correo para restablecer tu contraseña.');
                         modal.style.display = 'none';
                         document.getElementById('resetEmail').value = ''; // Limpiar el campo
+                        errorMessage.style.display = 'none'; // Ocultar el mensaje de error
                     })
                     .catch((error) => {
-                        alert('Error al enviar el correo de recuperación: ' + error.message);
+                        errorMessage.textContent = 'Error al enviar el correo de recuperación: ' + error.message;
+                        errorMessage.style.display = 'block';
                         console.error('Error al enviar el correo de recuperación:', error);
                     });
             } else {
-                alert('Por favor, ingresa tu correo electrónico.');
+                errorMessage.textContent = 'Por favor, ingresa tu correo electrónico.';
+                errorMessage.style.display = 'block';
             }
         });
     }
 });
-
-
