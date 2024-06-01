@@ -42,22 +42,33 @@ async function handleLogin(email, password) {
                 const socioData = socioDoc.data();
                 if (socioData.status === "Activo") {
                     sessionStorage.setItem('userName', socioData.nombre);
-                    document.getElementById('profileImage', socioData.id); 
+                    document.getElementById('profileImage', socioData.id);
                     sessionStorage.setItem('socioDocId', socioDoc.id);  // Almacena el ID del documento para uso posterior
                     window.location.href = 'inicioSocio.html';
                 } else {
-                    alert("Tu cuenta está inactiva. Por favor, contacta al administrador para más información.");
+                    showMessageModal("Tu cuenta está inactiva. Por favor, contacta al administrador para más información.");
                     auth.signOut(); // Opcional: Desconecta al usuario
                 }
             } else {
-                throw new Error("Datos del socio no encontrados en Firestore.");
+                showMessageModal("Datos del socio no encontrados en Firestore.");
             }
         }
     } catch (error) {
         console.error('Error durante el inicio de sesión:', error);
-        alert("Error de autenticación: " + error.message);
+        showMessageModal("Error de autenticación: " + error.message);
     }
 }
+
+function showMessageModal(message) {
+    const modalBody = document.getElementById('messageModalBody');
+    modalBody.textContent = message;
+
+    // Usando la API de Bootstrap 5 para mostrar el modal
+    const modalElement = document.getElementById('messageModal');
+    const modalInstance = new bootstrap.Modal(modalElement);
+    modalInstance.show();
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('formularioLogin');

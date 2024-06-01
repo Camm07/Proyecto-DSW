@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const auth = getAuth();
                 sendPasswordResetEmail(auth, emailAddress)
                     .then(() => {
-                        alert('Correo de recuperación enviado. Revisa tu correo para restablecer tu contraseña.');
+                        // Reemplazo del alert por showMessageModal
+                        showMessageModal('Correo de recuperación enviado. Revisa tu correo para restablecer tu contraseña.');
                         modal.style.display = 'none';
                         document.getElementById('resetEmail').value = ''; // Limpiar el campo
                         errorMessage.style.display = 'none'; // Ocultar el mensaje de error
@@ -44,3 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+function showMessageModal(message) {
+    const modalBody = document.getElementById('messageModalBody');
+    modalBody.textContent = message;
+    const modalElement = document.getElementById('messageModal');
+    const modalInstance = new bootstrap.Modal(modalElement);
+    modalInstance.show();
+}
+
