@@ -69,7 +69,32 @@ function showMessageModal(message) {
     modalInstance.show();
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('formularioLogin');
+    const forgotPasswordButton = document.getElementById('forgotPassword');
 
+    if (loginForm) {
+        loginForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            await handleLogin(email, password);
+        });
+    } else {
+        console.log("El formulario de login no está presente en esta página.");
+    }
+
+    if (forgotPasswordButton) {
+        forgotPasswordButton.addEventListener('click', async function(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            if (!email) {
+                showMessageModal("Por favor, introduce tu correo electrónico para restablecer la contraseña.");
+                return;
+            }
+            await handleForgotPassword(email);
+        });
+    }/*
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('formularioLogin');
     if (loginForm) {
@@ -81,5 +106,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     } else {
         console.log("El formulario de login no está presente en esta página.");
-    }
+    }*/
 });
