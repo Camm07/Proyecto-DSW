@@ -1,4 +1,3 @@
-// verSolicitudes.js
 import { db } from './app.js';
 import {
     collection, query, orderBy, where, getDocs, doc, getDoc
@@ -47,6 +46,30 @@ async function cargarSolicitudes(estatus = 'Todos') {
     results.forEach(({ id, socioData, data }) => appendRow(id, socioData, data));
 }
 
+function formatearFecha(fecha) {
+    const meses = [
+        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+        'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+    ];
+
+    const diasSemana = [
+        'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'
+    ];
+
+    const date = new Date(fecha);
+    date.setDate(date.getDate() - 1); //Errorsillo xd, pero se resta para ajustar xd
+
+    const diaSemana = diasSemana[date.getUTCDay()];
+    const dia = date.getUTCDate();
+    const mes = meses[date.getUTCMonth()];
+    const anio = date.getUTCFullYear();
+    const horas = date.getUTCHours().toString().padStart(2, '0');
+    const minutos = date.getUTCMinutes().toString().padStart(2, '0');
+    const segundos = date.getUTCSeconds().toString().padStart(2, '0');
+
+    return `${diaSemana}, ${dia} de ${mes} de ${anio} ${horas}:${minutos}:${segundos}`;
+}
+
 function appendRow(id, socioData, data) {
     const tableBody = document.getElementById('solicitudesList').getElementsByTagName('tbody')[0];
     const btnAtender = document.createElement('button');
@@ -59,7 +82,7 @@ function appendRow(id, socioData, data) {
         <td>${id}</td>
         <td>${socioData.nombre} ${socioData.apellidos}</td>
         <td>${data.Descripcion}</td>
-        <td>${data.Fecha_Hora_Atendida.toDate().toLocaleDateString("es-ES")}</td>
+        <td>${formatearFecha(data.Fecha_Hora_Atendida.toDate())}</td>
         <td>${data.Id_Socio}</td>
         <td>${data.Estatus}</td>
         <td></td>
@@ -75,7 +98,7 @@ function mostrarModal(solicitudId, data, nombreSocio) {
         <p><strong>ID Solicitud:</strong> ${solicitudId}</p>
         <p><strong>ID Socio:</strong> ${data.Id_Socio}</p>
         <p><strong>Nombre:</strong> ${nombreSocio}</p>
-        <p><strong>Fecha:</strong> ${data.Fecha_Hora_Atendida.toDate().toLocaleDateString("es-ES")}</p>
+        <p><strong>Fecha:</strong> ${formatearFecha(data.Fecha_Hora_Atendida.toDate())}</p>
         <p><strong>Descripción:</strong> ${data.Descripcion}</p>
         <input type="text" id="commentBox" placeholder="Escribe un comentario">
     `;
@@ -84,7 +107,7 @@ function mostrarModal(solicitudId, data, nombreSocio) {
     document.getElementById('btnAceptar').onclick = () => atenderSolicitud(solicitudId, true);
     document.getElementById('btnRechazar').onclick = () => atenderSolicitud(solicitudId, false);
 }
-// Función para atender las solicitudes y actualizar su estado
+
 async function atenderSolicitud(solicitudId, aceptar) {
     const comentario = document.getElementById('commentBox').value;
     const solicitudRef = doc(db, "Coleccion_Solicitud", solicitudId);
@@ -132,7 +155,6 @@ async function atenderSolicitud(solicitudId, aceptar) {
     }
 }
 
-
 function showMessageModal(message) {
     const modalBody = document.getElementById('messageModalBody');
     modalBody.textContent = message;
@@ -150,8 +172,6 @@ function showMessageModal(message) {
     });
 }
 
-
 function cerrarModal() {
     document.getElementById('modal').style.display = 'none';
 }
-

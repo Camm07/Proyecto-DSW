@@ -23,8 +23,6 @@ async function cargarReservaciones(estatus = 'Todos') {
         );
     }
 
-    
-
     const querySnapshot = await getDocs(q);
     const results = await Promise.all(querySnapshot.docs.map(docSnapshot => {
         const data = docSnapshot.data();
@@ -51,7 +49,27 @@ function showMessageModal(message) {
       keyboard: false
     });
     messageModal.show();
-  }
+}
+
+function formatearFecha(fecha) {
+    const meses = [
+        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+        'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+    ];
+
+    const diasSemana = [
+        'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'
+    ];
+
+    const date = new Date(fecha);
+
+    const diaSemana = diasSemana[date.getUTCDay()];
+    const dia = date.getUTCDate();
+    const mes = meses[date.getUTCMonth()];
+    const anio = date.getUTCFullYear();
+
+    return `${diaSemana}, ${dia} de ${mes} de ${anio}`;
+}
 
 function appendRow(id, socioData, data) {
     const tableBody = document.getElementById('reservacionesList').getElementsByTagName('tbody')[0];
@@ -64,7 +82,7 @@ function appendRow(id, socioData, data) {
     row.innerHTML = `
         <td>${id}</td>
         <td>${socioData.nombre} ${socioData.apellidos}</td>
-        <td>${data.Fecha_Reservacion}</td>
+        <td>${formatearFecha(data.Fecha_Reservacion)}</td>
         <td>${data.Espacio}</td>
         <td>${data.Estatus}</td>
         <td></td> 
@@ -80,7 +98,7 @@ function mostrarModal(reservaId, data, nombreSocio) {
         <p><strong>ID Reserva:</strong> ${reservaId}</p>
         <p><strong>ID Socio:</strong> ${data.Id_Socio}</p>
         <p><strong>Nombre:</strong> ${nombreSocio}</p>
-        <p><strong>Fecha de Reservación:</strong> ${data.Fecha_Reservacion}</p>
+        <p><strong>Fecha de Reservación:</strong> ${formatearFecha(data.Fecha_Reservacion)}</p>
         <p><strong>Fecha de Solicitud:</strong> ${data.Fecha_Hora_Solicitud.toDate().toLocaleString()}</p>
         <p><strong>Espacio:</strong> ${data.Espacio}</p>
         <input type="text" id="commentBox" placeholder="Escribe un comentario">
@@ -89,8 +107,6 @@ function mostrarModal(reservaId, data, nombreSocio) {
     document.getElementById('btnAceptar').onclick = () => autorizarReserva(reservaId, true);
     document.getElementById('btnRechazar').onclick = () => autorizarReserva(reservaId, false);
 }
-
-// Aquí se muestra cómo se reemplazaría alert() en la función autorizarReserva
 
 async function autorizarReserva(reservaId, aceptar) {
     try {
@@ -121,7 +137,7 @@ async function autorizarReserva(reservaId, aceptar) {
                 nombre: socioData.nombre,
                 email: socioData.correo,
                 espacio: reservaData.Espacio,
-                fechaReservacion: reservaData.Fecha_Reservacion,
+                fechaReservacion: formatearFecha(reservaData.Fecha_Reservacion),
                 comentario: comentario,
                 estatus: estatus
             })
@@ -140,7 +156,6 @@ async function autorizarReserva(reservaId, aceptar) {
         showMessageModal('Error en el proceso de autorizar reserva: ' + error.message); // Reemplazado de alert()
     }
 }
-
 
 function cerrarModal() {
     document.getElementById('modal').style.display = 'none';
