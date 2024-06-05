@@ -73,6 +73,7 @@ async function displaySocios(snapshot) {
 
         const statusCell = document.createElement('td');
         statusCell.textContent = data.status;
+        statusCell.classList.add('socio-' + data.status.toLowerCase()); 
 
         const editCell = document.createElement('td');
         const editButton = document.createElement('button');
@@ -94,7 +95,7 @@ async function displaySocios(snapshot) {
          // Botón de eliminar o reactivar
          const actionCell = document.createElement('td');
          const actionButton = document.createElement('button');
-         actionButton.classList.add('edit-button');
+         actionButton.classList.add('react-button');
          actionButton.textContent = data.status === 'Activo' ? 'Eliminar' : 'Reactivar';
          actionButton.classList.add(data.status === 'Activo' ? 'delete-button' : 'reactivate-button');
          actionButton.addEventListener('click', () => {

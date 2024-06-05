@@ -342,69 +342,6 @@ html{
   border: 1px solid #2e8644;
 }
 
-/*'''''''''''CAROUSEL'''''''''*/
-.vanguardia-header {
-  width: 30%; /* Ajusta según necesidad */
-  margin-left: 250px;
-  margin-right: 60px;
-}
-
-.vanguardia-content {
-  display: flex;
-  width: 60%; /* Ajusta según necesidad */
-  justify-content: space-between; /* Distribuye las imágenes uniformemente */
-  /*margin-top: 50%; /* Ajusta según necesidad */
-  
-}
-
-h3, p {
-  color: white; /* Asegura la visibilidad del texto */
-}
-
-#carouselExampleIndicators {
-  max-width: 1000px; /* Aumenta el ancho máximo del carrusel */
-  margin: 20px auto; /* Centra el carrusel horizontalmente */
-}
-
-#carouselExampleIndicators .carousel-inner {
-  max-height: 600px; /* Aumenta la altura máxima del carrusel */
-}
-
-#carouselExampleIndicators .carousel-inner img {
-  object-fit: cover;
-  height: 100%;
-}
-
-#carouselExampleIndicators .carousel-caption {
-  background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mejor legibilidad */
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.vanguardia-section {
-  width: 100%;
-  padding: 40px 20px; /* Aumenta el padding para mayor espacio */
-  margin-top: 30px; /* Ajuste para compensar el header fijo */
-  background: radial-gradient(ellipse, orangered, transparent, orange) orange;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-color: orange;
-  display: flex;
-  float: right;
-  color: #ffffff;
-}
-
-.vanguardia-header {
-  margin-bottom: 20px;
-}
-
-.vanguardia-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 
 
@@ -599,16 +536,24 @@ input[type="text"] {
 }
 
 button {
-  background-color: #5cb85c;
+  background-color: #e18426;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  width: 100%;
+}
+.btn-editar{
+  background-color: #024873;
 }
 
 button:hover {
-  background-color: #4cae4c;
+  background-color: #c25d27;
+}
+
+.btn-editar:hover{
+  background-color: #061A40;
 }
 
 #subtitu{
@@ -708,4 +653,19 @@ footer p {
 
 #p2 {
   margin-left: 10px;
+}
+
+/* colores estados */
+.solicitud-pendiente #xdcolor{
+  background-color: #ffe65d;
+}
+
+.solicitud-aprobada #xdcolor{
+  background-color: #317f43;
+  color: white;
+}
+
+.solicitud-rechazada #xdcolor{
+  background-color: #ae2029;
+  color: white;
 }

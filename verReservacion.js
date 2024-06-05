@@ -78,13 +78,21 @@ function appendRow(id, socioData, data) {
     btnAtender.classList.add('btnAtender');
     btnAtender.onclick = () => mostrarModal(id, data, `${socioData.nombre} ${socioData.apellidos}`);
 
+    if (data.Estatus === 'Pendiente') {
+        btnAtender.textContent = 'Atender';
+    } else {
+        btnAtender.textContent = 'Editar';
+        btnAtender.classList.add('btn-editar');
+    }
+
     const row = document.createElement('tr');
+    row.classList.add('solicitud-' + data.Estatus.toLowerCase()); 
     row.innerHTML = `
         <td>${id}</td>
         <td>${socioData.nombre} ${socioData.apellidos}</td>
         <td>${formatearFecha(data.Fecha_Reservacion)}</td>
         <td>${data.Espacio}</td>
-        <td>${data.Estatus}</td>
+        <td id = 'xdcolor'>${data.Estatus}</td>
         <td></td> 
     `;
     row.cells[5].appendChild(btnAtender);

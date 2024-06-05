@@ -705,3 +705,38 @@ body {
   #p2 {
     margin-left: 10px;
   }
+
+  .edit-button{
+    background-color: #024873;
+    color: white;
+  }
+  .edit-button:hover{
+    background-color: #061A40;
+    color: white;
+  }
+
+  .react-button{
+    background-color: #e18426;
+    color: white;
+  }
+  .react-button:hover{
+    background-color: #c25d27;
+    color: white;
+  }
+  .reactivate-button{
+    background-color: #34974d;
+    color: white;
+  }
+  .reactivate-button:hover{
+    background-color: #2e8644;
+    color: white;
+  }
+
+  .socio-activo{
+    background-color: #317f43;
+    color: white;
+  }
+  .socio-inactivo{
+    background-color: #ae2029;
+    color: white;
+  }
