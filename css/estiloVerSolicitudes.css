@@ -435,27 +435,7 @@ body {
   /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
 }
 
-/* Estilos para la tabla */
-/*table {
-  width: 100%;
-  border-collapse: collapse;
-}
 
-/*th, td {
-  text-align: left;
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}
-
-th {
-  background-color: #f0f0f0;
-}
-
-tr:hover {
-  background-color: #f9f9f9;
-}
-*/
-/* Estilos para la ventana modal */
 /* Estilos para el modal */
 .modal {
   display: none; /* Ocultar por defecto */

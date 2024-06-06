@@ -445,15 +445,7 @@ body {
     padding: 0;
     color: #333;
   }
-  
-  /*.centered-container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 15px;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-right: 50px;
-  }*/
+
 
   .centered-container {
     width: 90%; /* Ajusta según necesidad */
@@ -472,8 +464,11 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    margin-left: 22px;
   }
-  
+  .filter-select {
+    margin-right: 20px; /* Ajusta el margen derecho para crear espacio entre los elementos */
+}
   .input-group {
     display: flex;
     align-items: center;

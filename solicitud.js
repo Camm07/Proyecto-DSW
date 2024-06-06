@@ -86,6 +86,7 @@ const telefono = socioData.telefono;
             console.log('Correo de notificación enviado con éxito');
         }
         messageDiv.textContent = "Tu solicitud fue enviada exitosamente.";
+        document.getElementById('descripcionSolicitud').value = '';
         loadSolicitudes(idDocumentoSocio);  // Recargar la lista de solicitudes
         
         setTimeout(() => {

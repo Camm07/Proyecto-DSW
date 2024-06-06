@@ -622,6 +622,23 @@ select option {
   color: #333;
 }
 
+
+
+/* colores estados */
+.solicitud-pendiente #xdcolor{
+  background-color: #ffe65d;
+}
+
+.solicitud-aprobada #xdcolor{
+  background-color: #317f43;
+  color: white;
+}
+
+.solicitud-rechazada #xdcolor{
+  background-color: #ae2029;
+  color: white;
+}
+
 /*''''''''''DISEÑO FOOTER'''''''''''''''''*/
 
 
@@ -653,19 +670,4 @@ footer p {
 
 #p2 {
   margin-left: 10px;
-}
-
-/* colores estados */
-.solicitud-pendiente #xdcolor{
-  background-color: #ffe65d;
-}
-
-.solicitud-aprobada #xdcolor{
-  background-color: #317f43;
-  color: white;
-}
-
-.solicitud-rechazada #xdcolor{
-  background-color: #ae2029;
-  color: white;
 }
